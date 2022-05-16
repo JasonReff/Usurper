@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Name: King
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 8631497884624810421, guid: e2061baddc900184491dc1cafc1deec6, type: 3}
+  PlayerSprite: {fileID: -1724822148711148119, guid: 720d7e92b3663924b878b6a83ce866d7, type: 3}
+  EnemySprite: {fileID: 1621781197010240220, guid: 720d7e92b3663924b878b6a83ce866d7, type: 3}
+  Moveset: {fileID: 0}
+  Cost: 0
+  UnitName: King

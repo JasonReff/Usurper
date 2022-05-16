@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Name: Queen
+  m_EditorClassIdentifier: 
+  Unit: {fileID: -3240947163316890152, guid: 0f84504d377fdd54995bbaa9fb9ae3c3, type: 3}
+  PlayerSprite: {fileID: 6851498383279292439, guid: b07511fa558f01c4b86a434ae32f8f94, type: 3}
+  EnemySprite: {fileID: -3476795582854192428, guid: b07511fa558f01c4b86a434ae32f8f94, type: 3}
+  Moveset: {fileID: 5229540874234242125, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  Cost: 4
+  UnitName: Queen

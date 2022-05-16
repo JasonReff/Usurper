@@ -1,0 +1,41 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+public class CharacterSelectDeck : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+{
+    [SerializeField] private StartingDeck _deck;
+    private Vector2 _startingPosition;
+    public static event Action<StartingDeck> OnDeckDropped;
+    [SerializeField] private Image _icon;
+    private Camera _main;
+
+    private void Awake()
+    {
+        _main = Camera.main;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _startingPosition = transform.position;
+        _icon.raycastTarget = false;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        var screenPosition = eventData.position;
+        var worldPosition = _main.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 0));
+        transform.position = (Vector2)worldPosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        OnDeckDropped?.Invoke(_deck);
+        transform.position = _startingPosition;
+        _icon.raycastTarget = true;
+    }
+}
