@@ -6,15 +6,15 @@ public abstract class CharacterManager : MonoBehaviour
 
     [SerializeField] private BoardTile _selectedTile;
     private Unit _selectedUnit;
-    [SerializeField] private UnitFaction _faction;
+    [SerializeField] protected UnitFaction _faction;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         GameStateMachine.OnStateChanged += AddCharacterEvents;
         GameStateMachine.OnStateChanged += RemoveCharacterEvents;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         GameStateMachine.OnStateChanged -= AddCharacterEvents;
         GameStateMachine.OnStateChanged -= RemoveCharacterEvents;
@@ -30,7 +30,7 @@ public abstract class CharacterManager : MonoBehaviour
         }
         _selectedTile = tile;
         if (tile.Unit != null)
-            _selectedUnit = tile.Unit;
+            _selectedUnit = tile.Unit as Unit;
     }
 
 

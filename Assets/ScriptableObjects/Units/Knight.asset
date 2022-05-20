@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 520d1fdf197514a459b7c260c389b50c, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
   Unit: {fileID: -1611390506138010239, guid: 167625f0d0c99c242a65ae4b8e841368, type: 3}

@@ -7,7 +7,7 @@ public class KingPlacer : MonoBehaviour
 
     private void Start()
     {
-        var tile = Board.GetTileAtPosition(_startingTile);
+        var tile = Board.Instance.GetTileAtPosition(_startingTile);
         tile.PlaceUnit(_deck.King, _deck.Faction);
     }
 }

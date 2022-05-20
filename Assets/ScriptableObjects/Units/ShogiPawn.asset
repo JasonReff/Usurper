@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3baf229348cb72f4fbc87f160e6bfa82, type: 3}
   m_Name: ShogiPawn
   m_EditorClassIdentifier: 
   Unit: {fileID: -423552058374152442, guid: ad13125f0117d4f468905278deed17c1, type: 3}
-  PlayerSprite: {fileID: 792778199420499268, guid: 912bf1415aac830469b66640ea6cdf83, type: 3}
-  EnemySprite: {fileID: 1348672715624884161, guid: 912bf1415aac830469b66640ea6cdf83, type: 3}
+  PlayerSprite: {fileID: -4673536048321637515, guid: 452ad4213c8b8504fb8fe3b804963f92, type: 3}
+  EnemySprite: {fileID: 631623507490633193, guid: 452ad4213c8b8504fb8fe3b804963f92, type: 3}
   Moveset: {fileID: -8654490388815424924, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
   Cost: 1
-  UnitName: ShogiPawn
+  UnitName: Copper

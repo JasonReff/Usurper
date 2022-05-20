@@ -4,18 +4,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Unit : MonoBehaviour, IUnit
 {
     [SerializeField] protected BoardTile _tile;
     [SerializeField] private UnitFaction _faction;
     [SerializeField] private SpriteRenderer _renderer;
     private float _deathTime = 0.3f;
     [SerializeField] private bool _summoningSickness = true;
+    [SerializeField] private UnitData _unitData;
 
     public BoardTile Tile { get => _tile; set => _tile = value; }
     public UnitFaction Faction { get => _faction; set => _faction = value; }
+    public UnitData UnitData { get => _unitData; }
+    public bool SummoningSickness { get => _summoningSickness; }
 
-    public static event Action OnUnitMoved;
+    public static Action OnUnitMoved;
+    public static Action<Unit> OnUnitDeath;
 
     private void OnEnable()
     {
@@ -27,21 +31,16 @@ public class Unit : MonoBehaviour
         MoveUnitState.OnMoveStateEnded -= RemoveSummoningSickness;
     }
 
-    public void MoveToTile(BoardTile tile)
+    public void MoveToTile<T>(T tile) where T : IBoardTile
     {
+        var boardTile = tile as BoardTile;
         if (_summoningSickness)
             return;
-        if (!CanMoveToTile(tile))
+        if (!CanMoveToTile(boardTile))
             return;
-        var previousTile = _tile;
-        if (previousTile)
-            previousTile.Unit = null;
-        _tile = tile;
-        var otherUnit = _tile.Unit;
-        if (otherUnit != null)
-            CaptureUnit(otherUnit);
-        _tile.Unit = this;
-        transform.DOMove(_tile.transform.position, 1f);
+        var move = new Move(_unitData, _tile, boardTile);
+        move.ExecuteMove(this);
+        transform.DOMove((move.NewTile as BoardTile).transform.position, 1);
         OnUnitMoved?.Invoke();
     }
 
@@ -55,103 +54,72 @@ public class Unit : MonoBehaviour
         _renderer.sprite = sprite;
     }
 
-    private void CaptureUnit(Unit unit)
+    public void CaptureUnit(Unit unit)
     {
         StartCoroutine(unit.UnitDeath());
     }
 
     protected virtual bool CanMoveToTile(BoardTile tile)
     {
-        if (tile.Unit != null && tile.Unit?._faction == _faction)
+        if (_summoningSickness)
+            return false;
+        if (!_unitData.CanMoveToTile(this, _tile, tile, Board.Instance))
             return false;
         return true;
     }
 
     protected virtual IEnumerator UnitDeath()
     {
+        OnUnitDeath?.Invoke(this);
         _renderer.DOFade(0, _deathTime);
         yield return new WaitForSeconds(_deathTime);
         Destroy(gameObject);
     }
+}
 
-    protected Vector2 GetForwardVector()
+public class Move
+{
+    protected IUnit _unit;
+    private UnitData _unitData;
+    private IBoardTile _currentTile, _newTile;
+    public int Evaluation;
+
+    public IBoardTile NewTile { get => _newTile; }
+    public IBoardTile CurrentTile { get => _currentTile; }
+
+    public Move(UnitData unit, IBoardTile currentTile, IBoardTile nextTile)
     {
-        if (_faction == UnitFaction.Player)
-            return new Vector2(0, 1);
-        else return new Vector2(0, -1);
+        _unitData = unit;
+        _currentTile = currentTile;
+        _newTile = nextTile;
     }
 
-    protected List<BoardTile> GetFurthestUnobstructedPaths(List<Vector2> directions)
+    public Move(IUnit unit, IBoardTile nextTile)
     {
-        List<BoardTile> tiles = new List<BoardTile>();
-        foreach (var direction in directions)
-            tiles.AddRange(GetTilesInDirectionUntilObstructed(direction));
-        return tiles;
+        if (unit as Unit)
+            _unit = unit as Unit;
+        _newTile = nextTile;
     }
 
-    protected List<BoardTile> GetTilesInDirectionUntilObstructed(Vector2 direction)
+    public virtual void ExecuteMove(Unit unit)
     {
-        var tilePositions = new List<BoardTile>();
-        var nextTile = Board.GetTileAtPosition((Vector2)_tile.transform.localPosition + direction);
-        if (DoesNextTileContainEnemy(nextTile))
-            tilePositions.Add(nextTile);
-        while (nextTile != null && nextTile.Unit == null)
-        {
-            tilePositions.Add(nextTile);
-            nextTile = Board.GetTileAtPosition((Vector2)nextTile.transform.localPosition + direction);
-            if (DoesNextTileContainEnemy(nextTile))
-            {
-                tilePositions.Add(nextTile);
-                break;
-            }
-        }
-        return tilePositions;
-
-        bool DoesNextTileContainEnemy(BoardTile tile)
-        {
-            if (nextTile != null && nextTile.Unit != null && nextTile.Unit.Faction != Faction)
-                return true;
-            else return false;
-        }
+        if (_currentTile != null)
+            _currentTile.Unit = null;
+        var otherUnit = _newTile.Unit;
+        if (otherUnit != null)
+            unit.CaptureUnit(otherUnit as Unit);
+        _newTile.Unit = unit;
+        unit.Tile = _newTile as BoardTile;
     }
 
-    protected List<Vector2> DiagonalVectors()
-    {
-        var vectors = new List<Vector2>() { new Vector2(1, 1), new Vector2(-1, 1), new Vector2(1, -1), new Vector2(-1, -1)};
-        return vectors;
-    }
+}
 
-    protected List<Vector2> OrthogonalVectors()
+public class UnitPlacement : Move
+{
+    public IUnit Unit => _unit;
+    public UnitPlacement(IUnit unit, IBoardTile placedTile) : base(unit, placedTile)
     {
-        var vectors = new List<Vector2>() { new Vector2(0, 1), new Vector2(0, -1), new Vector2(1, 0), new Vector2(-1, 0) };
-        return vectors;
-    }
-
-    protected bool IsForwardTile(BoardTile tile)
-    {
-        if ((Vector2)tile.transform.localPosition == (Vector2)_tile.transform.localPosition + GetForwardVector())
-            return true;
-        else return false;
-    }
-
-    protected List<BoardTile> GetForwardDiagonalTiles()
-    {
-        var forwardVector = GetForwardVector();
-        var leftDiagonal = (Vector2)_tile.transform.localPosition + forwardVector + new Vector2(-1, 0);
-        var rightDiagonal = (Vector2)_tile.transform.localPosition + forwardVector + new Vector2(1, 0);
-        return new List<BoardTile> { Board.GetTileAtPosition(leftDiagonal), Board.GetTileAtPosition(rightDiagonal) };
-    }
-
-    protected List<BoardTile> GetNeighboringTiles(List<Vector2> directions)
-    {
-        var tiles = new List<BoardTile>();
-        foreach (var direction in directions)
-        {
-            var tile = Board.GetTileAtPosition((Vector2)_tile.transform.localPosition + direction);
-            if (tile != null)
-                tiles.Add(tile);
-        }
-        return tiles;
+        
     }
 }
 
@@ -159,4 +127,13 @@ public enum UnitFaction
 {
     Player = 0,
     Enemy = 1,
+}
+
+public interface IUnit
+{
+    public UnitFaction Faction { get; }
+    public UnitData UnitData { get; }
+    public bool SummoningSickness { get; }
+
+    public void MoveToTile<T>(T tile) where T : IBoardTile;
 }

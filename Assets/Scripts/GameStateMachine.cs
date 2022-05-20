@@ -50,7 +50,7 @@ public abstract class GameState
 
     public virtual void BeginState()
     {
-
+        Debug.Log($"State: {this.GetType()}, Faction: {Faction}");
     }
 
     public virtual void UpdateState()
@@ -78,12 +78,14 @@ public class MoveUnitState : GameState
     {
         base.BeginState();
         Unit.OnUnitMoved += OnUnitMoved;
+        EnemyAIManager.OnUnitMoved += OnUnitMoved;
     }
 
     public override void EndState()
     {
         base.EndState();
         Unit.OnUnitMoved -= OnUnitMoved;
+        EnemyAIManager.OnUnitMoved -= OnUnitMoved;
         OnMoveStateEnded?.Invoke();
     }
     public MoveUnitState(GameStateMachine stateMachine, UnitFaction faction) : base(stateMachine, faction)
@@ -99,6 +101,7 @@ public class MoveUnitState : GameState
 
 public class BuyUnitState : GameState
 {
+    public static Action<GameState> OnBuyUnitStateEnded;
     public BuyUnitState(GameStateMachine stateMachine, UnitFaction faction) : base(stateMachine, faction)
     {
 
@@ -116,6 +119,7 @@ public class BuyUnitState : GameState
         base.EndState();
         ShopManager.OnUnitPurchased -= GoToMoveState;
         ShopManager.OnShopPhaseSkipped -= GoToMoveState;
+        OnBuyUnitStateEnded?.Invoke(this);
     }
 
     private void GoToMoveState()

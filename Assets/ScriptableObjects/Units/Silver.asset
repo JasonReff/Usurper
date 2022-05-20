@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 9651d48a28d301f4cb09e1fcc75cc68f, type: 3}
   m_Name: Silver
   m_EditorClassIdentifier: 
   Unit: {fileID: -5130874975897860557, guid: 487ad8e1102d5874d87ea850572db974, type: 3}
-  PlayerSprite: {fileID: 4495478712733764576, guid: cfcac8b450307514fa2f6b15a6e719d7, type: 3}
-  EnemySprite: {fileID: -2735361975599426438, guid: cfcac8b450307514fa2f6b15a6e719d7, type: 3}
+  PlayerSprite: {fileID: 7081527322082503550, guid: d89d3fb4ee928ed46898fd26f6c17654, type: 3}
+  EnemySprite: {fileID: 4659382536284025699, guid: d89d3fb4ee928ed46898fd26f6c17654, type: 3}
   Moveset: {fileID: -1045047993242581810, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
   Cost: 2
   UnitName: Silver

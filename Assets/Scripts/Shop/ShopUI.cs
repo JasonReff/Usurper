@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +13,8 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private ShopManager _manager;
     [SerializeField] private PurchaseableUnit _cardPrefab;
     private readonly List<PurchaseableUnit> _cardUIs = new List<PurchaseableUnit>();
+
+    public static Action OnCantAffordPurchase;
 
     public void ShowShop()
     {

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a78a89807549d84598b1aa79e94b029, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
   Unit: {fileID: 636048092127284513, guid: 23b9999a6d46bfd4bb2eb16cb3249d18, type: 3}
-  PlayerSprite: {fileID: -2417847074671435042, guid: df2ede2d5c6f59346a1544a7d4c5b7af, type: 3}
-  EnemySprite: {fileID: 2271363463249633613, guid: df2ede2d5c6f59346a1544a7d4c5b7af, type: 3}
+  PlayerSprite: {fileID: -6301429047446442448, guid: 552036aeb10c7ac449436407ebc841a1, type: 3}
+  EnemySprite: {fileID: -6116963357262179218, guid: 552036aeb10c7ac449436407ebc841a1, type: 3}
   Moveset: {fileID: 2898255141975436794, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
   Cost: 2
   UnitName: Gold

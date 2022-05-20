@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public class KingUnit : Unit
 {
     public static event Action<UnitFaction> OnMoneyGenerated;
     public static event Action<KingUnit> OnKingCaptured;
-    protected override bool CanMoveToTile(BoardTile tile)
-    {
-        if (base.CanMoveToTile(tile) == false)
-            return false;
-        if (_tile.IsTileAdjacent(tile))
-            return true;
-        else if (_tile.IsTileDiagonal(tile))
-            return true;
-        return false;
-    }
 
     protected override IEnumerator UnitDeath()
     {
@@ -24,7 +15,6 @@ public class KingUnit : Unit
             oppositeFaction = UnitFaction.Enemy;
         GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, oppositeFaction));
         return base.UnitDeath();
-        
     }
 
     private void OnEnable()
@@ -41,5 +31,19 @@ public class KingUnit : Unit
     {
         if (state.Faction == Faction && state.GetType() == typeof(MoveUnitState))
             OnMoneyGenerated?.Invoke(Faction);
+    }
+
+    public List<UnitPlacement> GetPossibleUnitPlacements(Unit unit)
+    {
+        List<UnitPlacement> placements = new List<UnitPlacement>();
+        List<BoardTile> openSpaces = new List<BoardTile>();
+        foreach (var tile in Board.Instance.TileArray)
+            if (CanMoveToTile(tile))
+                openSpaces.Add(tile);
+        foreach (var tile in openSpaces)
+        {
+            placements.Add(new UnitPlacement(unit, tile));
+        }
+        return placements;
     }
 }

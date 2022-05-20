@@ -16,6 +16,7 @@ MonoBehaviour:
   _faction: 0
   _renderer: {fileID: 3245535862501536992}
   _summoningSickness: 1
+  _unitData: {fileID: 11400000, guid: c00f28a4120cf1b4fbf23f1bafcf019b, type: 2}
 --- !u!1001 &469010180415471663
 PrefabInstance:
   m_ObjectHideFlags: 0
