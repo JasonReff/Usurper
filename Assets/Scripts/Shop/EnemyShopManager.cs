@@ -46,4 +46,9 @@ public class EnemyShopManager : ShopManager
         tile.PlaceUnit(SelectedUnit, _faction);
         _deck.DiscardUnits();
     }
+
+    public override void SkipShopPhase()
+    {
+        _deck.DiscardUnits();
+    }
 }

@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class PurchaseableUnit : MonoBehaviour
 {
-    [SerializeField] private Image _icon, _moveset;
+    [SerializeField] private GameObject _purchaseButton;
+    [SerializeField] private Image _card, _icon, _moveset;
+    [SerializeField] private Sprite _notSelected, _selected;
     [SerializeField] private TextMeshProUGUI _costTextbox;
     public UnitData Data;
     public Unit Unit;
@@ -15,6 +17,18 @@ public class PurchaseableUnit : MonoBehaviour
     
 
     public static Action<PurchaseableUnit> OnUnitSelected;
+
+    private void OnEnable()
+    {
+        OnUnitSelected += HighlightCard;
+        BoardVisualizer.OnBoardCreated += ClearHighlight;
+    }
+
+    private void OnDisable()
+    {
+        OnUnitSelected -= HighlightCard;
+        BoardVisualizer.OnBoardCreated -= ClearHighlight;
+    }
 
     public void LoadUnitData(UnitData data, UnitFaction faction)
     {
@@ -32,5 +46,24 @@ public class PurchaseableUnit : MonoBehaviour
     public void SelectUnit()
     {
         OnUnitSelected?.Invoke(this);
+    }
+
+    private void HighlightCard(PurchaseableUnit purchaseableUnit)
+    {
+        if (purchaseableUnit == this)
+        {
+            _card.sprite = _selected;
+        }
+        else _card.sprite = _notSelected;
+    }
+
+    private void ClearHighlight()
+    {
+        _card.sprite = _notSelected;
+    }
+
+    public void HidePurchase()
+    {
+        _purchaseButton.SetActive(false);
     }
 }

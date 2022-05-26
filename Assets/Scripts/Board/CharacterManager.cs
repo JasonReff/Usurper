@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public abstract class CharacterManager : MonoBehaviour
 {
 
-    [SerializeField] private BoardTile _selectedTile;
-    private Unit _selectedUnit;
+    [SerializeField] protected BoardTile _selectedTile;
+    protected Unit _selectedUnit;
     [SerializeField] protected UnitFaction _faction;
+
+    public static Action<Unit> OnUnitSelected;
 
     protected virtual void OnEnable()
     {
@@ -22,6 +25,13 @@ public abstract class CharacterManager : MonoBehaviour
 
     public void SelectTile(BoardTile tile)
     {
+        if (tile.Unit != null && tile.Unit as Unit != _selectedUnit && tile.Unit.Faction == _faction)
+        {
+            _selectedTile = tile;
+            _selectedUnit = tile.Unit as Unit;
+            OnUnitSelected?.Invoke(_selectedUnit);
+            return;
+        }
         if (_selectedUnit != null && _selectedUnit.Faction == _faction)
         {
             _selectedUnit.MoveToTile(tile);
@@ -29,10 +39,17 @@ public abstract class CharacterManager : MonoBehaviour
             return;
         }
         _selectedTile = tile;
-        if (tile.Unit != null)
+        if (tile.Unit != null && tile.Unit.Faction == _faction)
+        {
             _selectedUnit = tile.Unit as Unit;
+            OnUnitSelected?.Invoke(_selectedUnit);
+        }
+        if (tile.Unit == null)
+        {
+            OnUnitSelected?.Invoke(null);
+        }
+            
     }
-
 
     protected bool IsGameStateCorrectFaction(GameState state)
     {

@@ -10,8 +10,6 @@ public class EnemyAIManager : CharacterManager
     [SerializeField] private EnemyShopManager _shop;
     [SerializeField] private KingUnit _kingUnit;
     [SerializeField] private int _maximumPawns = 4;
-
-    public static Action OnUnitMoved;
     public override void AddCharacterEvents(GameState state)
     {
         if (IsGameStateCorrectFaction(state) && state.GetType() == typeof(MoveUnitState))
@@ -28,6 +26,7 @@ public class EnemyAIManager : CharacterManager
 
     private IEnumerator PlaceUnitCoroutine()
     {
+        yield return new WaitForSeconds(1);
         GetBestUnitPlacement();
         PlaceUnit();
         yield return new WaitForSeconds(1);

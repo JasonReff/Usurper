@@ -1,15 +1,36 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class BoardTile : MonoBehaviour, IPointerDownHandler, IBoardTile
+public class BoardTile : MonoBehaviour, IPointerDownHandler, IBoardTile, IPointerEnterHandler
 {
     [SerializeField] private Unit _unit;
+    [SerializeField] private SpriteRenderer _highlight;
 
     public IUnit Unit { get => _unit; set => _unit = value as Unit; }
 
     public static Action<BoardTile> OnTileSelected;
     public static Action<Unit> OnUnitPlaced;
+    public static Action<Unit> OnMouseOver;
+    public static Action OnMouseExit;
+    //public InputActionReference _mousePosition;
+    //public InputActionReference _confirm;
+
+    //private void OnEnable()
+    //{
+    //    _confirm.action.performed += OnConfirm;
+    //}
+
+    //private void OnConfirm(InputAction.CallbackContext obj)
+    //{
+    //    OnTileSelected?.Invoke(this);
+    //}
+
+    //private void OnDisable()
+    //{
+    //    _confirm.action.performed -= OnConfirm;
+    //}
 
     public bool IsTileAdjacent(IBoardTile otherTile)
     {
@@ -36,7 +57,16 @@ public class BoardTile : MonoBehaviour, IPointerDownHandler, IBoardTile
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (BoardVisualizer.Instance.DemoBoard.gameObject.activeInHierarchy)
+            return;
         OnTileSelected?.Invoke(this);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (_unit != null)
+            OnMouseOver?.Invoke(_unit);
+        else OnMouseExit?.Invoke();
     }
 
     public void PlaceUnit(UnitData unitData, UnitFaction faction)
@@ -52,6 +82,11 @@ public class BoardTile : MonoBehaviour, IPointerDownHandler, IBoardTile
     public Vector2 TilePosition()
     {
         return transform.localPosition;
+    }
+
+    public void ShowHighlight(bool highlight)
+    {
+        _highlight.enabled = highlight;
     }
 }
 

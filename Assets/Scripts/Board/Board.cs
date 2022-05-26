@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +7,16 @@ using UnityEngine;
 public class Board : MonoBehaviour, IBoard<BoardTile>
 {
     public static Board Instance;
+    [SerializeField] private bool _demo;
 
     private void Awake()
     {
-        Instance = this;
+        if (!_demo)
+            Instance = this;
     }
 
     [SerializeField] private BoardTile[] tileArray;
+    public static Action OnUnitPlaced;
 
     public BoardTile[] TileArray { get => tileArray; set => tileArray = value; }
 
@@ -42,6 +46,7 @@ public class Board : MonoBehaviour, IBoard<BoardTile>
         if (unit.Faction == UnitFaction.Player)
             PlayerUnits.Add(unit);
         else EnemyUnits.Add(unit);
+        OnUnitPlaced?.Invoke();
     }
 
     private void RemoveUnitFromList(Unit unit)
@@ -49,6 +54,22 @@ public class Board : MonoBehaviour, IBoard<BoardTile>
         if (unit.Faction == UnitFaction.Player)
             PlayerUnits.Remove(unit);
         else EnemyUnits.Remove(unit);
+    }
+
+    public void ClearBoard()
+    {
+        for (int i = PlayerUnits.Count - 1; i >= 0; i--)
+        {
+            var unit = PlayerUnits[i];
+            Destroy(unit.gameObject);
+            PlayerUnits.Remove(unit);
+        }
+        for (int i = EnemyUnits.Count - 1; i >= 0; i--)
+        {
+            var unit = EnemyUnits[i];
+            Destroy(unit.gameObject);
+            PlayerUnits.Remove(unit);
+        }
     }
 }
 

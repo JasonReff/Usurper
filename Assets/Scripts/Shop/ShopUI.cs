@@ -13,8 +13,21 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private ShopManager _manager;
     [SerializeField] private PurchaseableUnit _cardPrefab;
     private readonly List<PurchaseableUnit> _cardUIs = new List<PurchaseableUnit>();
+    private bool _isShopTurn;
 
     public static Action OnCantAffordPurchase;
+
+    private void OnEnable()
+    {
+        BoardVisualizer.OnBoardCreated += HideShopDuringReview;
+        BoardVisualizer.OnBoardHidden += ShowShopAfterReview;
+    }
+
+    private void OnDisable()
+    {
+        BoardVisualizer.OnBoardCreated -= HideShopDuringReview;
+        BoardVisualizer.OnBoardHidden -= ShowShopAfterReview;
+    }
 
     public void ShowShop()
     {
@@ -30,7 +43,7 @@ public class ShopUI : MonoBehaviour
 
     public void ShowCards(List<UnitData> units, UnitFaction faction)
     {
-        for (int i = 0; i < units.Count; i++)
+        for (int i = 0; i < 3; i++)
         {
             var unit = units[i];
             var card = Instantiate(_cardPrefab, _cardParent);
@@ -49,9 +62,32 @@ public class ShopUI : MonoBehaviour
         }
     }
 
+    public void HideUnaffordableUnits()
+    {
+        foreach (var card in _cardUIs)
+        {
+            if (_manager.Money < card.Cost)
+                card.HidePurchase();
+        }
+    }
+
     public void UpdatePileCounts(PlayerDeck deck)
     {
         _drawPileCount.text = deck.DrawCount.ToString();
         _discardPileCount.text = deck.DiscardCount.ToString();
+    }
+
+    private void HideShopDuringReview()
+    {
+        if (_shopParent.activeInHierarchy)
+            _isShopTurn = true;
+        else _isShopTurn = false;
+        _shopParent.SetActive(false);
+    }
+
+    private void ShowShopAfterReview()
+    {
+        if (_isShopTurn)
+            _shopParent.SetActive(true);
     }
 }

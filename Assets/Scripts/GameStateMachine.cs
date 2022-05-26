@@ -12,11 +12,13 @@ public class GameStateMachine : MonoBehaviour
         {
             Instance = this;
         }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
     }
+
+    private void OnDisable()
+    {
+        _currentState.EndState();
+    }
+
     private void Start()
     {
         ChangeState(new StartGameState(this, UnitFaction.Player));
@@ -73,19 +75,19 @@ public abstract class GameState
 
 public class MoveUnitState : GameState
 {
+    public static Action<GameState> OnMoveStateBegan;
     public static Action OnMoveStateEnded;
     public override void BeginState()
     {
         base.BeginState();
         Unit.OnUnitMoved += OnUnitMoved;
-        EnemyAIManager.OnUnitMoved += OnUnitMoved;
+        OnMoveStateBegan?.Invoke(this);
     }
 
     public override void EndState()
     {
         base.EndState();
         Unit.OnUnitMoved -= OnUnitMoved;
-        EnemyAIManager.OnUnitMoved -= OnUnitMoved;
         OnMoveStateEnded?.Invoke();
     }
     public MoveUnitState(GameStateMachine stateMachine, UnitFaction faction) : base(stateMachine, faction)

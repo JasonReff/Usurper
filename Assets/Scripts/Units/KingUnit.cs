@@ -17,22 +17,6 @@ public class KingUnit : Unit
         return base.UnitDeath();
     }
 
-    private void OnEnable()
-    {
-        GameStateMachine.OnStateChanged += GenerateMoney;
-    }
-
-    private void OnDisable()
-    {
-        GameStateMachine.OnStateChanged -= GenerateMoney;
-    }
-
-    private void GenerateMoney(GameState state)
-    {
-        if (state.Faction == Faction && state.GetType() == typeof(MoveUnitState))
-            OnMoneyGenerated?.Invoke(Faction);
-    }
-
     public List<UnitPlacement> GetPossibleUnitPlacements(Unit unit)
     {
         List<UnitPlacement> placements = new List<UnitPlacement>();

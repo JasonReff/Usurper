@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -7,27 +8,32 @@ public class ShopManager : MonoBehaviour
     [SerializeField] protected PlayerDeck _deck;
     [SerializeField] private ShopUI _ui;
     [SerializeField] private KingUnit _king;
-    protected int _money = 3;
+    [SerializeField] protected int _money = 3;
     protected PurchaseableUnit _unit;
     public static Action<Unit> OnUnitPurchased;
     public static Action OnShopPhaseSkipped;
+    public static Action<List<BoardTile>> OnUnitSelected;
 
     public int Money { get => _money; }
+    public PlayerDeck Deck { get => _deck; }
 
     private void OnEnable()
     {
         BoardTile.OnUnitPlaced += SetKing;
         GameStateMachine.OnStateChanged += OnStateChange;
-        KingUnit.OnMoneyGenerated += GainMoney;
         BuyUnitState.OnBuyUnitStateEnded += OnBuyStateEnded;
+        BoardVisualizer.OnBoardCreated += ClearSelection;
+        _money = _deck.StartingGold;
     }
 
     private void OnDisable()
     {
         BoardTile.OnUnitPlaced -= SetKing;
         GameStateMachine.OnStateChanged -= OnStateChange;
-        KingUnit.OnMoneyGenerated -= GainMoney;
         BuyUnitState.OnBuyUnitStateEnded -= OnBuyStateEnded;
+        PurchaseableUnit.OnUnitSelected -= SelectUnit;
+        BoardTile.OnTileSelected -= OnTileSelected;
+        BoardVisualizer.OnBoardCreated -= ClearSelection;
     }
 
     private void SetKing(Unit unit)
@@ -40,6 +46,7 @@ public class ShopManager : MonoBehaviour
     {
         if (state.GetType() == typeof(BuyUnitState) && state.Faction == _faction)
         {
+            GainMoney();
             SetupShop();
         }
     }
@@ -60,14 +67,14 @@ public class ShopManager : MonoBehaviour
         _deck.DrawUnits();
         _ui.ShowShop();
         _ui.ShowCards(_deck.Hand, _faction);
+        _ui.HideUnaffordableUnits();
         _ui.UpdatePileCounts(_deck);
         ShopUI.OnCantAffordPurchase += OnCantAffordPurchase;
     }
 
-    private void GainMoney(UnitFaction faction)
+    protected void GainMoney()
     {
-        if (faction == _faction)
-            _money++;
+        _money += _deck.GoldPerTurn;
     }
 
     protected void Subscribe()
@@ -85,7 +92,11 @@ public class ShopManager : MonoBehaviour
     private void SelectUnit(PurchaseableUnit unit)
     {
         if (unit.Cost <= _money)
+        {
             _unit = unit;
+            OnUnitSelected?.Invoke(GetPlaceableTiles());
+        }
+            
     }
 
     private void OnTileSelected(BoardTile tile)
@@ -109,6 +120,8 @@ public class ShopManager : MonoBehaviour
     {
         if (tile.Unit != null)
             return false;
+        if (_king == null)
+            return false;
         if (!tile.IsTileAdjacent(_king.Tile) && !tile.IsTileDiagonal(_king.Tile))
             return false;
         return true;
@@ -120,15 +133,27 @@ public class ShopManager : MonoBehaviour
         _money -= _unit.Cost;
     }
 
-    public void SkipShopPhase()
+    public virtual void SkipShopPhase()
     {
         _deck.DiscardUnits();
         OnShopPhaseSkipped?.Invoke();
     }
 
-    
+    private List<BoardTile> GetPlaceableTiles()
+    {
+        var placeableTiles = new List<BoardTile>();
+        foreach (var tile in Board.Instance.TileArray)
+            if (IsTileUnoccupiedAndNextToKing(tile))
+                placeableTiles.Add(tile);
+        return placeableTiles;
+    }
 
     private void OnCantAffordPurchase()
+    {
+        ClearSelection();
+    }
+
+    private void ClearSelection()
     {
         _unit = null;
     }

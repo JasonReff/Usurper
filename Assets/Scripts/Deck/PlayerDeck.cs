@@ -7,6 +7,8 @@ public class PlayerDeck : ScriptableObject
 {
     [SerializeField] private List<UnitData> _drawPile, _discardPile, _hand;
     [SerializeField] private UnitData _king;
+    [SerializeField] private int _startingGold;
+    [SerializeField] private int _goldPerTurn;
     public UnitFaction Faction;
 
     public List<UnitData> Hand { get => _hand; }
@@ -14,6 +16,10 @@ public class PlayerDeck : ScriptableObject
 
     public int DrawCount { get => _drawPile.Count; }
     public int DiscardCount { get => _discardPile.Count; }
+    public int GoldPerTurn { get => _goldPerTurn; }
+    public int StartingGold { get => _startingGold; }
+    public List<UnitData> DrawPile { get => _drawPile; }
+    public List<UnitData> DiscardPile { get => _discardPile; }
 
     private void OnEnable()
     {
@@ -87,5 +93,40 @@ public class PlayerDeck : ScriptableObject
         _discardPile.Clear();
         _drawPile.AddRange(deck.Deck);
         _king = deck.King;
+        SetGold(deck.StartingGold, deck.GoldPerTurn);
+    }
+
+    public void ResetDeck(List<UnitData> units)
+    {
+        _drawPile.Clear();
+        _hand.Clear();
+        _discardPile.Clear();
+        _drawPile.AddRange(units);
+    }
+
+    public void AddCard(UnitData card)
+    {
+        _drawPile.Add(card);
+    }
+
+    public void RemoveCard(UnitData card)
+    {
+        ShuffleHandAndDiscardIntoDrawPile();
+        _drawPile.Remove(card);
+    }
+
+    public List<UnitData> AllCards()
+    {
+        var cards = new List<UnitData>();
+        cards.AddRange(_drawPile);
+        cards.AddRange(_hand);
+        cards.AddRange(_discardPile);
+        return cards;
+    }
+
+    public void SetGold(int startingGold, int goldPerTurn)
+    {
+        _startingGold = startingGold;
+        _goldPerTurn = goldPerTurn;
     }
 }

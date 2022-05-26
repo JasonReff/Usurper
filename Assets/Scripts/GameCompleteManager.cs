@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GameCompleteManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _resultsText;
-    [SerializeField] private GameObject _resultsCanvas;
+    [SerializeField] protected TextMeshProUGUI _resultsText;
+    [SerializeField] protected GameObject _resultsCanvas;
 
     private void OnEnable()
     {
@@ -26,7 +26,7 @@ public class GameCompleteManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ResultScreenCoroutine(UnitFaction faction)
+    protected virtual IEnumerator ResultScreenCoroutine(UnitFaction faction)
     {
         yield return new WaitForSeconds(2);
         _resultsCanvas.gameObject.SetActive(true);

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Unit : MonoBehaviour, IUnit
 {
@@ -12,6 +13,7 @@ public class Unit : MonoBehaviour, IUnit
     private float _deathTime = 0.3f;
     [SerializeField] private bool _summoningSickness = true;
     [SerializeField] private UnitData _unitData;
+    [SerializeField] private UnitColors _unitColors;
 
     public BoardTile Tile { get => _tile; set => _tile = value; }
     public UnitFaction Faction { get => _faction; set => _faction = value; }
@@ -24,11 +26,23 @@ public class Unit : MonoBehaviour, IUnit
     private void OnEnable()
     {
         MoveUnitState.OnMoveStateEnded += RemoveSummoningSickness;
+        CharacterManager.OnUnitSelected += SetHighlight;
+        BoardVisualizer.OnBoardCreated += ClearHighlight;
     }
 
     private void OnDisable()
     {
         MoveUnitState.OnMoveStateEnded -= RemoveSummoningSickness;
+        CharacterManager.OnUnitSelected -= SetHighlight;
+        BoardVisualizer.OnBoardCreated -= ClearHighlight;
+    }
+
+    private void Awake()
+    {
+        if (_summoningSickness)
+        {
+            _renderer.color = _unitColors.SummoningSicknessColor;
+        }
     }
 
     public void MoveToTile<T>(T tile) where T : IBoardTile
@@ -47,6 +61,7 @@ public class Unit : MonoBehaviour, IUnit
     private void RemoveSummoningSickness()
     {
         _summoningSickness = false;
+        _renderer.color = _unitColors.NormalColor;
     }
 
     public void SetSprite(Sprite sprite)
@@ -59,7 +74,7 @@ public class Unit : MonoBehaviour, IUnit
         StartCoroutine(unit.UnitDeath());
     }
 
-    protected virtual bool CanMoveToTile(BoardTile tile)
+    public virtual bool CanMoveToTile(BoardTile tile)
     {
         if (_summoningSickness)
             return false;
@@ -74,6 +89,27 @@ public class Unit : MonoBehaviour, IUnit
         _renderer.DOFade(0, _deathTime);
         yield return new WaitForSeconds(_deathTime);
         Destroy(gameObject);
+    }
+
+    public void SetColor(bool summoningSickness)
+    {
+        if (summoningSickness)
+            _renderer.color = _unitColors.SummoningSicknessColor;
+        else _renderer.color = _unitColors.NormalColor;
+    }
+
+    private void SetHighlight(Unit unit)
+    {
+        if (unit == this && _summoningSickness == false)
+        {
+            _renderer.color = _unitColors.HighlightedColor;
+        }
+        else SetColor(_summoningSickness);
+    }
+
+    private void ClearHighlight()
+    {
+        SetColor(_summoningSickness);
     }
 }
 

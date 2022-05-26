@@ -11,4 +11,22 @@
         if (!IsGameStateCorrectFaction(state) || state.GetType() != typeof(MoveUnitState))
             BoardTile.OnTileSelected -= SelectTile;
     }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        BoardVisualizer.OnBoardCreated += ClearSelection;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        BoardVisualizer.OnBoardCreated -= ClearSelection;
+    }
+
+    private void ClearSelection()
+    {
+        _selectedUnit = null;
+        _selectedTile = null;
+    }
 }

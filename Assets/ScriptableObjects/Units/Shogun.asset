@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0378e10bf25411f4f82cf6ae51236743, type: 3}
-  m_Name: ShogiKing
+  m_Name: Shogun
   m_EditorClassIdentifier: 
-  Unit: {fileID: 8631497884624810421, guid: e2061baddc900184491dc1cafc1deec6, type: 3}
+  Unit: {fileID: 8736496532122307407, guid: 216216e1c9fa984439bb57dfa61d2b5c, type: 3}
   PlayerSprite: {fileID: -4949298743842785694, guid: 32495b659a040ed4ab459173a861c053, type: 3}
   EnemySprite: {fileID: -4829261879945753929, guid: 32495b659a040ed4ab459173a861c053, type: 3}
-  Moveset: {fileID: -8654490388815424924, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  Moveset: {fileID: -5730226083103279274, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
   Cost: 0
   UnitName: Shogun

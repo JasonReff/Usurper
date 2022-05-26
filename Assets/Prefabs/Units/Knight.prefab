@@ -17,6 +17,7 @@ MonoBehaviour:
   _renderer: {fileID: 837170399470959025}
   _summoningSickness: 1
   _unitData: {fileID: 11400000, guid: 4a5f32dc3f2f7d74da249349385d3293, type: 2}
+  _unitColors: {fileID: 11400000, guid: 513bcd44921943f4e9d3a8445aa18484, type: 2}
 --- !u!1001 &2312050744581492094
 PrefabInstance:
   m_ObjectHideFlags: 0
