@@ -14,16 +14,15 @@ public class EnemyDeckGenerator : MonoBehaviour
 
     private List<UnitData> GenerateDeck()
     {
+        var random = new System.Random();
         var units = new List<UnitData>();
         for (int i = 0; i < 3; i++)
         {
-            var random = new System.Random(i);
             var unit = _cardPool.PawnPool.Rand(random);
             units.Add(unit);
         }
         while (units.Count < 9)
         {
-            var random = new System.Random(units.Count);
             var unit = _cardPool.UnitPool.Rand(random);
             units.Add(unit);
         }

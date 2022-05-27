@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f432028efe4418949b0fc8fd2653aa7d, type: 3}
-  m_Name: Shogi Deck
+  m_Name: Shogunate
   m_EditorClassIdentifier: 
   _deck:
   - {fileID: 11400000, guid: af725dd253f972847b1ee8a9f2a8b3be, type: 2}

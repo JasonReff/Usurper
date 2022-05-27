@@ -31,7 +31,7 @@ public class PlayerDeck : ScriptableObject
         StartGameState.OnGameStart -= ShuffleHandAndDiscardIntoDrawPile;
     }
 
-    private void ShuffleHandAndDiscardIntoDrawPile()
+    public void ShuffleHandAndDiscardIntoDrawPile()
     {
         List<UnitData> handAndDiscard = new List<UnitData>();
         handAndDiscard.AddRange(_hand);

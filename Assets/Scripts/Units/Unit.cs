@@ -45,7 +45,7 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
-    public void MoveToTile<T>(T tile) where T : IBoardTile
+    public virtual void MoveToTile<T>(T tile) where T : IBoardTile
     {
         var boardTile = tile as BoardTile;
         if (_summoningSickness)
@@ -113,6 +113,30 @@ public class Unit : MonoBehaviour, IUnit
     }
 }
 
+public abstract class RangedUnit : Unit
+{
+    public override void MoveToTile<T>(T tile)
+    {
+        if ((UnitData as RangedUnitData).IsRangedAttack(this, _tile, tile, Board.Instance))
+        {
+            var move = new Move(UnitData, _tile, tile);
+            move.RangedAttack(this);
+            OnUnitMoved?.Invoke();
+            return;
+        }
+        base.MoveToTile(tile);
+    }
+
+    public override bool CanMoveToTile(BoardTile tile)
+    {
+        if ((UnitData as RangedUnitData).IsRangedAttack(this, _tile, tile, Board.Instance))
+            return true;
+        if (tile.Unit != null)
+            return false;
+        return base.CanMoveToTile(tile);
+    }
+}
+
 public class Move
 {
     protected IUnit _unit;
@@ -146,6 +170,16 @@ public class Move
             unit.CaptureUnit(otherUnit as Unit);
         _newTile.Unit = unit;
         unit.Tile = _newTile as BoardTile;
+    }
+
+    public void RangedAttack(Unit unit)
+    {
+        var otherUnit = _newTile.Unit;
+        if (otherUnit != null)
+        {
+            _newTile.Unit = null;
+            unit.CaptureUnit(otherUnit as Unit);
+        }
     }
 
 }

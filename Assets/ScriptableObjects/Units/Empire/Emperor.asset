@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Name: Emperor
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 571666240286761718, guid: 5bff3adc6a3e12f4da5589511d047cbd, type: 3}
+  PlayerSprite: {fileID: 21300000, guid: 9e8656878e1b88b48a1006e8aee79022, type: 3}
+  EnemySprite: {fileID: 21300000, guid: 9e8656878e1b88b48a1006e8aee79022, type: 3}
+  Moveset: {fileID: -5730226083103279274, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  Cost: 100
+  UnitName: Emperor

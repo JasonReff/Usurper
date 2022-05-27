@@ -15,10 +15,14 @@ MonoBehaviour:
   UnitPool:
   - {fileID: 11400000, guid: c00f28a4120cf1b4fbf23f1bafcf019b, type: 2}
   - {fileID: 11400000, guid: 4a5f32dc3f2f7d74da249349385d3293, type: 2}
-  - {fileID: 11400000, guid: e2ee08f2093374e4493ab1f5af092890, type: 2}
   - {fileID: 11400000, guid: 0e44f0155872422428c0c774dae846c7, type: 2}
   - {fileID: 11400000, guid: 57973eccfc7623c4183a472cd66883b8, type: 2}
+  - {fileID: 11400000, guid: 60637681a462bde43be150840ac43ed0, type: 2}
+  - {fileID: 11400000, guid: e2ee08f2093374e4493ab1f5af092890, type: 2}
+  - {fileID: 11400000, guid: a155e21dd664e7b498894dbc5e6b0245, type: 2}
+  - {fileID: 11400000, guid: 95b1231305b77eb499235c236a76171e, type: 2}
   - {fileID: 11400000, guid: 6ff88a875acbdb0478bb3959dc7bfe54, type: 2}
   PawnPool:
   - {fileID: 11400000, guid: 6b497e179cf7f8d418810bc682d3dbd5, type: 2}
   - {fileID: 11400000, guid: af725dd253f972847b1ee8a9f2a8b3be, type: 2}
+  - {fileID: 11400000, guid: c44af3a2d12fcd844a2994f9457f29d3, type: 2}

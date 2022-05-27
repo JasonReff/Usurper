@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f432028efe4418949b0fc8fd2653aa7d, type: 3}
-  m_Name: Chess Deck
+  m_Name: Kingdom
   m_EditorClassIdentifier: 
   _deck:
   - {fileID: 11400000, guid: 6b497e179cf7f8d418810bc682d3dbd5, type: 2}

@@ -6,13 +6,13 @@ public static class GameExtensions
     public static T Rand<T>(this List<T> list)
     {
         var random = new System.Random();
-        T item = (T)list.OrderBy(t => random.Next()).First();
+        T item = (T)list.OrderBy(t => random.Next()).ToList().First();
         return item;
     }
 
     public static T Rand<T>(this List<T> list, System.Random random)
     {
-        T item = (T)list.OrderBy(t => random.Next()).First();
+        T item = (T)list.OrderBy(t => random.Next()).ToList().First();
         return item;
     }
 
