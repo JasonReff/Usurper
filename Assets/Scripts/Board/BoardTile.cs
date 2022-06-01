@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class BoardTile : MonoBehaviour, IPointerDownHandler, IBoardTile, IPointerEnterHandler
+public class BoardTile : MonoBehaviourPunCallbacks, IPointerDownHandler, IBoardTile, IPointerEnterHandler
 {
-    [SerializeField] private Unit _unit;
-    [SerializeField] private SpriteRenderer _highlight;
+    [SerializeField] protected Unit _unit;
+    [SerializeField] protected SpriteRenderer _highlight;
 
     public IUnit Unit { get => _unit; set => _unit = value as Unit; }
 
@@ -55,7 +56,7 @@ public class BoardTile : MonoBehaviour, IPointerDownHandler, IBoardTile, IPointe
         else return false;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         if (BoardVisualizer.Instance.DemoBoard.gameObject.activeInHierarchy)
             return;
@@ -69,7 +70,7 @@ public class BoardTile : MonoBehaviour, IPointerDownHandler, IBoardTile, IPointe
         else OnMouseExit?.Invoke();
     }
 
-    public void PlaceUnit(UnitData unitData, UnitFaction faction)
+    public virtual void PlaceUnit(UnitData unitData, UnitFaction faction)
     {
         var unit = Instantiate(unitData.Unit, transform.position, Quaternion.identity, transform);
         unit.Faction = faction;

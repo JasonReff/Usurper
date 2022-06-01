@@ -7,15 +7,17 @@ using UnityEngine;
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] private GameObject _shopParent;
-    [SerializeField] private Transform _cardParent;
-    [SerializeField] private List<Vector2> _cardPositions;
+    [SerializeField] protected Transform _cardParent;
+    [SerializeField] protected List<Vector2> _cardPositions;
     [SerializeField] private TextMeshProUGUI _moneyText, _drawPileCount, _discardPileCount;
     [SerializeField] private ShopManager _manager;
-    [SerializeField] private PurchaseableUnit _cardPrefab;
-    private readonly List<PurchaseableUnit> _cardUIs = new List<PurchaseableUnit>();
+    [SerializeField] protected PurchaseableUnit _cardPrefab;
+    protected readonly List<PurchaseableUnit> _cardUIs = new List<PurchaseableUnit>();
     private bool _isShopTurn;
 
     public static Action OnCantAffordPurchase;
+
+    public ShopManager Manager { get => _manager; set => _manager = value; }
 
     private void OnEnable()
     {
@@ -41,7 +43,7 @@ public class ShopUI : MonoBehaviour
         _shopParent.SetActive(false);
     }
 
-    public void ShowCards(List<UnitData> units, UnitFaction faction)
+    public virtual void ShowCards(List<UnitData> units, UnitFaction faction)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -89,5 +91,10 @@ public class ShopUI : MonoBehaviour
     {
         if (_isShopTurn)
             _shopParent.SetActive(true);
+    }
+
+    public void SkipPurchase()
+    {
+        _manager.SkipShopPhase();
     }
 }

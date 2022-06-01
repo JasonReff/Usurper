@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] protected UnitFaction _faction;
     [SerializeField] protected PlayerDeck _deck;
-    [SerializeField] private ShopUI _ui;
-    [SerializeField] private KingUnit _king;
+    [SerializeField] protected ShopUI _ui;
+    [SerializeField] protected KingUnit _king;
     [SerializeField] protected int _money = 3;
-    protected PurchaseableUnit _unit;
+    [SerializeField] protected PurchaseableUnit _unit;
     public static Action<Unit> OnUnitPurchased;
     public static Action OnShopPhaseSkipped;
     public static Action<List<BoardTile>> OnUnitSelected;
@@ -17,7 +18,7 @@ public class ShopManager : MonoBehaviour
     public int Money { get => _money; }
     public PlayerDeck Deck { get => _deck; }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         BoardTile.OnUnitPlaced += SetKing;
         GameStateMachine.OnStateChanged += OnStateChange;
@@ -26,7 +27,7 @@ public class ShopManager : MonoBehaviour
         _money = _deck.StartingGold;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         BoardTile.OnUnitPlaced -= SetKing;
         GameStateMachine.OnStateChanged -= OnStateChange;
@@ -42,7 +43,7 @@ public class ShopManager : MonoBehaviour
             _king = (KingUnit)unit;
     }
 
-    private void OnStateChange(GameState state)
+    protected virtual void OnStateChange(GameState state)
     {
         if (state.GetType() == typeof(BuyUnitState) && state.Faction == _faction)
         {
@@ -51,7 +52,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void OnBuyStateEnded(GameState state)
+    protected virtual void OnBuyStateEnded(GameState state)
     {
         if (state.GetType() == typeof(BuyUnitState) && state.Faction == _faction)
         {
@@ -77,19 +78,19 @@ public class ShopManager : MonoBehaviour
         _money += _deck.GoldPerTurn;
     }
 
-    protected void Subscribe()
+    protected virtual void Subscribe()
     {
         PurchaseableUnit.OnUnitSelected += SelectUnit;
         BoardTile.OnTileSelected += OnTileSelected;
     }
 
-    private void Unsubscribe()
+    protected virtual void Unsubscribe()
     {
         PurchaseableUnit.OnUnitSelected -= SelectUnit;
         BoardTile.OnTileSelected -= OnTileSelected;
     }
 
-    private void SelectUnit(PurchaseableUnit unit)
+    protected void SelectUnit(PurchaseableUnit unit)
     {
         if (unit.Cost <= _money)
         {
@@ -99,7 +100,7 @@ public class ShopManager : MonoBehaviour
             
     }
 
-    private void OnTileSelected(BoardTile tile)
+    protected void OnTileSelected(BoardTile tile)
     {
         if (_unit != null && IsTileUnoccupiedAndNextToKing(tile))
         {

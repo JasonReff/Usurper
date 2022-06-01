@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a155e21dd664e7b498894dbc5e6b0245, type: 2}
   - {fileID: 11400000, guid: 95b1231305b77eb499235c236a76171e, type: 2}
   - {fileID: 11400000, guid: 6ff88a875acbdb0478bb3959dc7bfe54, type: 2}
+  - {fileID: 11400000, guid: c108da0b2b2f9bc409f2badabad9ab89, type: 2}
   PawnPool:
   - {fileID: 11400000, guid: 6b497e179cf7f8d418810bc682d3dbd5, type: 2}
   - {fileID: 11400000, guid: af725dd253f972847b1ee8a9f2a8b3be, type: 2}

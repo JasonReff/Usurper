@@ -6,8 +6,9 @@ using UnityEngine;
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     [SerializeField] private SceneLoader _loader;
+    [SerializeField] private string _lobbyName;
 
-    void Start()
+    public void Connect()
     {
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -19,6 +20,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        _loader.LoadScene("Lobby");
+        _loader.LoadScene(_lobbyName);
     }
 }

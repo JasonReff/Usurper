@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PurchaseableUnit : MonoBehaviour
+public class PurchaseableUnit : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject _purchaseButton;
     [SerializeField] private Image _card, _icon, _moveset;
@@ -43,7 +44,7 @@ public class PurchaseableUnit : MonoBehaviour
         Unit = data.Unit;
     }
 
-    public void SelectUnit()
+    public virtual void SelectUnit()
     {
         OnUnitSelected?.Invoke(this);
     }

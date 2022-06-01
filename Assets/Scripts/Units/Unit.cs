@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour, IUnit
     public BoardTile Tile { get => _tile; set => _tile = value; }
     public UnitFaction Faction { get => _faction; set => _faction = value; }
     public UnitData UnitData { get => _unitData; }
-    public bool SummoningSickness { get => _summoningSickness; }
+    public bool SummoningSickness { get => _summoningSickness; set => _summoningSickness = value; }
 
     public static Action OnUnitMoved;
     public static Action<Unit> OnUnitDeath;
@@ -53,6 +53,18 @@ public class Unit : MonoBehaviour, IUnit
         if (!CanMoveToTile(boardTile))
             return;
         var move = new Move(_unitData, _tile, boardTile);
+        move.ExecuteMove(this);
+        transform.DOMove((move.NewTile as BoardTile).transform.position, 1);
+        OnUnitMoved?.Invoke();
+        if (TryGetComponent<OnlineUnitCallbacks>(out var onlineUnit))
+        {
+            onlineUnit.OnUnitMoved(move.CurrentTile.TilePosition(), move.NewTile.TilePosition());
+        }
+    }
+
+    public void ForceMoveToTile(IBoardTile tile)
+    {
+        var move = new Move(_unitData, _tile, tile);
         move.ExecuteMove(this);
         transform.DOMove((move.NewTile as BoardTile).transform.position, 1);
         OnUnitMoved?.Invoke();
@@ -134,62 +146,6 @@ public abstract class RangedUnit : Unit
         if (tile.Unit != null)
             return false;
         return base.CanMoveToTile(tile);
-    }
-}
-
-public class Move
-{
-    protected IUnit _unit;
-    private UnitData _unitData;
-    private IBoardTile _currentTile, _newTile;
-    public int Evaluation;
-
-    public IBoardTile NewTile { get => _newTile; }
-    public IBoardTile CurrentTile { get => _currentTile; }
-
-    public Move(UnitData unit, IBoardTile currentTile, IBoardTile nextTile)
-    {
-        _unitData = unit;
-        _currentTile = currentTile;
-        _newTile = nextTile;
-    }
-
-    public Move(IUnit unit, IBoardTile nextTile)
-    {
-        if (unit as Unit)
-            _unit = unit as Unit;
-        _newTile = nextTile;
-    }
-
-    public virtual void ExecuteMove(Unit unit)
-    {
-        if (_currentTile != null)
-            _currentTile.Unit = null;
-        var otherUnit = _newTile.Unit;
-        if (otherUnit != null)
-            unit.CaptureUnit(otherUnit as Unit);
-        _newTile.Unit = unit;
-        unit.Tile = _newTile as BoardTile;
-    }
-
-    public void RangedAttack(Unit unit)
-    {
-        var otherUnit = _newTile.Unit;
-        if (otherUnit != null)
-        {
-            _newTile.Unit = null;
-            unit.CaptureUnit(otherUnit as Unit);
-        }
-    }
-
-}
-
-public class UnitPlacement : Move
-{
-    public IUnit Unit => _unit;
-    public UnitPlacement(IUnit unit, IBoardTile placedTile) : base(unit, placedTile)
-    {
-        
     }
 }
 

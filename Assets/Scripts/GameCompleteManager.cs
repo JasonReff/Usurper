@@ -24,6 +24,8 @@ public class GameCompleteManager : MonoBehaviour
         {
             StartCoroutine(ResultScreenCoroutine(state.Faction));
         }
+        else if (state.GetType() == typeof(PlayerLeftState))
+            OpponentDisconnected();
     }
 
     protected virtual IEnumerator ResultScreenCoroutine(UnitFaction faction)
@@ -31,5 +33,11 @@ public class GameCompleteManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         _resultsCanvas.gameObject.SetActive(true);
         _resultsText.text = $"Player {faction} won!";
+    }
+
+    private void OpponentDisconnected()
+    {
+        _resultsCanvas.gameObject.SetActive(true);
+        _resultsText.text = "Opponent Disconnected";
     }
 }

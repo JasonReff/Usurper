@@ -23,6 +23,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e2ee08f2093374e4493ab1f5af092890, type: 2}
   - {fileID: 11400000, guid: c00f28a4120cf1b4fbf23f1bafcf019b, type: 2}
   _king: {fileID: 11400000, guid: a52a4ad1d5d3e2f4b95428ad7aa7c256, type: 2}
-  _deckName: Shogun
+  _deckName: Shogunate
   _startingGold: 2
   _goldPerTurn: 1

@@ -12,9 +12,17 @@ public abstract class CardPileUI : MonoBehaviour, IPointerEnterHandler, IPointer
     [SerializeField] private Image _panel;
     [SerializeField] private TextMeshProUGUI _cardText;
 
+    public PlayerDeck Deck { get => _deck; set => _deck = value; }
+
     private void Awake()
     {
-        _deck = _shop.Deck;
+        if (_shop != null)
+            _deck = _shop.Deck;
+    }
+
+    public void SetManager(ShopManager manager)
+    {
+        _shop = manager;
     }
 
     private void ShowCards()

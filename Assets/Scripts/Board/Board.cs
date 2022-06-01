@@ -1,10 +1,11 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Board : MonoBehaviour, IBoard<BoardTile>
+public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
 {
     public static Board Instance;
     [SerializeField] private bool _demo;

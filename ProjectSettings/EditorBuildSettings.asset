@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OnlineMultiplayerGame.unity
     guid: 6a4753452c09fda4f91f43494048c578
+  - enabled: 1
+    path: Assets/Scenes/OnlineCharacterSelect.unity
+    guid: 23cfbf2e3b6645c468f035cc424e8ea0
   m_configObjects: {}

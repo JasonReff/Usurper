@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using UnityEngine;
 
-public class GameStateMachine : MonoBehaviour
+public class GameStateMachine : MonoBehaviourPunCallbacks
 {
     public static GameStateMachine Instance;
     public static event Action<GameState> OnStateChanged;
@@ -24,13 +25,13 @@ public class GameStateMachine : MonoBehaviour
         ChangeState(new StartGameState(this, UnitFaction.Player));
     }
 
-    private GameState _currentState;
+    protected GameState _currentState;
     private void Update()
     {
         if (_currentState != null)
             _currentState.UpdateState();
     }
-    public void ChangeState(GameState newState)
+    public virtual void ChangeState(GameState newState)
     {
         if (_currentState != null)
             _currentState.EndState();
@@ -52,7 +53,7 @@ public abstract class GameState
 
     public virtual void BeginState()
     {
-        Debug.Log($"State: {this.GetType()}, Faction: {Faction}");
+        
     }
 
     public virtual void UpdateState()

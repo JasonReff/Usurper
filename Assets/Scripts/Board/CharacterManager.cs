@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class CharacterManager : MonoBehaviour
+public abstract class CharacterManager : MonoBehaviourPunCallbacks
 {
 
     [SerializeField] protected BoardTile _selectedTile;
     protected Unit _selectedUnit;
     [SerializeField] protected UnitFaction _faction;
+
+    public UnitFaction Faction => _faction;
 
     public static Action<Unit> OnUnitSelected;
 
@@ -23,7 +26,7 @@ public abstract class CharacterManager : MonoBehaviour
         GameStateMachine.OnStateChanged -= RemoveCharacterEvents;
     }
 
-    public void SelectTile(BoardTile tile)
+    public virtual void SelectTile(BoardTile tile)
     {
         if (tile.Unit != null && tile.Unit as Unit != _selectedUnit && tile.Unit.Faction == _faction)
         {
