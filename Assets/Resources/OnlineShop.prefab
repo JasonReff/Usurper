@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _faction: 0
-  _deck: {fileID: 11400000, guid: 15845cc5fc3c0d946b5aac765d066dfb, type: 2}
+  _deck: {fileID: 11400000, guid: 836d40316c90e8648a0c9529bbc96c2a, type: 2}
   _ui: {fileID: 0}
   _king: {fileID: 0}
   _money: 3

@@ -15,6 +15,6 @@ MonoBehaviour:
   Unit: {fileID: -4325786768911329514, guid: 53f6c2fa59bb3d24f9410ed6c97725f9, type: 3}
   PlayerSprite: {fileID: 792778199420499268, guid: 912bf1415aac830469b66640ea6cdf83, type: 3}
   EnemySprite: {fileID: 1348672715624884161, guid: 912bf1415aac830469b66640ea6cdf83, type: 3}
-  Moveset: {fileID: -8654490388815424924, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  Moveset: {fileID: 2868503953797962135, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
   Cost: 1
   UnitName: Pawn

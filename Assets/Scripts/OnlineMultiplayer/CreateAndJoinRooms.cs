@@ -12,12 +12,17 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     private void JoinRoom()
     {
-        PhotonNetwork.JoinRoom("a");
+        PhotonNetwork.JoinRandomRoom();
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
+    public void LeaveRoom()
     {
-        PhotonNetwork.CreateRoom("a");
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        PhotonNetwork.JoinRandomOrCreateRoom();
     }
 
     public override void OnJoinedRoom()

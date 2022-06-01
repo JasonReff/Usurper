@@ -15,6 +15,6 @@ MonoBehaviour:
   Unit: {fileID: -5406986743655374646, guid: fd7dbbcc3aaf03440982615fef6f5199, type: 3}
   PlayerSprite: {fileID: 21300000, guid: aafc3b3189712d14ab7b4ca56dec300a, type: 3}
   EnemySprite: {fileID: 21300000, guid: aafc3b3189712d14ab7b4ca56dec300a, type: 3}
-  Moveset: {fileID: -5195306061523751654, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  Moveset: {fileID: 8117693140759218027, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
   Cost: 2
   UnitName: Archer

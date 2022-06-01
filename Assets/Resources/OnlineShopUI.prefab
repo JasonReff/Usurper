@@ -809,6 +809,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8573968497498605093}
     - target: {fileID: 4417603630122236117, guid: 2913499a472e31543acf18d9b41fa8db, type: 3}
+      propertyPath: _deck
+      value: 
+      objectReference: {fileID: 11400000, guid: 836d40316c90e8648a0c9529bbc96c2a, type: 2}
+    - target: {fileID: 4417603630122236117, guid: 2913499a472e31543acf18d9b41fa8db, type: 3}
       propertyPath: _shop
       value: 
       objectReference: {fileID: 0}
@@ -953,6 +957,10 @@ PrefabInstance:
       propertyPath: _ui
       value: 
       objectReference: {fileID: 8573968497498605093}
+    - target: {fileID: 3867881466451032736, guid: cbcec582855b99e4bb5bb20f641b2644, type: 3}
+      propertyPath: _deck
+      value: 
+      objectReference: {fileID: 11400000, guid: 836d40316c90e8648a0c9529bbc96c2a, type: 2}
     - target: {fileID: 3867881466451032736, guid: cbcec582855b99e4bb5bb20f641b2644, type: 3}
       propertyPath: _shop
       value: 

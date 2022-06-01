@@ -15,6 +15,6 @@ MonoBehaviour:
   Unit: {fileID: 3598541192786427084, guid: 9c25ca7e76d65434f82564a359c61794, type: 3}
   PlayerSprite: {fileID: 21300000, guid: ee30336a2f5baa9428967670acffe208, type: 3}
   EnemySprite: {fileID: 21300000, guid: ee30336a2f5baa9428967670acffe208, type: 3}
-  Moveset: {fileID: -8654490388815424924, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  Moveset: {fileID: 7582557735549122221, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
   Cost: 1
   UnitName: Peasant

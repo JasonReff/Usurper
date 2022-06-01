@@ -15,6 +15,6 @@ MonoBehaviour:
   Unit: {fileID: -2768965575265741879, guid: b47da09a8220c8d4b8da6f0705aab509, type: 3}
   PlayerSprite: {fileID: 21300000, guid: 20e431adb860ebe4e87658388dde6a09, type: 3}
   EnemySprite: {fileID: 21300000, guid: 20e431adb860ebe4e87658388dde6a09, type: 3}
-  Moveset: {fileID: 5229540874234242125, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  Moveset: {fileID: 6808661120150977809, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
   Cost: 4
   UnitName: Cannon
