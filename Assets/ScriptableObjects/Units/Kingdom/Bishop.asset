@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Bishop
   m_EditorClassIdentifier: 
   Unit: {fileID: -8553477322971124985, guid: cbb51c90393228140ac50693336668b5, type: 3}
-  PlayerSprite: {fileID: -8885308598312525688, guid: d28f36d4dee2fe24588acc62694a95f4, type: 3}
-  EnemySprite: {fileID: 5853331731199498240, guid: d28f36d4dee2fe24588acc62694a95f4, type: 3}
+  PlayerSprite: {fileID: -2417847074671435042, guid: 1bb2eaac1b9358a4a8745812c36e9268, type: 3}
+  EnemySprite: {fileID: 2271363463249633613, guid: 1bb2eaac1b9358a4a8745812c36e9268, type: 3}
   Moveset: {fileID: 2898255141975436794, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
   Cost: 2
   UnitName: Bishop

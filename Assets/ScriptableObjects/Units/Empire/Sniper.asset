@@ -16,5 +16,5 @@ MonoBehaviour:
   PlayerSprite: {fileID: 21300000, guid: 620cfbbd84042f344a8e70fd0144b548, type: 3}
   EnemySprite: {fileID: 21300000, guid: 620cfbbd84042f344a8e70fd0144b548, type: 3}
   Moveset: {fileID: -9024464368698475199, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
-  Cost: 3
+  Cost: 2
   UnitName: Sniper

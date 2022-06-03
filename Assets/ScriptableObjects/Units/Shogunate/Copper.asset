@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Copper
   m_EditorClassIdentifier: 
   Unit: {fileID: -423552058374152442, guid: ad13125f0117d4f468905278deed17c1, type: 3}
-  PlayerSprite: {fileID: -4673536048321637515, guid: 452ad4213c8b8504fb8fe3b804963f92, type: 3}
-  EnemySprite: {fileID: 631623507490633193, guid: 452ad4213c8b8504fb8fe3b804963f92, type: 3}
+  PlayerSprite: {fileID: -4673536048321637515, guid: ed5170045f9135e48b4e4aaa38555b20, type: 3}
+  EnemySprite: {fileID: 631623507490633193, guid: ed5170045f9135e48b4e4aaa38555b20, type: 3}
   Moveset: {fileID: 498945906047185774, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
   Cost: 1
   UnitName: Copper

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   Unit: {fileID: 636048092127284513, guid: 23b9999a6d46bfd4bb2eb16cb3249d18, type: 3}
-  PlayerSprite: {fileID: 4567925217649270347, guid: b397a0c52ee4ff14693d7b1040f6b483, type: 3}
-  EnemySprite: {fileID: -6945609374563582765, guid: b397a0c52ee4ff14693d7b1040f6b483, type: 3}
+  PlayerSprite: {fileID: -6301429047446442448, guid: ec6714e0a0f9f8d449ebe5bb5c8a10e7, type: 3}
+  EnemySprite: {fileID: -6116963357262179218, guid: ec6714e0a0f9f8d449ebe5bb5c8a10e7, type: 3}
   Moveset: {fileID: 7207471833570679170, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
   Cost: 2
   UnitName: Gold

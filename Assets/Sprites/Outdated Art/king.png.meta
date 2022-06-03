@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 6d2d43ecca1f03a43902c88e6d063884
+guid: 720d7e92b3663924b878b6a83ce866d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7081527322082503550
-    second: silver_0
+      213: -1724822148711148119
+    second: king_0
   - first:
-      213: 4659382536284025699
-    second: silver_1
+      213: 1621781197010240220
+    second: king_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: silver_0
+      name: king_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +123,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7b63f37493a64260800000000000000
-      internalID: 7081527322082503550
+      spriteID: 9a5985de4633018e0800000000000000
+      internalID: -1724822148711148119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: silver_1
+      name: king_1
       rect:
         serializedVersion: 2
         x: 64
@@ -144,8 +144,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3633ed3fab379a040800000000000000
-      internalID: 4659382536284025699
+      spriteID: cd20437f769b18610800000000000000
+      internalID: 1621781197010240220
       vertices: []
       indices: 
       edges: []
