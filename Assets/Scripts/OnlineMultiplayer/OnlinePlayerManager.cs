@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OnlinePlayerManager : PlayerManager, IPunInstantiateMagicCallback

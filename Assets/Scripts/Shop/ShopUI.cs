@@ -58,6 +58,8 @@ public class ShopUI : MonoBehaviour
 
     public void HideCards()
     {
+        if (!gameObject.activeInHierarchy)
+            return;
         for (int i = _cardUIs.Count - 1; i >= 0; i--)
         {
             Destroy(_cardUIs[i].gameObject);
