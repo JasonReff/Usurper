@@ -23,5 +23,9 @@ public class OnlineBoardTile : BoardTile
         unit.Tile = this;
         unit.SetSprite(unitData.GetSprite(faction));
         OnUnitPlaced?.Invoke(unit);
+        if (TryGetComponent<OnlineUnitCallbacks>(out var onlineUnit))
+        {
+            onlineUnit.photonView.RPC("OnUnitPlacedCallback", RpcTarget.Others);
+        }
     }
 }

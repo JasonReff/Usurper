@@ -42,6 +42,10 @@ MonoBehaviour:
   - OnTileSelectedCallback
   - OnStateChangedCallback
   - OnUnitMovedCallback
+  - OnFactionAssignedRPC
+  - NameSetRPC
+  - OnUnitPlacedRPC
+  - OnUnitPlacedCallback
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 1

@@ -15,23 +15,6 @@ public class BoardTile : MonoBehaviourPunCallbacks, IPointerDownHandler, IBoardT
     public static Action<Unit> OnUnitPlaced;
     public static Action<Unit> OnMouseOver;
     public static Action OnMouseExit;
-    //public InputActionReference _mousePosition;
-    //public InputActionReference _confirm;
-
-    //private void OnEnable()
-    //{
-    //    _confirm.action.performed += OnConfirm;
-    //}
-
-    //private void OnConfirm(InputAction.CallbackContext obj)
-    //{
-    //    OnTileSelected?.Invoke(this);
-    //}
-
-    //private void OnDisable()
-    //{
-    //    _confirm.action.performed -= OnConfirm;
-    //}
 
     public bool IsTileAdjacent(IBoardTile otherTile)
     {

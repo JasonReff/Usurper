@@ -18,6 +18,7 @@ public class ShopUI : MonoBehaviour
     public static Action OnCantAffordPurchase;
 
     public ShopManager Manager { get => _manager; set => _manager = value; }
+    public GameObject ShopParent { get => _shopParent; }
 
     private void OnEnable()
     {

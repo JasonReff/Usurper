@@ -28,5 +28,10 @@ public class OnlineUnitCallbacks : MonoBehaviourPunCallbacks, IPunInstantiateMag
         unit.ForceMoveToTile(Board.Instance.GetTileAtPosition(newPosition));
     }
 
+    [PunRPC]
+    private void OnUnitPlacedCallback()
+    {
+        Board.Instance.AddUnitToList(GetComponent<Unit>());
+    }
 
 }

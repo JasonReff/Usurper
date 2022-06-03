@@ -42,7 +42,7 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
         else return null;
     }
 
-    private void AddUnitToList(Unit unit)
+    public void AddUnitToList(Unit unit)
     {
         if (unit.Faction == UnitFaction.Player)
             PlayerUnits.Add(unit);
@@ -50,7 +50,7 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
         OnUnitPlaced?.Invoke();
     }
 
-    private void RemoveUnitFromList(Unit unit)
+    public void RemoveUnitFromList(Unit unit)
     {
         if (unit.Faction == UnitFaction.Player)
             PlayerUnits.Remove(unit);

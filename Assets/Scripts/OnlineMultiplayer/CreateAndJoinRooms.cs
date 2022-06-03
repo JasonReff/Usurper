@@ -9,6 +9,18 @@ using Photon.Realtime;
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TextMeshProUGUI _searchingText;
+    [SerializeField] private TMP_InputField _roomID;
+    private string _roomName;
+
+    public void UpdateRoomName()
+    {
+        _roomName = _roomID.text;
+    }
+
+    public void SearchForRoom()
+    {
+        PhotonNetwork.JoinOrCreateRoom(_roomName, new RoomOptions() { MaxPlayers = 2, IsVisible = false}, PhotonNetwork.CurrentLobby);
+    }
 
     private void JoinRoom()
     {

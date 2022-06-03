@@ -8,12 +8,6 @@ public class OnlineBoard : Board
 
     public void SelectTile(Vector2 tile)
     {
-        this.photonView.RPC("OnTileSelectedCallback", RpcTarget.All, tile as object);
-    }
-
-    [PunRPC]
-    private void OnTileSelectedCallback(Vector2 tilePosition)
-    {
-        OnTileSelected?.Invoke(GetTileAtPosition(tilePosition));
+        OnTileSelected?.Invoke(GetTileAtPosition(tile));
     }
 }

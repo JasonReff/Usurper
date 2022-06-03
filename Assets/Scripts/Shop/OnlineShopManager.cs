@@ -1,10 +1,23 @@
 ﻿using Photon.Pun;
+using UnityEngine;
+
 public class OnlineShopManager : ShopManager
 {
 
     public void SetFaction(UnitFaction faction)
     {
         _faction = faction;    
+    }
+
+    public void SetFaction(UnitFaction faction, string name)
+    {
+        _faction = faction;
+        if (_faction == UnitFaction.Enemy)
+        {
+            _ui.ShopParent.gameObject.SetActive(false);
+            _king = Board.Instance.GetTileAtPosition(new UnityEngine.Vector2(0, 3)).Unit as KingUnit;
+        }
+            
     }
 
     public UnitFaction GetFaction()
@@ -27,10 +40,17 @@ public class OnlineShopManager : ShopManager
         _king = king;
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        OnlinePlayerManager.OnFactionAssigned += SetFaction;
+    }
+
     protected override void OnDisable()
     {
         base.OnDisable();
         OnlineBoard.OnTileSelected -= OnTileSelected;
+        OnlinePlayerManager.OnFactionAssigned -= SetFaction;
     }
 
     protected override void Subscribe()

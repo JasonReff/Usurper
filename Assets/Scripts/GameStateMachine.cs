@@ -39,6 +39,11 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
         _currentState.BeginState();
         OnStateChanged?.Invoke(_currentState);
     }
+
+    public UnitFaction CurrentFaction()
+    {
+        return _currentState.Faction;
+    }
 }
 
 public abstract class GameState
