@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OnlineCharacterSelect.unity
     guid: 23cfbf2e3b6645c468f035cc424e8ea0
+  - enabled: 1
+    path: Assets/Scenes/DeckCreation.unity
+    guid: 3b8d6654d3519a643a590857e282ce4c
   m_configObjects: {}

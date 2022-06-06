@@ -18,3 +18,4 @@ MonoBehaviour:
   Moveset: {fileID: -5730226083103279274, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
   Cost: 100
   UnitName: King
+  IsKing: 1

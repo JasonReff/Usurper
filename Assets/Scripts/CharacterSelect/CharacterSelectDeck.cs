@@ -8,11 +8,13 @@ using UnityEngine.UI;
 
 public class CharacterSelectDeck : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    [SerializeField] private StartingDeck _deck;
-    private Vector2 _startingPosition;
+    [SerializeField] protected StartingDeck _deck;
+    protected Vector2 _startingPosition;
     public static event Action<StartingDeck> OnDeckDropped;
-    [SerializeField] private Image _icon;
+    [SerializeField] protected Image _icon;
     private Camera _main;
+
+    public StartingDeck Deck { get => _deck; set => _deck = value; }
 
     private void Awake()
     {
@@ -32,7 +34,7 @@ public class CharacterSelectDeck : MonoBehaviour, IDragHandler, IBeginDragHandle
         transform.position = (Vector2)worldPosition;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         OnDeckDropped?.Invoke(_deck);
         transform.position = _startingPosition;

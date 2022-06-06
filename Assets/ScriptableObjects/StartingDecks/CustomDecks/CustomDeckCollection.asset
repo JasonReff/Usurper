@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1ad1c42aed3994ba60857e8849866a, type: 3}
+  m_Name: CustomDeckCollection
+  m_EditorClassIdentifier: 
+  _decks:
+  - {fileID: 11400000, guid: f0f84694bcfe03546bc59a942600da90, type: 2}
+  - {fileID: 11400000, guid: e55bc0a08eba5f749983dbb0a986c594, type: 2}
+  - {fileID: 11400000, guid: 56af652d169722f4ab27cb0e65f62340, type: 2}
+  - {fileID: 11400000, guid: 9ef914be29a49734b9d570de127f08a3, type: 2}
+  - {fileID: 11400000, guid: 84821edfd80b07348af2b8f9b66ebdf5, type: 2}
+  _pool: {fileID: 11400000, guid: dac2eec513f39fd4398264549b0be9ea, type: 2}

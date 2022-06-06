@@ -27,3 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b497e179cf7f8d418810bc682d3dbd5, type: 2}
   - {fileID: 11400000, guid: af725dd253f972847b1ee8a9f2a8b3be, type: 2}
   - {fileID: 11400000, guid: c44af3a2d12fcd844a2994f9457f29d3, type: 2}
+  KingPool:
+  - {fileID: 11400000, guid: 01c14f38edb205845869517e8eea11d8, type: 2}
+  - {fileID: 11400000, guid: a52a4ad1d5d3e2f4b95428ad7aa7c256, type: 2}
+  - {fileID: 11400000, guid: ed2562536f9f93745853c7e98a7a78b0, type: 2}

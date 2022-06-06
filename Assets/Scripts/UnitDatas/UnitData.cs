@@ -8,6 +8,7 @@ public class UnitData : ScriptableObject
     public Sprite PlayerSprite, EnemySprite, Moveset;
     public int Cost;
     public string UnitName;
+    public bool IsKing;
 
     public Sprite GetSprite(UnitFaction faction)
     {
