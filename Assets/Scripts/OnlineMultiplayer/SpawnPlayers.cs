@@ -7,6 +7,7 @@ using Photon.Realtime;
 public class SpawnPlayers : MonoBehaviourPunCallbacks
 {
     [SerializeField] private OnlineBoard _board;
+    [SerializeField] private OnlineMultiplayerSettingsReader _settingsReader;
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private GameObject _shopPrefab;
     [SerializeField] private GameObject _shopUIPrefab;
@@ -16,6 +17,7 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        _settingsReader.ReadSettings();
         FindBoard();
         var playerManager = PhotonNetwork.Instantiate(_playerPrefab.name, Vector3.zero, Quaternion.identity);
         SetShopAndUI();

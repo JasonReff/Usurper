@@ -149,6 +149,7 @@ public abstract class RangedUnit : Unit
     }
 }
 
+[Serializable]
 public enum UnitFaction
 {
     Player = 0,

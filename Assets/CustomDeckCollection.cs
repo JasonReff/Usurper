@@ -39,6 +39,8 @@ public class CustomDeckCollection : ScriptableObject
     public void LoadDecks()
     {
         string serializedDecksData = ReadDataFromFile();
+        if (serializedDecksData == null)
+            return;
         SerializableDeckList serializedDecks = JsonUtility.FromJson<SerializableDeckList>(serializedDecksData);
         for (int i = 0; i < serializedDecks.Decks.Count; i++)
         {
@@ -50,8 +52,9 @@ public class CustomDeckCollection : ScriptableObject
 
     private string ReadDataFromFile()
     {
-        
         string filePath = Application.persistentDataPath + "/decks.txt";
+        if (!File.Exists(filePath))
+            return null;
         var reader = new StreamReader(filePath);
         string textData = reader.ReadToEnd();
         reader.Close();

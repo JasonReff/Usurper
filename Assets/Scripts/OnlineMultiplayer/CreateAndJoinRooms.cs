@@ -10,6 +10,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TextMeshProUGUI _searchingText;
     [SerializeField] private TMP_InputField _roomID;
+    [SerializeField] private PrivateMatchSettings _privateMatchSettings;
     private string _roomName;
 
     public void UpdateRoomName()
@@ -19,11 +20,13 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public void SearchForRoom()
     {
+        _privateMatchSettings.IsPrivateMatch = true;
         PhotonNetwork.JoinOrCreateRoom(_roomName, new RoomOptions() { MaxPlayers = 2, IsVisible = false}, PhotonNetwork.CurrentLobby);
     }
 
     private void JoinRoom()
     {
+        _privateMatchSettings.IsPrivateMatch = false;
         PhotonNetwork.JoinRandomRoom();
     }
 

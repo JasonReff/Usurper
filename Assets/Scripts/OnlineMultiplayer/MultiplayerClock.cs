@@ -15,11 +15,13 @@ public class MultiplayerClock : MonoBehaviour
     private void OnEnable()
     {
         GameStateMachine.OnStateChanged += OnStateChange;
+        OnlineMultiplayerSettingsReader.OnTimeSet += SetTime;
     }
 
     private void OnDisable()
     {
         GameStateMachine.OnStateChanged -= OnStateChange;
+        OnlineMultiplayerSettingsReader.OnTimeSet -= SetTime;
     }
 
     private void Start()
@@ -34,6 +36,12 @@ public class MultiplayerClock : MonoBehaviour
             ResumeClock();
         }
         else StopClock();
+    }
+
+    private void SetTime(int time)
+    {
+        _startingTime = time;
+        StartClock();
     }
 
     private void StartClock()
