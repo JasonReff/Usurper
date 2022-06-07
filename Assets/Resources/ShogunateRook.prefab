@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7846419311405152546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793856677379167228, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208742036601217865, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: m_Name
+      value: ShogunateRook
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214687696428474063, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}
+      propertyPath: _unitData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9277fe344a385fc4d947711e293fa551, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 495fab7b9a8f0ec4c8dca7d6cf1a05fb, type: 3}

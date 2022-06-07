@@ -9,7 +9,7 @@ public class BoardTile : MonoBehaviourPunCallbacks, IPointerDownHandler, IBoardT
     [SerializeField] protected Unit _unit;
     [SerializeField] protected SpriteRenderer _highlight;
 
-    public IUnit Unit { get => _unit; set => _unit = value as Unit; }
+    public IUnit UnitOnTile { get => _unit; set => _unit = value as Unit; }
 
     public static Action<BoardTile> OnTileSelected;
     public static Action<Unit> OnUnitPlaced;
@@ -76,7 +76,7 @@ public class BoardTile : MonoBehaviourPunCallbacks, IPointerDownHandler, IBoardT
 
 public interface IBoardTile
 {
-    public IUnit Unit { get; set; }
+    public IUnit UnitOnTile { get; set; }
     public Vector2 TilePosition();
     public bool IsTileAdjacent(IBoardTile otherTile);
     public bool IsTileDiagonal(IBoardTile otherTile);

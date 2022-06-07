@@ -13,12 +13,12 @@ public abstract class RangedUnitData : UnitData
         return false;
     }
 
-    public List<IBoardTile> AttackableTiles<T>(IUnit unit, IBoardTile currentTile, IBoard<T> board) where T : IBoardTile
+    public virtual List<IBoardTile> AttackableTiles<T>(IUnit unit, IBoardTile currentTile, IBoard<T> board) where T : IBoardTile
     {
         List<IBoardTile> tiles = TilesInRange(currentTile, board);
         var attackableTiles = new List<IBoardTile>();
         foreach (var tile in tiles)
-            if (tile.Unit != null && tile.Unit.Faction != unit.Faction)
+            if (tile.UnitOnTile != null && tile.UnitOnTile.Faction != unit.Faction)
             {
                 attackableTiles.Add(tile);
             }
@@ -37,5 +37,8 @@ public abstract class RangedUnitData : UnitData
         return tiles;
     }
 
-    public abstract List<Vector2> RangedTilePositions();
+    public virtual List<Vector2> RangedTilePositions()
+    {
+        return new List<Vector2>();
+    }
 }

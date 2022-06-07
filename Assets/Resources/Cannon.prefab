@@ -18,10 +18,23 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1119265206193392735}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &499481349219874917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7702873109442074751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4041cac4a4bbcd346930ed90cff3196b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1119265206193392735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,18 +51,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &499481349219874917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702873109442074751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4041cac4a4bbcd346930ed90cff3196b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8495157219470464833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105,6 +106,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7094027380117678819, guid: b47da09a8220c8d4b8da6f0705aab509, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5333349321414413341, guid: dff4970343906bf47a8106f46699496b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47da09a8220c8d4b8da6f0705aab509, type: 3}
 --- !u!1 &7702873109442074751 stripped

@@ -7,6 +7,7 @@ public class UIHighlighter : MonoBehaviour
     {
         CharacterManager.OnUnitSelected += HighlightMovableTiles;
         ShopManager.OnUnitSelected += HighlightPlaceableTiles;
+        ShopManager.OnShopPhaseSkipped += RemoveAllHighlights;
         Unit.OnUnitMoved += RemoveAllHighlights;
         BoardTile.OnUnitPlaced += RemoveAllHighlights;
         BoardVisualizer.OnBoardCreated += RemoveAllHighlights;
@@ -16,6 +17,7 @@ public class UIHighlighter : MonoBehaviour
     {
         CharacterManager.OnUnitSelected -= HighlightMovableTiles;
         ShopManager.OnUnitSelected -= HighlightPlaceableTiles;
+        ShopManager.OnShopPhaseSkipped -= RemoveAllHighlights;
         Unit.OnUnitMoved -= RemoveAllHighlights;
         BoardTile.OnUnitPlaced -= RemoveAllHighlights;
         BoardVisualizer.OnBoardCreated -= RemoveAllHighlights;

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Lance
   m_EditorClassIdentifier: 
   Unit: {fileID: 2356263208910489474, guid: a04b45b5c28eb0a41b05df22500c4145, type: 3}
-  PlayerSprite: {fileID: 21300000, guid: 2e974c737f1f29f4cbfbbc7bf5fd6af8, type: 3}
-  EnemySprite: {fileID: 21300000, guid: 2e974c737f1f29f4cbfbbc7bf5fd6af8, type: 3}
+  PlayerSprite: {fileID: 4919789693700331398, guid: f75cb85db4c891844a6be7fffb692a31, type: 3}
+  EnemySprite: {fileID: -4479741724084688496, guid: f75cb85db4c891844a6be7fffb692a31, type: 3}
   Moveset: {fileID: -7528621018070378800, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
   Cost: 3
   UnitName: Lance
+  IsKing: 0

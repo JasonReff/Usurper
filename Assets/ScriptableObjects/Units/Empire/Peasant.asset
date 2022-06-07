@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Peasant
   m_EditorClassIdentifier: 
   Unit: {fileID: 3598541192786427084, guid: 9c25ca7e76d65434f82564a359c61794, type: 3}
-  PlayerSprite: {fileID: 21300000, guid: ee30336a2f5baa9428967670acffe208, type: 3}
-  EnemySprite: {fileID: 21300000, guid: ee30336a2f5baa9428967670acffe208, type: 3}
+  PlayerSprite: {fileID: 6658753761380513842, guid: 5c04a51e1279e0040a1ba0937cd91458, type: 3}
+  EnemySprite: {fileID: 8600189097163396193, guid: 5c04a51e1279e0040a1ba0937cd91458, type: 3}
   Moveset: {fileID: 7582557735549122221, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
   Cost: 1
   UnitName: Peasant
+  IsKing: 0

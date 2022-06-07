@@ -16,7 +16,7 @@ public class VirtualBoardTile : IBoardTile
         _unit = unit;
     }
 
-    public IUnit Unit { get => _unit; set => _unit = value as VirtualUnit; }
+    public IUnit UnitOnTile { get => _unit; set => _unit = value as VirtualUnit; }
 
     public bool IsTileAdjacent(IBoardTile otherTile)
     {

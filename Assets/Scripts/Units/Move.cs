@@ -25,20 +25,20 @@
     public virtual void ExecuteMove(Unit unit)
     {
         if (_currentTile != null)
-            _currentTile.Unit = null;
-        var otherUnit = _newTile.Unit;
+            _currentTile.UnitOnTile = null;
+        var otherUnit = _newTile.UnitOnTile;
         if (otherUnit != null)
             unit.CaptureUnit(otherUnit as Unit);
-        _newTile.Unit = unit;
+        _newTile.UnitOnTile = unit;
         unit.Tile = _newTile as BoardTile;
     }
 
     public void RangedAttack(Unit unit)
     {
-        var otherUnit = _newTile.Unit;
+        var otherUnit = _newTile.UnitOnTile;
         if (otherUnit != null)
         {
-            _newTile.Unit = null;
+            _newTile.UnitOnTile = null;
             unit.CaptureUnit(otherUnit as Unit);
         }
     }

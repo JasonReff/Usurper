@@ -143,7 +143,7 @@ public abstract class RangedUnit : Unit
     {
         if ((UnitData as RangedUnitData).IsRangedAttack(this, _tile, tile, Board.Instance))
             return true;
-        if (tile.Unit != null)
+        if (tile.UnitOnTile != null)
             return false;
         return base.CanMoveToTile(tile);
     }

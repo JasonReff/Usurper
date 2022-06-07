@@ -21,7 +21,7 @@ public class UnitData : ScriptableObject
     {
         if (unit.SummoningSickness)
             return false;
-        if (newTile.Unit != null && newTile.Unit?.Faction == unit.Faction)
+        if (newTile.UnitOnTile != null && newTile.UnitOnTile?.Faction == unit.Faction)
             return false;
         return true;
     }
@@ -47,7 +47,7 @@ public class UnitData : ScriptableObject
         var nextTile = board.GetTileAtPosition(oldTile.TilePosition() + direction);
         if (DoesNextTileContainEnemy(unit, nextTile))
             tilePositions.Add(nextTile);
-        while (nextTile != null && nextTile.Unit == null)
+        while (nextTile != null && nextTile.UnitOnTile == null)
         {
             tilePositions.Add(nextTile);
             nextTile = board.GetTileAtPosition(nextTile.TilePosition() + direction);
@@ -61,7 +61,7 @@ public class UnitData : ScriptableObject
 
         bool DoesNextTileContainEnemy(IUnit unit, IBoardTile tile)
         {
-            if (tile != null && tile.Unit != null && tile.Unit.Faction != unit.Faction)
+            if (tile != null && tile.UnitOnTile != null && tile.UnitOnTile.Faction != unit.Faction)
                 return true;
             else return false;
         }

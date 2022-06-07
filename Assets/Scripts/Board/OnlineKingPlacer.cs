@@ -9,6 +9,6 @@
     public override void PlaceKing()
     {
         base.PlaceKing();
-        _king = Board.Instance.GetTileAtPosition(_startingTile).Unit as KingUnit;
+        _king = Board.Instance.GetTileAtPosition(_startingTile).UnitOnTile as KingUnit;
     }
 }

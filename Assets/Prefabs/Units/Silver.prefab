@@ -28,7 +28,7 @@ PrefabInstance:
     - target: {fileID: 3136818635562366159, guid: 7599bd0cb11f7134a9ae3c1beaf29507, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2417847074671435042, guid: df2ede2d5c6f59346a1544a7d4c5b7af, type: 3}
+      objectReference: {fileID: 7081527322082503550, guid: 6d2d43ecca1f03a43902c88e6d063884, type: 3}
     - target: {fileID: 6267319149851037970, guid: 7599bd0cb11f7134a9ae3c1beaf29507, type: 3}
       propertyPath: m_Name
       value: Silver

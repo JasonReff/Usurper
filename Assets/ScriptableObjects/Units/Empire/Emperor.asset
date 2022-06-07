@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09869f00e7769b84cab915f6abe83ddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0378e10bf25411f4f82cf6ae51236743, type: 3}
   m_Name: Emperor
   m_EditorClassIdentifier: 
   Unit: {fileID: 571666240286761718, guid: 5bff3adc6a3e12f4da5589511d047cbd, type: 3}
-  PlayerSprite: {fileID: 21300000, guid: 9e8656878e1b88b48a1006e8aee79022, type: 3}
-  EnemySprite: {fileID: 21300000, guid: 9e8656878e1b88b48a1006e8aee79022, type: 3}
+  PlayerSprite: {fileID: -8508199058896457970, guid: f1278befa2132774c848293a06c0e3d6, type: 3}
+  EnemySprite: {fileID: 1403481072892190735, guid: f1278befa2132774c848293a06c0e3d6, type: 3}
   Moveset: {fileID: -5730226083103279274, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
   Cost: 100
   UnitName: Emperor

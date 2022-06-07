@@ -13,6 +13,18 @@ public class CannonUnitData : RangedUnitData
             return true;
         return false;
     }
+
+    public override List<IBoardTile> AttackableTiles<T>(IUnit unit, IBoardTile currentTile, IBoard<T> board)
+    {
+        var attackableTiles = new List<IBoardTile>();
+        var tilesInRange = GetFurthestUnobstructedPaths(unit, currentTile, board, OrthogonalVectors());
+        tilesInRange.RemoveAll(t => t.IsTileAdjacent(currentTile));
+        foreach (var tile in tilesInRange)
+            if (tile.UnitOnTile != null && tile.UnitOnTile.Faction != unit.Faction)
+                attackableTiles.Add(tile);
+        return attackableTiles;
+
+    }
     public override List<Vector2> RangedTilePositions()
     {
         List<Vector2> positions = new List<Vector2>();
@@ -24,7 +36,7 @@ public class CannonUnitData : RangedUnitData
             new Vector2(0, 1)
         };
         //change to first unobstructed tile
-        for (int i = 1; i <= 8; i++)
+        for (int i = 2; i <= 8; i++)
         {
             foreach (var direction in directions)
                 positions.Add(direction * i);

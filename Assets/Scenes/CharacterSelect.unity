@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 3907996378840041335, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1621781197010240220, guid: 720d7e92b3663924b878b6a83ce866d7, type: 3}
+      objectReference: {fileID: 1621781197010240220, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
     - target: {fileID: 3920392873877338706, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: _faction
       value: 1
@@ -652,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 2622675647124239674, guid: a90fc0f578374434684850290a208a43, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8473794708530005867, guid: 8e0b3b16fb9e64a4889e8717d9531322, type: 3}
+      objectReference: {fileID: -8508199058896457970, guid: f1278befa2132774c848293a06c0e3d6, type: 3}
     - target: {fileID: 2697635433405421343, guid: a90fc0f578374434684850290a208a43, type: 3}
       propertyPath: _deck
       value: 
@@ -1617,6 +1617,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3907996378840041335, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1724822148711148119, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
     - target: {fileID: 3920392873877338706, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: _playerDeck
       value: 

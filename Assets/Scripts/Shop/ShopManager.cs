@@ -119,7 +119,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
 
     private bool IsTileUnoccupiedAndNextToKing(BoardTile tile)
     {
-        if (tile.Unit != null)
+        if (tile.UnitOnTile != null)
             return false;
         if (_king == null)
             return false;

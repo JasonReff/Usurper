@@ -58,6 +58,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 571666240286761718, guid: 5bff3adc6a3e12f4da5589511d047cbd, type: 3}
+      propertyPath: _unitData
+      value: 
+      objectReference: {fileID: 11400000, guid: ed2562536f9f93745853c7e98a7a78b0, type: 2}
     - target: {fileID: 1873390984686651229, guid: 5bff3adc6a3e12f4da5589511d047cbd, type: 3}
       propertyPath: m_Name
       value: Emperor
@@ -106,6 +110,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7245822646446727808, guid: 5bff3adc6a3e12f4da5589511d047cbd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8508199058896457970, guid: f1278befa2132774c848293a06c0e3d6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bff3adc6a3e12f4da5589511d047cbd, type: 3}
 --- !u!1 &3322190906055927300 stripped

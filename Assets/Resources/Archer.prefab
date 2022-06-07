@@ -58,6 +58,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2101043434137332625, guid: fd7dbbcc3aaf03440982615fef6f5199, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101043434137332625, guid: fd7dbbcc3aaf03440982615fef6f5199, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497296849841532279, guid: fd7dbbcc3aaf03440982615fef6f5199, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5731584507761909605, guid: 1f46c46ff2c23764f93ea769e837a1f2, type: 3}
     - target: {fileID: 6906802340995221674, guid: fd7dbbcc3aaf03440982615fef6f5199, type: 3}
       propertyPath: m_Name
       value: Archer

@@ -2076,6 +2076,7 @@ MonoBehaviour:
   _shop: {fileID: 539397576}
   _kingUnit: {fileID: 0}
   _maximumPawns: 4
+  _pool: {fileID: 11400000, guid: dac2eec513f39fd4398264549b0be9ea, type: 2}
 --- !u!4 &463058769
 Transform:
   m_ObjectHideFlags: 0
@@ -2610,7 +2611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4877407122587857722, guid: 93c9696d4ffc0ad4fa4f1ed72f8b49de, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Main Menu
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4877407122587857722, guid: 93c9696d4ffc0ad4fa4f1ed72f8b49de, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

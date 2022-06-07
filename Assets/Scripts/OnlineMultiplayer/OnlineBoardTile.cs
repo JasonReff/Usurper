@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class OnlineBoardTile : BoardTile
 {
-    private void Awake()
+
+    public override void OnEnable()
     {
-        
+        base.OnEnable();
+        Unit.OnUnitDeath += ClearHoveredPiece;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        Unit.OnUnitDeath -= ClearHoveredPiece;
     }
     public override void OnPointerDown(PointerEventData eventData)
     {
@@ -16,7 +24,7 @@ public class OnlineBoardTile : BoardTile
 
     public override void PlaceUnit(UnitData unitData, UnitFaction faction)
     {
-        GameObject unitObject = PhotonNetwork.Instantiate(unitData.UnitName, transform.position, Quaternion.identity, 0, new object[] { faction });
+        GameObject unitObject = PhotonNetwork.Instantiate(unitData.name, transform.position, Quaternion.identity, 0, new object[] { faction });
         var unit = unitObject.GetComponent<Unit>();
         unit.Faction = faction;
         _unit = unit;
@@ -26,6 +34,14 @@ public class OnlineBoardTile : BoardTile
         if (TryGetComponent<OnlineUnitCallbacks>(out var onlineUnit))
         {
             onlineUnit.photonView.RPC("OnUnitPlacedCallback", RpcTarget.Others);
+        }
+    }
+
+    private void ClearHoveredPiece(Unit unit)
+    {
+        if (unit == _unit)
+        {
+            OnMouseExit?.Invoke();
         }
     }
 }

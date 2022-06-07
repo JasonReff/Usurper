@@ -18,19 +18,19 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         foreach (var unit in board.PlayerUnits)
         {
             VirtualUnits.Add(new VirtualUnit(this, unit));
-            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).Unit = unit;
+            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = unit;
         }
         foreach (var unit in board.EnemyUnits)
         {
             VirtualUnits.Add(new VirtualUnit(this, unit));
-            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).Unit = unit;
+            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = unit;
         }
     }
 
     public VirtualBoard(VirtualBoard board, Move move)
     {
         foreach (var tile in board.VirtualTiles)
-            VirtualTiles.Add(new VirtualBoardTile(tile, tile.Unit as VirtualUnit));
+            VirtualTiles.Add(new VirtualBoardTile(tile, tile.UnitOnTile as VirtualUnit));
         foreach (var virtualUnit in board.VirtualUnits)
             VirtualUnits.Add(new VirtualUnit(this, virtualUnit));
         Move = move;

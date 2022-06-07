@@ -18,7 +18,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -722968588002156052}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -57,6 +58,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 652401920314851078, guid: 9c25ca7e76d65434f82564a359c61794, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 652401920314851078, guid: 9c25ca7e76d65434f82564a359c61794, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930944872882354656, guid: 9c25ca7e76d65434f82564a359c61794, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6658753761380513842, guid: 5c04a51e1279e0040a1ba0937cd91458, type: 3}
     - target: {fileID: 5475339116613819453, guid: 9c25ca7e76d65434f82564a359c61794, type: 3}
       propertyPath: m_Name
       value: Peasant

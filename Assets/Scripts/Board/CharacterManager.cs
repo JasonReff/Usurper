@@ -28,10 +28,10 @@ public abstract class CharacterManager : MonoBehaviourPunCallbacks
 
     public virtual void SelectTile(BoardTile tile)
     {
-        if (tile.Unit != null && tile.Unit as Unit != _selectedUnit && tile.Unit.Faction == _faction)
+        if (tile.UnitOnTile != null && tile.UnitOnTile as Unit != _selectedUnit && tile.UnitOnTile.Faction == _faction)
         {
             _selectedTile = tile;
-            _selectedUnit = tile.Unit as Unit;
+            _selectedUnit = tile.UnitOnTile as Unit;
             OnUnitSelected?.Invoke(_selectedUnit);
             return;
         }
@@ -42,12 +42,12 @@ public abstract class CharacterManager : MonoBehaviourPunCallbacks
             return;
         }
         _selectedTile = tile;
-        if (tile.Unit != null && tile.Unit.Faction == _faction)
+        if (tile.UnitOnTile != null && tile.UnitOnTile.Faction == _faction)
         {
-            _selectedUnit = tile.Unit as Unit;
+            _selectedUnit = tile.UnitOnTile as Unit;
             OnUnitSelected?.Invoke(_selectedUnit);
         }
-        if (tile.Unit == null)
+        if (tile.UnitOnTile == null)
         {
             OnUnitSelected?.Invoke(null);
         }

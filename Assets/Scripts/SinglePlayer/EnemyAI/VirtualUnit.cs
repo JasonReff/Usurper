@@ -16,7 +16,7 @@ public class VirtualUnit : IUnit
         _board = board;
         UnitData = unit.UnitData;
         Tile = board.GetTileAtPosition(unit.Tile.TilePosition());
-        Tile.Unit = this;
+        Tile.UnitOnTile = this;
         _summoningSickness = unit.SummoningSickness;
         _faction = unit.Faction;
     }
@@ -26,7 +26,7 @@ public class VirtualUnit : IUnit
         _board = board;
         UnitData = unit.UnitData;
         Tile = board.GetTileAtPosition(unit.Tile.TilePosition());
-        Tile.Unit = this;
+        Tile.UnitOnTile = this;
         _summoningSickness = unit.SummoningSickness;
         _faction = unit.Faction;
     }
@@ -36,7 +36,7 @@ public class VirtualUnit : IUnit
         _board = board;
         UnitData = placement.Unit.UnitData;
         Tile = board.GetTileAtPosition(placement.NewTile.TilePosition());
-        Tile.Unit = this;
+        Tile.UnitOnTile = this;
         _summoningSickness = placement.Unit.SummoningSickness;
         _faction = placement.Unit.Faction;
     }
@@ -62,8 +62,8 @@ public class VirtualUnit : IUnit
         int enemies = 0;
         foreach (var move in moves)
         {
-            if (move.NewTile.Unit != null && move.NewTile.Unit.Faction != _faction)
-                enemies += move.NewTile.Unit.UnitData.Cost / 2;
+            if (move.NewTile.UnitOnTile != null && move.NewTile.UnitOnTile.Faction != _faction)
+                enemies += move.NewTile.UnitOnTile.UnitData.Cost / 2;
         }
         return enemies;
     }
@@ -88,18 +88,18 @@ public class VirtualUnit : IUnit
 
     public void MoveToTile<T>(T tile) where T : IBoardTile
     {
-        var otherUnit = tile.Unit as VirtualUnit;
-        Tile.Unit = null; //clear previous position
+        var otherUnit = tile.UnitOnTile as VirtualUnit;
+        Tile.UnitOnTile = null; //clear previous position
         Tile = tile as VirtualBoardTile;
         if (otherUnit != null)
             CaptureUnit(otherUnit);
-        Tile.Unit = this;
+        Tile.UnitOnTile = this;
     }
 
     public void PlaceOnTile(VirtualBoardTile tile)
     {
         Tile = tile;
-        tile.Unit = this;
+        tile.UnitOnTile = this;
     }
 
     public void CaptureUnit(VirtualUnit otherUnit)

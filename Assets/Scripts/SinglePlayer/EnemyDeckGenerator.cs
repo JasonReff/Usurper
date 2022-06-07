@@ -16,6 +16,7 @@ public class EnemyDeckGenerator : MonoBehaviour
     {
         var random = new System.Random();
         var units = new List<UnitData>();
+        _enemyDeck.King = _cardPool.KingPool.Rand();
         for (int i = 0; i < 3; i++)
         {
             var unit = _cardPool.PawnPool.Rand(random);

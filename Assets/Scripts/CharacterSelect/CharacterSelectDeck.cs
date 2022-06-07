@@ -10,6 +10,7 @@ public class CharacterSelectDeck : MonoBehaviour, IDragHandler, IBeginDragHandle
 {
     [SerializeField] protected StartingDeck _deck;
     protected Vector2 _startingPosition;
+    protected int _transformHierarchyPosition;
     public static event Action<StartingDeck> OnDeckDropped;
     [SerializeField] protected Image _icon;
     private Camera _main;
@@ -23,6 +24,8 @@ public class CharacterSelectDeck : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        _transformHierarchyPosition = transform.parent.GetSiblingIndex();
+        transform.parent.SetAsLastSibling();
         _startingPosition = transform.position;
         _icon.raycastTarget = false;
     }
@@ -36,6 +39,7 @@ public class CharacterSelectDeck : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public virtual void OnEndDrag(PointerEventData eventData)
     {
+        transform.parent.SetSiblingIndex(_transformHierarchyPosition);
         OnDeckDropped?.Invoke(_deck);
         transform.position = _startingPosition;
         _icon.raycastTarget = true;

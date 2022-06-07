@@ -8,7 +8,7 @@ public class OnlineUnitCallbacks : MonoBehaviourPunCallbacks, IPunInstantiateMag
         UnitFaction faction = (UnitFaction)info.photonView.InstantiationData[0];
         var tile = Board.Instance.GetTileAtPosition(transform.localPosition);
         var unit = GetComponent<Unit>();
-        tile.Unit = unit;
+        tile.UnitOnTile = unit;
         unit.Tile = tile;
         unit.Faction = faction;
         unit.SetSprite(unit.UnitData.GetSprite(faction));
@@ -22,7 +22,7 @@ public class OnlineUnitCallbacks : MonoBehaviourPunCallbacks, IPunInstantiateMag
     [PunRPC]
     private void OnUnitMovedCallback(Vector2 oldPosition, Vector2 newPosition)
     {
-        var unit = Board.Instance.GetTileAtPosition(oldPosition).Unit as Unit;
+        var unit = Board.Instance.GetTileAtPosition(oldPosition).UnitOnTile as Unit;
         if (unit == null)
             return;
         unit.ForceMoveToTile(Board.Instance.GetTileAtPosition(newPosition));

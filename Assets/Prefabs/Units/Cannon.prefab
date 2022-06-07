@@ -28,7 +28,7 @@ PrefabInstance:
     - target: {fileID: 3136818635562366159, guid: 7599bd0cb11f7134a9ae3c1beaf29507, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8473794708530005867, guid: 8e0b3b16fb9e64a4889e8717d9531322, type: 3}
+      objectReference: {fileID: -5333349321414413341, guid: dff4970343906bf47a8106f46699496b, type: 3}
     - target: {fileID: 6267319149851037970, guid: 7599bd0cb11f7134a9ae3c1beaf29507, type: 3}
       propertyPath: m_Name
       value: Cannon

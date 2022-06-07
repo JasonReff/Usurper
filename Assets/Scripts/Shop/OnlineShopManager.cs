@@ -15,7 +15,7 @@ public class OnlineShopManager : ShopManager
         if (_faction == UnitFaction.Enemy)
         {
             _ui.ShopParent.gameObject.SetActive(false);
-            _king = Board.Instance.GetTileAtPosition(new UnityEngine.Vector2(0, 3)).Unit as KingUnit;
+            _king = Board.Instance.GetTileAtPosition(new UnityEngine.Vector2(0, 3)).UnitOnTile as KingUnit;
         }
             
     }

@@ -10,6 +10,7 @@ public class EnemyAIManager : CharacterManager
     [SerializeField] private EnemyShopManager _shop;
     [SerializeField] private KingUnit _kingUnit;
     [SerializeField] private int _maximumPawns = 4;
+    [SerializeField] private CardPool _pool;
     public override void AddCharacterEvents(GameState state)
     {
         if (IsGameStateCorrectFaction(state) && state.GetType() == typeof(MoveUnitState))
@@ -75,13 +76,13 @@ public class EnemyAIManager : CharacterManager
         var random = new System.Random();
         virtualBoards = virtualBoards.OrderByDescending(t => t.Evaluation).ThenBy(t => random.Next()).ToList();
         var chosenBoard = virtualBoards.First();
-        var unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).Unit;
+        var unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).UnitOnTile;
         while (!unit.UnitData.CanMoveToTile(unit, Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()), 
             Board.Instance.GetTileAtPosition(chosenBoard.Move.NewTile.TilePosition()), Board.Instance))
         {
             virtualBoards.Remove(chosenBoard);
             chosenBoard = virtualBoards.First();
-            unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).Unit;
+            unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).UnitOnTile;
         }
         _chosenMove = chosenBoard.Move;
     }
@@ -92,7 +93,7 @@ public class EnemyAIManager : CharacterManager
         if (checkmatingBoards.Count == 0)
             return null;
         var board = checkmatingBoards.First();
-        var unit = Board.Instance.GetTileAtPosition(board.Move.CurrentTile.TilePosition()).Unit;
+        var unit = Board.Instance.GetTileAtPosition(board.Move.CurrentTile.TilePosition()).UnitOnTile;
         if (!unit.UnitData.CanMoveToTile(unit, Board.Instance.GetTileAtPosition(board.Move.CurrentTile.TilePosition()),
             Board.Instance.GetTileAtPosition(board.Move.NewTile.TilePosition()), Board.Instance))
             return null;
@@ -101,10 +102,10 @@ public class EnemyAIManager : CharacterManager
 
     private void MovePiece()
     {
-        var unit = Board.Instance.GetTileAtPosition(_chosenMove.CurrentTile.TilePosition()).Unit;
+        var unit = Board.Instance.GetTileAtPosition(_chosenMove.CurrentTile.TilePosition()).UnitOnTile;
         unit.MoveToTile(Board.Instance.GetTileAtPosition(_chosenMove.NewTile.TilePosition()));
         Debug.Log($"Unit : {unit.UnitData.UnitName} to {_chosenMove.NewTile.TilePosition()}");
-        Debug.Log($"Unit present at position: {_chosenMove.NewTile.Unit}");
+        Debug.Log($"Unit present at position: {_chosenMove.NewTile.UnitOnTile}");
         //OnUnitMoved?.Invoke();
     }
 
@@ -118,7 +119,7 @@ public class EnemyAIManager : CharacterManager
         var random = new System.Random();
         var currentBoardState = new VirtualBoard(Board.Instance);
         var cardsInHand = _shop.GetPurchaseableCardsInHand();
-        var numberOfPawns = Board.Instance.EnemyUnits.Where(t => t.GetType() == typeof(PawnUnit) || t.GetType() == typeof(ShogiPawnUnit)).Count();
+        var numberOfPawns = Board.Instance.EnemyUnits.Where(t => _pool.PawnPool.Contains(t.UnitData)).Count();
         if (numberOfPawns >= _maximumPawns)
             cardsInHand.RemoveAll(t => t.Unit.GetType() == typeof(PawnUnit) || t.Unit.GetType() == typeof(ShogiPawnUnit));
         var boards = new List<VirtualBoard>();
@@ -145,7 +146,7 @@ public class EnemyAIManager : CharacterManager
         var random = new System.Random();
         var virtualBoards = boards.OrderByDescending(t => t.Evaluation).ThenBy(t => random.Next()).ToList();
         var chosenBoard = virtualBoards.First();
-        while (Board.Instance.GetTileAtPosition(chosenBoard.Move.NewTile.TilePosition()).Unit != null)
+        while (Board.Instance.GetTileAtPosition(chosenBoard.Move.NewTile.TilePosition()).UnitOnTile != null)
         {
             virtualBoards.Remove(chosenBoard);
             chosenBoard = virtualBoards.First();

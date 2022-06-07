@@ -12,7 +12,7 @@ public class PlayerDeck : ScriptableObject
     public UnitFaction Faction;
 
     public List<UnitData> Hand { get => _hand; }
-    public UnitData King { get => _king; }
+    public UnitData King { get => _king; set => _king = value; }
 
     public int DrawCount { get => _drawPile.Count; }
     public int DiscardCount { get => _discardPile.Count; }

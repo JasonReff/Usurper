@@ -4,9 +4,9 @@
     {
         if (base.CanMoveToTile(unit, oldTile, newTile, board) == false)
             return false;
-        if (GetForwardDiagonalTiles(unit, oldTile, board).Contains(newTile) && newTile.Unit != null && newTile.Unit.Faction != unit.Faction)
+        if (GetForwardDiagonalTiles(unit, oldTile, board).Contains(newTile) && newTile.UnitOnTile != null && newTile.UnitOnTile.Faction != unit.Faction)
             return true;
-        if (IsForwardTile(unit, oldTile, newTile) && newTile.Unit == null)
+        if (IsForwardTile(unit, oldTile, newTile) && newTile.UnitOnTile == null)
             return true;
         return false;
     }
