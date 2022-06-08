@@ -9,6 +9,8 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
     public List<VirtualBoardTile> VirtualTiles = new List<VirtualBoardTile>();
     public Move Move;
     public bool KingInCheck;
+    private VirtualUnit _previousUnitOnTile;
+    private VirtualUnit _unitMoved;
     public VirtualBoard(Board board)
     {
         foreach (var tile in board.TileArray)
@@ -33,12 +35,15 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
             VirtualTiles.Add(new VirtualBoardTile(tile, tile.UnitOnTile as VirtualUnit));
         foreach (var virtualUnit in board.VirtualUnits)
             VirtualUnits.Add(new VirtualUnit(this, virtualUnit));
+        _previousUnitOnTile = null;
+        if (board.VirtualUnits.Where(t => t.Tile.TilePosition() == move.NewTile.TilePosition()).Count() > 0)
+            _previousUnitOnTile = board.VirtualUnits.First(t => t.Tile.TilePosition() == move.NewTile.TilePosition());
         Move = move;
-        VirtualUnit unit = null;
+        _unitMoved = null;
         if (VirtualUnits.Where(t => t.Tile._tilePosition == move.CurrentTile.TilePosition()).Count() > 0)
-            unit = VirtualUnits.First(t => t.Tile._tilePosition == move.CurrentTile.TilePosition());
+            _unitMoved = VirtualUnits.First(t => t.Tile._tilePosition == move.CurrentTile.TilePosition());
         var newTile = VirtualTiles.First(t => t.TilePosition() == move.NewTile.TilePosition());
-        unit?.MoveToTile(newTile);
+        _unitMoved?.MoveToTile(newTile);
     }
 
     public VirtualBoard(VirtualBoard board, UnitPlacement placement)
@@ -88,6 +93,29 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
                 eval -= unit.Evaluation;
         }
         Evaluation = eval;
+    }
+
+    public bool IsCaptureFree()
+    {
+        if (_previousUnitOnTile == null)
+            return false;
+        if (_previousUnitOnTile?.Faction != _unitMoved.Faction)
+        {
+            if (_unitMoved.CountAttackingEnemyUnits() == 0)
+                return true;
+        }
+        return false;
+    }
+
+    public int CaptureValue()
+    {
+        if (_previousUnitOnTile == null)
+            return 0;
+        if (_previousUnitOnTile?.Faction != _unitMoved.Faction)
+        {
+            return _previousUnitOnTile.UnitData.Cost - _unitMoved.UnitData.Cost;
+        }
+        return 0;
     }
 
     public VirtualBoardTile[] TileArray => VirtualTiles.ToArray();

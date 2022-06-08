@@ -7,6 +7,7 @@
 
     public IBoardTile NewTile { get => _newTile; }
     public IBoardTile CurrentTile { get => _currentTile; }
+    public IUnit Unit { get => _unit; }
 
     public Move(UnitData unit, IBoardTile currentTile, IBoardTile nextTile)
     {

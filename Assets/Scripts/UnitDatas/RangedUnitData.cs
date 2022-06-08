@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class RangedUnitData : UnitData
@@ -18,10 +19,16 @@ public abstract class RangedUnitData : UnitData
         List<IBoardTile> tiles = TilesInRange(currentTile, board);
         var attackableTiles = new List<IBoardTile>();
         foreach (var tile in tiles)
-            if (tile.UnitOnTile != null && tile.UnitOnTile.Faction != unit.Faction)
+        {
+            var otherUnit = board.GetTileAtPosition(tile.TilePosition()).UnitOnTile;
+            if (board is VirtualBoard)
+                if ((board as VirtualBoard).VirtualUnits.Where(t => t.Tile.TilePosition() == tile.TilePosition()).Count() > 0)
+                    otherUnit = (board as VirtualBoard).VirtualUnits.First(t => t.Tile.TilePosition() == tile.TilePosition());
+            if (otherUnit != null && otherUnit.Faction != unit.Faction)
             {
                 attackableTiles.Add(tile);
             }
+        }
         return attackableTiles;
     }
 
@@ -40,5 +47,18 @@ public abstract class RangedUnitData : UnitData
     public virtual List<Vector2> RangedTilePositions()
     {
         return new List<Vector2>();
+    }
+
+    public override List<Move> AllPossibleMoves<T>(IUnit unit, IBoardTile oldTile, IBoard<T> board)
+    {
+        var moves = base.AllPossibleMoves(unit, oldTile, board);
+        moves.RemoveAll(t => CanMoveToTile(unit, oldTile, t.NewTile, board) && t.NewTile.UnitOnTile?.Faction != unit.Faction);
+        foreach (var tile in board.TileArray)
+        {
+            var move = new Move(this, oldTile, tile);
+            if (IsRangedAttack(unit, oldTile, tile, board))
+                moves.Add(move);
+        }
+        return moves;
     }
 }

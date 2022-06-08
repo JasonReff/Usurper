@@ -53,6 +53,7 @@ public class VirtualUnit : IUnit
         var moves = UnitData.AllPossibleMoves(this, Tile, _board);
         eval += moves.Count;
         eval += EvaluateVisibleEnemyUnits(moves);
+        eval += EvaluateRangedTargets(moves);
         eval -= (CountAttackingEnemyUnits() * UnitData.Cost * 2);
         Evaluation = eval;
     }
@@ -68,7 +69,20 @@ public class VirtualUnit : IUnit
         return enemies;
     }
 
-    private int CountAttackingEnemyUnits()
+    private int EvaluateRangedTargets(List<Move> moves)
+    {
+        if (!UnitData.GetType().IsSubclassOf(typeof(RangedUnitData)))
+            return 0;
+        int enemies = 0;
+        foreach (var move in moves)
+        {
+            if ((UnitData as RangedUnitData).IsRangedAttack(this, move.CurrentTile, move.NewTile, _board))
+                enemies += move.NewTile.UnitOnTile.UnitData.Cost * 2;
+        }
+        return enemies;
+    }
+
+    public int CountAttackingEnemyUnits()
     {
         int attackingEnemies = 0;
         var enemyUnits = _board.VirtualUnits.Where(t => t.Faction != _faction).ToList();
@@ -89,6 +103,14 @@ public class VirtualUnit : IUnit
     public void MoveToTile<T>(T tile) where T : IBoardTile
     {
         var otherUnit = tile.UnitOnTile as VirtualUnit;
+        if (UnitData.GetType().IsSubclassOf(typeof(RangedUnitData)))
+        {
+            if((UnitData as RangedUnitData).IsRangedAttack(this, Tile, tile, _board))
+            {
+                CaptureUnit(otherUnit);
+                return;
+            }
+        }
         Tile.UnitOnTile = null; //clear previous position
         Tile = tile as VirtualBoardTile;
         if (otherUnit != null)

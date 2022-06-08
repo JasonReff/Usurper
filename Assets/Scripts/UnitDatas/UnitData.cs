@@ -106,7 +106,7 @@ public class UnitData : ScriptableObject
         return tiles;
     }
 
-    public List<Move> AllPossibleMoves<T>(IUnit unit, IBoardTile oldTile, IBoard<T> board) where T: IBoardTile
+    public virtual List<Move> AllPossibleMoves<T>(IUnit unit, IBoardTile oldTile, IBoard<T> board) where T: IBoardTile
     {
         List<Move> moves = new List<Move>();
         foreach (var tile in board.TileArray)
