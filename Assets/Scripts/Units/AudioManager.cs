@@ -2,6 +2,7 @@
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] private AudioSettings _settings;
     [SerializeField] private AudioClip _unitMovedClip, _unitDiedClip, _music;
     [SerializeField] private AudioSource _effectSource, _musicSource;
     [SerializeField] private float _minPitch, _maxPitch;
@@ -20,12 +21,14 @@ public class AudioManager : MonoBehaviour
     {
         Unit.OnUnitMoved += PlayMoveSound;
         Unit.OnUnitDeath += PlayDeathSound;
+        AudioSettings.OnAudioSettingsChanged += AdjustVolume;
     }
 
     private void OnDisable()
     {
         Unit.OnUnitMoved -= PlayMoveSound;
         Unit.OnUnitDeath -= PlayDeathSound;
+        AudioSettings.OnAudioSettingsChanged -= AdjustVolume;
     }
     private void PlayMoveSound()
     {
@@ -37,9 +40,24 @@ public class AudioManager : MonoBehaviour
         PlaySoundEffect(_unitDiedClip);
     }
 
+    public void PlaySampleSound()
+    {
+        int random = UnityEngine.Random.Range(0, 2);
+        if (random == 0)
+            PlaySoundEffect(_unitDiedClip);
+        if (random == 1)
+            PlaySoundEffect(_unitMovedClip);
+    }
+
     private void PlaySoundEffect(AudioClip clip)
     {
         _effectSource.pitch = UnityEngine.Random.Range(_minPitch, _maxPitch);
         _effectSource.PlayOneShot(clip);
+    }
+
+    private void AdjustVolume()
+    {
+        _effectSource.volume = _settings._effectsVolume;
+        _musicSource.volume = _settings._musicVolume;
     }
 }

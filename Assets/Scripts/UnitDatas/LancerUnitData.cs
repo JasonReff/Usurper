@@ -9,7 +9,7 @@ public class LancerUnitData : UnitData
             return false;
         if (GetFurthestUnobstructedPaths(unit, oldTile, board, LancerDirections(unit)).Contains(newTile))
             return true;
-        if (GetNeighboringTiles(oldTile, board, LancerSpaces()).Contains(newTile))
+        if (GetNeighboringTiles(oldTile, board, LancerSpaces(unit)).Contains(newTile))
             return true;
         return false;
     }
@@ -25,12 +25,12 @@ public class LancerUnitData : UnitData
         };
     }
 
-    private List<Vector2> LancerSpaces()
+    private List<Vector2> LancerSpaces(IUnit unit)
     {
         return new List<Vector2>
         {
             new Vector2(-1, 0),
-            new Vector2(0, -1),
+            new Vector2(0, -1 * GetForwardVector(unit).y),
             new Vector2(1, 0)
         };
     }

@@ -3,6 +3,18 @@ using Photon.Realtime;
 
 public class OnlineGameStateMachine : GameStateMachine
 {
+
+    protected override void Start()
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+            ChangeState(new StartGameState(this, UnitFaction.Player));
+        }
+        else
+        {
+            base.ChangeState(new WaitingState(this, UnitFaction.Player));
+        }
+    }
     public override void ChangeState(GameState newState)
     {
         base.ChangeState(newState);
@@ -40,6 +52,14 @@ public class OnlineGameStateMachine : GameStateMachine
 public class PlayerLeftState : GameState
 {
     public PlayerLeftState(GameStateMachine stateMachine, UnitFaction faction) : base(stateMachine, faction)
+    {
+
+    }
+}
+
+public class WaitingState : GameState
+{
+    public WaitingState(GameStateMachine stateMachine, UnitFaction faction) : base(stateMachine, faction)
     {
 
     }

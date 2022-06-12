@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,16 +10,17 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private List<DeckCard> _cards = new List<DeckCard>();
     [SerializeField] private DeckCard _cardPrefab, _kingCard;
     [SerializeField] private Transform _deckPanel;
-    [SerializeField] private GameObject _saveButton;
+    [SerializeField] private GameObject _saveButton, _cancelPanel;
+    private bool _isCurrentDeckSaved = true;
 
     public static Action OnDeckSaved;
-
 
     private void OnEnable()
     {
         DeckCard.OnDeckCardClicked += RemoveCard;
         CollectionCard.OnCardClicked += AddCard;
         SavedDeckUI.OnDeckClicked += LoadDeck;
+        SavedDeckUI.OnDeckCleared += OnDeckCleared;
     }
 
     private void OnDisable()
@@ -26,6 +28,7 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         DeckCard.OnDeckCardClicked -= RemoveCard;
         CollectionCard.OnCardClicked -= AddCard;
         SavedDeckUI.OnDeckClicked -= LoadDeck;
+        SavedDeckUI.OnDeckCleared -= OnDeckCleared;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -53,6 +56,7 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         card.SetCard(collectionCard);
         _cards.Add(card);
         UpdateButton();
+        _isCurrentDeckSaved = false;
     }
 
     public void RemoveCard(DeckCard card)
@@ -62,6 +66,7 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _cards.Remove(card);
         Destroy(card.gameObject);
         UpdateButton();
+        _isCurrentDeckSaved = false;
     }
 
     public void SaveDeck()
@@ -75,6 +80,7 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _deck.SetDeck(units);
         _deck.King = _kingCard.Data;
         OnDeckSaved?.Invoke();
+        _isCurrentDeckSaved = true;
     }
 
     private void ClearPanel()
@@ -88,8 +94,13 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
-    private void LoadDeck(SavedDeckUI savedDeck)
+    public void LoadDeck(SavedDeckUI savedDeck)
     {
+        if (_isCurrentDeckSaved == false && _deck != null)
+        {
+            ShowCancelPanel();
+            return;
+        }
         _deck = savedDeck.Deck;
         ClearPanel();
         _kingCard.SetCard(savedDeck.Deck.King);
@@ -100,6 +111,18 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             _cards.Add(card);
         }
         UpdateButton();
+        _isCurrentDeckSaved = true;
+    }
+
+    private void ShowCancelPanel()
+    {
+        _cancelPanel.SetActive(true);
+    }
+
+    public void Cancel()
+    {
+        _isCurrentDeckSaved = true;
+        _cancelPanel.SetActive(false);
     }
 
     private void UpdateButton()
@@ -109,5 +132,14 @@ public class DeckPage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             _saveButton.SetActive(true);
         }
         else _saveButton.SetActive(false);
+    }
+
+    private void OnDeckCleared(SavedDeckUI deckUI)
+    {
+        if (deckUI.Deck == _deck)
+        {
+            ClearPanel();
+            _deck = null;
+        }
     }
 }

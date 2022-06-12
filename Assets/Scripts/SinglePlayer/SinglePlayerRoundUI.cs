@@ -9,6 +9,9 @@ public class SinglePlayerRoundUI : MonoBehaviour
     [SerializeField] private SinglePlayerStats _stats;
     private void Awake()
     {
-        _roundText.text = $"Round: {_stats.Round}";
+        if (_stats.Round == 0)
+            _roundText.text = "Practice";
+        else
+            _roundText.text = $"Round: {_stats.Round}";
     }
 }

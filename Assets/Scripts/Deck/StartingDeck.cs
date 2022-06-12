@@ -20,12 +20,19 @@ public class StartingDeck : ScriptableObject
         _deck = units;
     }
 
+    private void ClearDeck(CardPool cardPool)
+    {
+        _king = cardPool.GetUnit("King");
+        _deckName = "";
+        _deck.Clear();
+    }
+
     public SerializableDeck Serialize()
     {
         var unitNames = new List<string>();
-        var kingName = _king.UnitName;
+        var kingName = _king.name;
         foreach (var unit in _deck)
-            unitNames.Add(unit.UnitName);
+            unitNames.Add(unit.name);
         SerializableDeck deck = new SerializableDeck()
         {
             Units = unitNames,
@@ -39,7 +46,14 @@ public class StartingDeck : ScriptableObject
     {
         var units = new List<UnitData>();
         foreach (var unitName in deck.Units)
+        {
+            if (cardPool.GetUnit(unitName) == null)
+            {
+                ClearDeck(cardPool);
+                return;
+            }
             units.Add(cardPool.GetUnit(unitName));
+        }
         _king = cardPool.GetUnit(deck.King);
         _deckName = deck.DeckName;
         _deck = units;

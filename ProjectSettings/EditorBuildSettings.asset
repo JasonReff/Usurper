@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeckCreation.unity
     guid: 3b8d6654d3519a643a590857e282ce4c
+  - enabled: 1
+    path: Assets/Scenes/PracticeCharacterSelect.unity
+    guid: f0028ba0e6c5dea4f88a152b71ed92a9
   m_configObjects: {}

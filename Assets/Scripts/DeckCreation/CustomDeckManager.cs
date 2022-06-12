@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CustomDeckManager : MonoBehaviour
 {
+    [SerializeField] private DeckPage _deckPage;
     [SerializeField] private CustomDeckCollection _collection;
     [SerializeField] private Transform _deckList;
     [SerializeField] private SavedDeckUI _deckPrefab;
@@ -12,6 +14,8 @@ public class CustomDeckManager : MonoBehaviour
     private void Start()
     {
         LoadDecks();
+        if (_decks.Count > 0)
+            _deckPage.LoadDeck(_decks.First());
     }
 
     private void LoadDecks()
@@ -31,8 +35,10 @@ public class CustomDeckManager : MonoBehaviour
 
     public void CreateNewDeck()
     {
+        if (_decks.Count >= 9)
+            return;
         var deckUI = Instantiate(_deckPrefab, _deckList);
-        deckUI.Deck = _collection.Decks[_decks.Count];
+        deckUI.Deck = _collection.Decks.Where(t => t.Deck.Count == 0).First();
         _decks.Add(deckUI);
     }
 }

@@ -15,6 +15,7 @@ public class SavedDeckUI : MonoBehaviour, IPointerClickHandler
         } }
     public static Action<SavedDeckUI> OnDeckClicked;
     public static Action OnDeckNameSaved;
+    public static Action<SavedDeckUI> OnDeckCleared;
 
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class SavedDeckUI : MonoBehaviour, IPointerClickHandler
     {
         _deck.Deck.Clear();
         _deck.DeckName = null;
+        OnDeckCleared?.Invoke(this);
         Destroy(gameObject);
     }
 

@@ -26,6 +26,11 @@ public class MultiplayerClock : MonoBehaviour
 
     private void Start()
     {
+        if (_startingTime == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         StartClock();
     }
 
@@ -41,6 +46,11 @@ public class MultiplayerClock : MonoBehaviour
     private void SetTime(int time)
     {
         _startingTime = time;
+        if (_startingTime == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         StartClock();
     }
 

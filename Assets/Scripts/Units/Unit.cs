@@ -62,7 +62,7 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
-    public void ForceMoveToTile(IBoardTile tile)
+    public virtual void ForceMoveToTile(IBoardTile tile)
     {
         var move = new Move(_unitData, _tile, tile);
         move.ExecuteMove(this);
@@ -129,14 +129,25 @@ public abstract class RangedUnit : Unit
 {
     public override void MoveToTile<T>(T tile)
     {
-        if ((UnitData as RangedUnitData).IsRangedAttack(this, _tile, tile, Board.Instance))
+        if (IsRangedAttack(tile))
         {
             var move = new Move(UnitData, _tile, tile);
             move.RangedAttack(this);
             OnUnitMoved?.Invoke();
+            if (TryGetComponent<OnlineUnitCallbacks>(out var onlineUnit))
+            {
+                onlineUnit.OnUnitMoved(move.CurrentTile.TilePosition(), move.NewTile.TilePosition());
+            }
             return;
         }
         base.MoveToTile(tile);
+    }
+
+    public bool IsRangedAttack(IBoardTile tile)
+    {
+        if ((UnitData as RangedUnitData).IsRangedAttack(this, _tile, tile, Board.Instance))
+            return true;
+        return false;
     }
 
     public override bool CanMoveToTile(BoardTile tile)
@@ -146,6 +157,18 @@ public abstract class RangedUnit : Unit
         if (tile.UnitOnTile != null)
             return false;
         return base.CanMoveToTile(tile);
+    }
+
+    public override void ForceMoveToTile(IBoardTile tile)
+    {
+        if ((UnitData as RangedUnitData).IsRangedAttack(this, _tile, tile, Board.Instance))
+        {
+            var move = new Move(UnitData, _tile, tile);
+            move.RangedAttack(this);
+            OnUnitMoved?.Invoke();
+            return;
+        }
+        base.ForceMoveToTile(tile);
     }
 }
 

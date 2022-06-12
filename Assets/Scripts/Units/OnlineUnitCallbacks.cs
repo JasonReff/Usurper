@@ -1,8 +1,10 @@
 ﻿using Photon.Pun;
+using System;
 using UnityEngine;
 
 public class OnlineUnitCallbacks : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
 {
+    public static Action<Unit> OnlineUnitPlaced;
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         UnitFaction faction = (UnitFaction)info.photonView.InstantiationData[0];
@@ -12,6 +14,7 @@ public class OnlineUnitCallbacks : MonoBehaviourPunCallbacks, IPunInstantiateMag
         unit.Tile = tile;
         unit.Faction = faction;
         unit.SetSprite(unit.UnitData.GetSprite(faction));
+        OnlineUnitPlaced?.Invoke(unit);
     }
 
     public void OnUnitMoved(Vector2 oldPosition, Vector2 newPosition)

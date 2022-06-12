@@ -68,9 +68,10 @@ public class BoardTile : MonoBehaviourPunCallbacks, IPointerDownHandler, IBoardT
         return transform.localPosition;
     }
 
-    public void ShowHighlight(bool highlight)
+    public void ShowHighlight(bool highlight, Color highlightColor)
     {
         _highlight.enabled = highlight;
+        _highlight.color = highlightColor;
     }
 }
 

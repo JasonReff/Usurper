@@ -20,7 +20,7 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
         _currentState.EndState();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         ChangeState(new StartGameState(this, UnitFaction.Player));
     }

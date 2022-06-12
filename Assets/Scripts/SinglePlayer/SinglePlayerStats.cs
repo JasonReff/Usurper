@@ -9,4 +9,9 @@ public class SinglePlayerStats : ScriptableObject
     {
         Round = 1;
     }
+
+    public void PracticeMode()
+    {
+        Round = 0;
+    }
 }

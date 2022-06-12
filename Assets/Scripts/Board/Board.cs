@@ -23,13 +23,13 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
 
     public List<Unit> PlayerUnits = new List<Unit>(), EnemyUnits = new List<Unit>();
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         BoardTile.OnUnitPlaced += AddUnitToList;
         Unit.OnUnitDeath += RemoveUnitFromList;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         BoardTile.OnUnitPlaced -= AddUnitToList;
         Unit.OnUnitDeath -= RemoveUnitFromList;

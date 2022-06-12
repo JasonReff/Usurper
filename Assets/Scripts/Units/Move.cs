@@ -1,4 +1,7 @@
-﻿public class Move
+﻿using DG.Tweening;
+using UnityEngine;
+
+public class Move
 {
     protected IUnit _unit;
     private UnitData _unitData;
@@ -41,6 +44,10 @@
         {
             _newTile.UnitOnTile = null;
             unit.CaptureUnit(otherUnit as Unit);
+            unit.transform.DORotate(new Vector3(0, 0, -45), 0.35f).OnComplete(() =>
+            {
+                unit.transform.DORotate(Vector3.zero, 0.35f);
+            });
         }
     }
 

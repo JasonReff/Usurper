@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class UIHighlighter : MonoBehaviour
 {
+    [SerializeField] private Color _moveColor, _rangedAttackColor;
     private void OnEnable()
     {
         CharacterManager.OnUnitSelected += HighlightMovableTiles;
@@ -29,11 +30,15 @@ public class UIHighlighter : MonoBehaviour
             return;
         foreach (var tile in Board.Instance.TileArray)
         {
-            if (unit.CanMoveToTile(tile))
+            if (unit as RangedUnit && (unit as RangedUnit).IsRangedAttack(tile))
             {
-                tile.ShowHighlight(true);
+                tile.ShowHighlight(true, _rangedAttackColor);
             }
-            else tile.ShowHighlight(false);
+            else if (unit.CanMoveToTile(tile))
+            {
+                tile.ShowHighlight(true, _moveColor);
+            }
+            else tile.ShowHighlight(false, _moveColor);
         }
     }
 
@@ -42,8 +47,8 @@ public class UIHighlighter : MonoBehaviour
         foreach (var tile in Board.Instance.TileArray)
         {
             if (placeableTiles.Contains(tile))
-                tile.ShowHighlight(true);
-            else tile.ShowHighlight(false);
+                tile.ShowHighlight(true, _moveColor);
+            else tile.ShowHighlight(false, _moveColor);
         }
     }
 
@@ -51,7 +56,7 @@ public class UIHighlighter : MonoBehaviour
     {
         foreach (var tile in Board.Instance.TileArray)
         {
-            tile.ShowHighlight(false);
+            tile.ShowHighlight(false, _moveColor);
         }
     }
 
@@ -59,7 +64,7 @@ public class UIHighlighter : MonoBehaviour
     {
         foreach (var tile in Board.Instance.TileArray)
         {
-            tile.ShowHighlight(false);
+            tile.ShowHighlight(false, _moveColor);
         }
     }
 }
