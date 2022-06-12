@@ -118,6 +118,17 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         return 0;
     }
 
+    public bool IsPieceHanging()
+    {
+        var enemyUnits = VirtualUnits.Where(t => t.Faction == UnitFaction.Enemy).ToList();
+        foreach (var unit in enemyUnits)
+        {
+            if (unit.CountAttackingEnemyUnits() > unit.CountDefendingUnits())
+                return true;
+        }
+        return false;
+    }
+
     public VirtualBoardTile[] TileArray => VirtualTiles.ToArray();
 
     public VirtualBoardTile? GetTileAtPosition(Vector2 position)

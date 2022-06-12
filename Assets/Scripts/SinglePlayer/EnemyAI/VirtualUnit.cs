@@ -96,8 +96,24 @@ public class VirtualUnit : IUnit
                     _inCheck = true;
                 attackingEnemies++;
             }
-                
         return attackingEnemies;
+    }
+
+    public int CountDefendingUnits()
+    {
+        int defendingUnits = 0;
+        var friendlyUnits = _board.VirtualUnits.Where(t => t.Faction == _faction).ToList();
+        var allFriendlyMoves = new List<Move>();
+        foreach (var unit in friendlyUnits)
+        {
+            allFriendlyMoves.AddRange(unit.UnitData.AllPossibleMoves(unit, unit.Tile, _board));
+        }
+        foreach (var move in allFriendlyMoves)
+        {
+            if (move.NewTile.TilePosition() == Tile.TilePosition())
+                defendingUnits++;
+        }
+        return defendingUnits;
     }
 
     public void MoveToTile<T>(T tile) where T : IBoardTile

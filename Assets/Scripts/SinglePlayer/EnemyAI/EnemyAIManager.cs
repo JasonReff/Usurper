@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 public class EnemyAIManager : CharacterManager
@@ -10,8 +9,10 @@ public class EnemyAIManager : CharacterManager
     private Move _chosenMove;
     [SerializeField] private EnemyShopManager _shop;
     [SerializeField] private KingUnit _kingUnit;
-    [SerializeField] private int _maximumPawns = 4;
+    [SerializeField] private int _maximumPawns = 4, _maximumMoney = 4, _worstBoard = 2;
+    [SerializeField] private float _blunderChance = 0.1f;
     [SerializeField] private CardPool _pool;
+    [SerializeField] private SinglePlayerStats _stats;
     public override void AddCharacterEvents(GameState state)
     {
         if (IsGameStateCorrectFaction(state) && state.GetType() == typeof(MoveUnitState))
@@ -52,6 +53,11 @@ public class EnemyAIManager : CharacterManager
 
     }
 
+    private void Start()
+    {
+        _blunderChance = 0.1f - (0.01f * _stats.Round);
+    }
+
     private void SetKing(Unit unit)
     {
         if (unit.GetType() == typeof(KingUnit) && unit.Faction == _faction)
@@ -77,6 +83,7 @@ public class EnemyAIManager : CharacterManager
         var reorderedBoards = boards.OrderBy(t => t.KingInCheck).
             ThenByDescending(t => t.IsCaptureFree()).
             ThenByDescending(t => t.CaptureValue()).
+            ThenBy(t => t.IsPieceHanging()).
             ThenByDescending(t => t.Evaluation).
             ThenBy(t => random.Next()).ToList();
         return reorderedBoards;
@@ -85,16 +92,36 @@ public class EnemyAIManager : CharacterManager
     private void GetFirstPossibleBoard(List<VirtualBoard> virtualBoards)
     {
         var random = new System.Random();
+        virtualBoards = RemoveImpossibleBoards(virtualBoards);
         virtualBoards = ReorderBoards(random, virtualBoards);
-        var chosenBoard = virtualBoards.First();
-        var unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).UnitOnTile as Unit;
-        while (!unit.CanMoveToTile(Board.Instance.GetTileAtPosition(chosenBoard.Move.NewTile.TilePosition())))
-        {
-            virtualBoards.Remove(chosenBoard);
-            chosenBoard = virtualBoards.First();
-            unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).UnitOnTile as Unit;
-        }
+        var chosenBoard = GetBoardAtIndex(virtualBoards);
+        //var unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).UnitOnTile as Unit;
+        //while (!unit.CanMoveToTile(Board.Instance.GetTileAtPosition(chosenBoard.Move.NewTile.TilePosition())))
+        //{
+        //    virtualBoards.Remove(chosenBoard);
+        //    chosenBoard = virtualBoards.First();
+        //    unit = Board.Instance.GetTileAtPosition(chosenBoard.Move.CurrentTile.TilePosition()).UnitOnTile as Unit;
+        //}
         _chosenMove = chosenBoard.Move;
+    }
+
+    private List<VirtualBoard> RemoveImpossibleBoards(List<VirtualBoard> virtualBoards)
+    {
+        var boards = virtualBoards.Where(t => (Board.Instance.GetTileAtPosition(t.Move.CurrentTile.TilePosition()).UnitOnTile as Unit).
+            CanMoveToTile(Board.Instance.GetTileAtPosition(t.Move.NewTile.TilePosition()))).ToList();
+        return boards;
+    }
+
+    private VirtualBoard GetBoardAtIndex(List<VirtualBoard> boards)
+    {
+        var randomBlunderChance = UnityEngine.Random.Range(0, 1f);
+        if (randomBlunderChance > _blunderChance || boards.Count == 1)
+            return boards[0];
+        var index = UnityEngine.Random.Range(0, boards.Count);
+        if (index > _worstBoard)
+            index = _worstBoard;
+        Debug.Log($"Blunder: {index}");
+        return boards[index];
     }
 
     private VirtualBoard? PossibleCheckmate(List<VirtualBoard> boards)
@@ -163,6 +190,12 @@ public class EnemyAIManager : CharacterManager
 
     private void PlaceUnit()
     {
+        if (SaveMoney())
+        {
+            _chosenMove = null;
+            _shop.SkipShopPhase();
+            return;
+        }
         if (_chosenMove as UnitPlacement == null)
             return;
         else
@@ -171,5 +204,22 @@ public class EnemyAIManager : CharacterManager
         }
         var tile = Board.Instance.GetTileAtPosition(_chosenMove.NewTile.TilePosition());
         _shop.PurchaseAndPlaceUnit(tile);
+
+    }
+
+    private bool SaveMoney()
+    {
+        var save = UnityEngine.Random.Range(0, 4);
+        if (_shop.Money < save)
+            return true;
+        else return false;
+    }
+
+    private void DebugMessages(VirtualBoard board)
+    {
+        Debug.Log($"Is King in Check? {board.KingInCheck}");
+        Debug.Log($"Is Capture Free? {board.IsCaptureFree()}");
+        Debug.Log($"Capture value: {board.CaptureValue()}");
+        Debug.Log($"Is Piece Hanging? {board.IsPieceHanging()}");
     }
 }
