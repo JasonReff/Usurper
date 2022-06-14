@@ -13,7 +13,7 @@ public class KingUnit : Unit
         UnitFaction oppositeFaction = UnitFaction.Player;
         if (Faction == UnitFaction.Player)
             oppositeFaction = UnitFaction.Enemy;
-        GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, oppositeFaction));
+        OnKingCaptured?.Invoke(this);
         return base.UnitDeath();
     }
 

@@ -10,12 +10,14 @@ public class OnlineBoard : Board
     {
         OnlineUnitCallbacks.OnlineUnitPlaced += AddUnitToList;
         Unit.OnUnitDeath += RemoveUnitFromList;
+        KingUnit.OnKingCaptured += RemoveUnitFromList;
     }
 
     protected override void OnDisable()
     {
         OnlineUnitCallbacks.OnlineUnitPlaced -= AddUnitToList;
         Unit.OnUnitDeath -= RemoveUnitFromList;
+        KingUnit.OnKingCaptured -= RemoveUnitFromList;
     }
 
     public void SelectTile(Vector2 tile)

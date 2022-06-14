@@ -102,7 +102,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
 
     protected void OnTileSelected(BoardTile tile)
     {
-        if (_unit != null && IsTileUnoccupiedAndNextToKing(tile))
+        if (_unit != null && IsTilePlaceable(tile))
         {
             PurchaseAndPlaceUnit(tile);
         }
@@ -117,13 +117,13 @@ public class ShopManager : MonoBehaviourPunCallbacks
         OnUnitPurchased?.Invoke(_unit.Unit);
     }
 
-    private bool IsTileUnoccupiedAndNextToKing(BoardTile tile)
+    private bool IsTilePlaceable(BoardTile tile)
     {
         if (tile.UnitOnTile != null)
             return false;
         if (_king == null)
             return false;
-        if (!tile.IsTileAdjacent(_king.Tile) && !tile.IsTileDiagonal(_king.Tile))
+        if (!(_king.UnitData as KingUnitData).IsPlacementTile(_king, _king.Tile, tile, Board.Instance))
             return false;
         return true;
             
@@ -144,7 +144,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
     {
         var placeableTiles = new List<BoardTile>();
         foreach (var tile in Board.Instance.TileArray)
-            if (IsTileUnoccupiedAndNextToKing(tile))
+            if (IsTilePlaceable(tile))
                 placeableTiles.Add(tile);
         return placeableTiles;
     }

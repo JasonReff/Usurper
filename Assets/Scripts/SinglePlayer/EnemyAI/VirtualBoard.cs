@@ -29,6 +29,19 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         }
     }
 
+    public VirtualBoard(VirtualBoard virtualBoard)
+    {
+        foreach (var tile in virtualBoard.TileArray)
+        {
+            VirtualTiles.Add(new VirtualBoardTile(tile.TilePosition()));
+        }
+        foreach (var unit in virtualBoard.VirtualUnits)
+        {
+            VirtualUnits.Add(new VirtualUnit(this, unit));
+            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = unit;
+        }
+    }
+
     public VirtualBoard(VirtualBoard board, Move move)
     {
         foreach (var tile in board.VirtualTiles)
@@ -73,7 +86,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
     {
         List<VirtualBoard> boards = new List<VirtualBoard>();
         var king = currentBoard.VirtualUnits.First(t => t.UnitData.GetType() == typeof(KingUnitData) && t.Faction == faction);
-        List<UnitPlacement> placements = (king.UnitData as KingUnitData).GetPossibleUnitPlacements(unit, king.Tile, currentBoard);
+        List<UnitPlacement> placements = (king.UnitData as KingUnitData).GetVirtualKingUnitPlacements(unit, king.Tile, currentBoard);
         foreach (var placement in placements)
             boards.Add(new VirtualBoard(currentBoard, placement));
         return boards;

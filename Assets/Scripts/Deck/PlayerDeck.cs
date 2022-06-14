@@ -16,8 +16,8 @@ public class PlayerDeck : ScriptableObject
 
     public int DrawCount { get => _drawPile.Count; }
     public int DiscardCount { get => _discardPile.Count; }
-    public int GoldPerTurn { get => _goldPerTurn; }
-    public int StartingGold { get => _startingGold; }
+    public int GoldPerTurn { get => _goldPerTurn; set => _goldPerTurn = value; }
+    public int StartingGold { get => _startingGold; set => _startingGold = value; }
     public List<UnitData> DrawPile { get => _drawPile; }
     public List<UnitData> DiscardPile { get => _discardPile; }
 

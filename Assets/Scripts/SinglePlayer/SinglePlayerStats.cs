@@ -1,17 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "SinglePlayerStats")]
 public class SinglePlayerStats : ScriptableObject
 {
     public int Round = 1;
+    public List<SpecialEnemyManager> BossList = new List<SpecialEnemyManager>();
+    public List<SinglePlayerUpgrade> Upgrades = new List<SinglePlayerUpgrade>();
 
     public void ResetStats()
     {
         Round = 1;
+        BossList.Clear();
+        Upgrades.Clear();
     }
 
     public void PracticeMode()
     {
         Round = 0;
+        BossList.Clear();
+        Upgrades.Clear();
+    }
+
+    public void AddUpgrade(SinglePlayerUpgrade upgrade)
+    {
+        Upgrades.Add(upgrade);
     }
 }

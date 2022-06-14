@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour, IUnit
     [SerializeField] private UnitFaction _faction;
     [SerializeField] private SpriteRenderer _renderer;
     private float _deathTime = 0.3f;
-    [SerializeField] private bool _summoningSickness = true;
+    [SerializeField] protected bool _summoningSickness = true;
     [SerializeField] private UnitData _unitData;
     [SerializeField] private UnitColors _unitColors;
 
@@ -152,6 +152,8 @@ public abstract class RangedUnit : Unit
 
     public override bool CanMoveToTile(BoardTile tile)
     {
+        if (_summoningSickness)
+            return false;
         if ((UnitData as RangedUnitData).IsRangedAttack(this, _tile, tile, Board.Instance))
             return true;
         if (tile.UnitOnTile != null)

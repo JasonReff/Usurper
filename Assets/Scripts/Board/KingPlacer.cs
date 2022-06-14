@@ -2,7 +2,7 @@
 
 public class KingPlacer : MonoBehaviour
 {
-    [SerializeField] private PlayerDeck _deck;
+    [SerializeField] protected PlayerDeck _deck;
     [SerializeField] protected Vector2 _startingTile;
     protected KingUnit _king;
 
@@ -13,7 +13,7 @@ public class KingPlacer : MonoBehaviour
         tile.PlaceUnit(_deck.King, _deck.Faction);
     }
 
-    private void AdjustTilePosition()
+    protected void AdjustTilePosition()
     {
         CharacterManager manager = GetComponent<CharacterManager>();
         if (manager.Faction == UnitFaction.Player)

@@ -27,12 +27,14 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
     {
         BoardTile.OnUnitPlaced += AddUnitToList;
         Unit.OnUnitDeath += RemoveUnitFromList;
+        KingUnit.OnKingCaptured += RemoveUnitFromList;
     }
 
     protected virtual void OnDisable()
     {
         BoardTile.OnUnitPlaced -= AddUnitToList;
         Unit.OnUnitDeath -= RemoveUnitFromList;
+        KingUnit.OnKingCaptured -= RemoveUnitFromList;
     }
 
     public BoardTile? GetTileAtPosition(Vector2 position)

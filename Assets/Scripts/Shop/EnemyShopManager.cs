@@ -4,6 +4,12 @@ using System.Linq;
 public class EnemyShopManager : ShopManager
 {
     public UnitData SelectedUnit;
+
+    public void SetKing(KingUnit king)
+    {
+        _king = king;
+    }
+
     public override void SetupShop()
     {
         Subscribe();
@@ -42,6 +48,8 @@ public class EnemyShopManager : ShopManager
 
     public override void PurchaseAndPlaceUnit(BoardTile tile)
     {
+        if (SelectedUnit == null)
+            return;
         PurchaseUnit();
         tile.PlaceUnit(SelectedUnit, _faction);
         _deck.DiscardUnits();

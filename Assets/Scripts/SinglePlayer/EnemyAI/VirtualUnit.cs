@@ -102,11 +102,12 @@ public class VirtualUnit : IUnit
     public int CountDefendingUnits()
     {
         int defendingUnits = 0;
-        var friendlyUnits = _board.VirtualUnits.Where(t => t.Faction == _faction).ToList();
+        var simulatedBoard = CreateBoardWithoutUnit(_board, this);
+        var friendlyUnits = simulatedBoard.VirtualUnits.Where(t => t.Faction == _faction).ToList();
         var allFriendlyMoves = new List<Move>();
         foreach (var unit in friendlyUnits)
         {
-            allFriendlyMoves.AddRange(unit.UnitData.AllPossibleMoves(unit, unit.Tile, _board));
+            allFriendlyMoves.AddRange(unit.UnitData.AllPossibleMoves(unit, unit.Tile, simulatedBoard));
         }
         foreach (var move in allFriendlyMoves)
         {
@@ -114,6 +115,15 @@ public class VirtualUnit : IUnit
                 defendingUnits++;
         }
         return defendingUnits;
+    }
+
+    private VirtualBoard CreateBoardWithoutUnit(VirtualBoard boardWithUnit, VirtualUnit unitToRemove)
+    {
+        var simulatedBoard = new VirtualBoard(boardWithUnit);
+        var correspondingUnit = simulatedBoard.VirtualUnits.First(t => t.Tile.TilePosition() == unitToRemove.Tile.TilePosition());
+        simulatedBoard.VirtualUnits.Remove(correspondingUnit);
+        simulatedBoard.GetTileAtPosition(unitToRemove.Tile.TilePosition()).UnitOnTile = null;
+        return simulatedBoard;
     }
 
     public void MoveToTile<T>(T tile) where T : IBoardTile

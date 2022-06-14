@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6192580662606720235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434944467922931298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923e8251c31716c4f94afd72174e9753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedTile: {fileID: 0}
+  _faction: 1
+  _shop: {fileID: 0}
+  _kingUnit: {fileID: 0}
+  _maximumPawns: 0
+  _maximumMoney: 4
+  _worstBoard: 2
+  _blunderChance: 0.1
+  _pool: {fileID: 11400000, guid: dac2eec513f39fd4398264549b0be9ea, type: 2}
+  _stats: {fileID: 11400000, guid: 823311c044d5a0d4dbc64f8d41bf20a2, type: 2}
+  _specialDeck: {fileID: 11400000, guid: 633bb0f5a77d076409ac39966af0a564, type: 2}
+--- !u!1001 &3605613836701360377
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963845, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747150050870963867, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+      propertyPath: m_Name
+      value: LegionManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3747150050870963844, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+--- !u!1 &434944467922931298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3747150050870963867, guid: 536af955d60e7f74cbc7aaa743159bdd, type: 3}
+  m_PrefabInstance: {fileID: 3605613836701360377}
+  m_PrefabAsset: {fileID: 0}
