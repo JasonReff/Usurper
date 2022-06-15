@@ -76,6 +76,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
     protected void GainMoney()
     {
         _money += _deck.GoldPerTurn;
+        _ui.CoinEffect();
     }
 
     protected virtual void Subscribe()

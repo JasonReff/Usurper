@@ -754,6 +754,8 @@ MonoBehaviour:
   _settings: {fileID: 11400000, guid: e836ff0567db4ca4bab259bda1ca0f16, type: 2}
   _unitMovedClip: {fileID: 8300000, guid: 8e3d9a43a9f8ec547a2328ab1d0c56dd, type: 3}
   _unitDiedClip: {fileID: 8300000, guid: 48c2e77f5fc74644a9c5583f85133844, type: 3}
+  _coinClip: {fileID: 8300000, guid: f322ef6bd8a2fd24ab9aa0f332180175, type: 3}
+  _unitPlacedClip: {fileID: 8300000, guid: 5e874ad643a06a646a6b36c7e25babf3, type: 3}
   _music: {fileID: 0}
   _effectSource: {fileID: 278357635}
   _musicSource: {fileID: 278357636}

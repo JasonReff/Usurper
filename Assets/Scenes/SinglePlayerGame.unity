@@ -2169,7 +2169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shopParent: {fileID: 1641356791}
+  _coinPrefab: {fileID: 2329772785664176382, guid: c120cd77dc963e145a5cf1eab5a53ced, type: 3}
   _cardParent: {fileID: 1641356789}
+  _coinParent: {fileID: 1641356792}
   _cardPositions:
   - {x: -100, y: 0}
   - {x: 0, y: 0}
@@ -5973,7 +5975,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shopParent: {fileID: 100801375}
+  _coinPrefab: {fileID: 2329772785664176382, guid: c120cd77dc963e145a5cf1eab5a53ced, type: 3}
   _cardParent: {fileID: 717972439}
+  _coinParent: {fileID: 2698241718704825076}
   _cardPositions:
   - {x: -100, y: 0}
   - {x: 0, y: 0}
@@ -6171,6 +6175,11 @@ MonoBehaviour:
 --- !u!1 &1641356791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2698241718805363116, guid: c8134b0cab8d96348ade9796e53e98d3, type: 3}
+  m_PrefabInstance: {fileID: 1641356787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1641356792 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6771416328188868662, guid: c8134b0cab8d96348ade9796e53e98d3, type: 3}
   m_PrefabInstance: {fileID: 1641356787}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1663185202 stripped
@@ -8545,6 +8554,11 @@ PrefabInstance:
       objectReference: {fileID: 1628045063}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8134b0cab8d96348ade9796e53e98d3, type: 3}
+--- !u!224 &2698241718704825076 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6771416328188868662, guid: c8134b0cab8d96348ade9796e53e98d3, type: 3}
+  m_PrefabInstance: {fileID: 2698241718704825075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3747150050730023380
 PrefabInstance:
   m_ObjectHideFlags: 0

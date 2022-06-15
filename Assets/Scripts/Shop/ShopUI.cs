@@ -1,13 +1,16 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] private GameObject _shopParent;
-    [SerializeField] protected Transform _cardParent;
+    [SerializeField] private Image _coinPrefab;
+    [SerializeField] protected Transform _cardParent, _coinParent;
     [SerializeField] protected List<Vector2> _cardPositions;
     [SerializeField] private TextMeshProUGUI _moneyText, _drawPileCount, _discardPileCount;
     [SerializeField] private ShopManager _manager;
@@ -16,6 +19,7 @@ public class ShopUI : MonoBehaviour
     private bool _isShopTurn;
 
     public static Action OnCantAffordPurchase;
+    public static Action OnCoinGained;
 
     public ShopManager Manager { get => _manager; set => _manager = value; }
     public GameObject ShopParent { get => _shopParent; }
@@ -99,5 +103,19 @@ public class ShopUI : MonoBehaviour
     public void SkipPurchase()
     {
         _manager.SkipShopPhase();
+    }
+
+    public void CoinEffect()
+    {
+        OnCoinGained?.Invoke();
+        var coin = Instantiate(_coinPrefab, _coinParent);
+        var up = (Vector2)coin.transform.position + Vector2.up;
+        coin.transform.DOMove(up, 1f).OnComplete(() => 
+        {
+            coin.DOFade(0, 0.25f).OnComplete(() => 
+            {
+                Destroy(coin.gameObject);
+            });
+        });
     }
 }

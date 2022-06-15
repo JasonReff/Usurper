@@ -756,6 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shopParent: {fileID: 1306918340}
+  _coinPrefab: {fileID: 1306918337}
   _cardParent: {fileID: 1306918338}
   _cardPositions:
   - {x: -100, y: 0}
@@ -2635,6 +2636,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1306918337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1892503646857944062, guid: c8134b0cab8d96348ade9796e53e98d3, type: 3}
+  m_PrefabInstance: {fileID: 1306918334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1306918338 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2698241719136223524, guid: c8134b0cab8d96348ade9796e53e98d3, type: 3}
@@ -2831,6 +2843,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1332521851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1892503646857944062, guid: c8134b0cab8d96348ade9796e53e98d3, type: 3}
+  m_PrefabInstance: {fileID: 1332521848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1332521852 stripped
@@ -4416,6 +4439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shopParent: {fileID: 1332521854}
+  _coinPrefab: {fileID: 1332521851}
   _cardParent: {fileID: 1332521852}
   _cardPositions:
   - {x: -100, y: 0}

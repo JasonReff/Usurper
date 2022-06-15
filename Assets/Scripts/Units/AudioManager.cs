@@ -3,7 +3,7 @@
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSettings _settings;
-    [SerializeField] private AudioClip _unitMovedClip, _unitDiedClip, _music;
+    [SerializeField] private AudioClip _unitMovedClip, _unitDiedClip, _coinClip, _unitPlacedClip, _music;
     [SerializeField] private AudioSource _effectSource, _musicSource;
     [SerializeField] private float _minPitch, _maxPitch;
     public static AudioManager Instance;
@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
     {
         Unit.OnUnitMoved += PlayMoveSound;
         Unit.OnUnitDeath += PlayDeathSound;
+        BoardTile.OnUnitPlaced += PlayPlacementSound;
+        ShopUI.OnCoinGained += PlayCoinSound;
         AudioSettings.OnAudioSettingsChanged += AdjustVolume;
     }
 
@@ -28,6 +30,8 @@ public class AudioManager : MonoBehaviour
     {
         Unit.OnUnitMoved -= PlayMoveSound;
         Unit.OnUnitDeath -= PlayDeathSound;
+        ShopUI.OnCoinGained -= PlayCoinSound;
+        BoardTile.OnUnitPlaced -= PlayPlacementSound;
         AudioSettings.OnAudioSettingsChanged -= AdjustVolume;
     }
     private void PlayMoveSound()
@@ -40,13 +44,26 @@ public class AudioManager : MonoBehaviour
         PlaySoundEffect(_unitDiedClip);
     }
 
+    private void PlayCoinSound()
+    {
+        PlaySoundEffect(_coinClip);
+    }
+
+    private void PlayPlacementSound(Unit unit)
+    {
+        if (unit.UnitData.IsKing == false)
+            PlaySoundEffect(_unitPlacedClip);
+    }
+
     public void PlaySampleSound()
     {
-        int random = UnityEngine.Random.Range(0, 2);
+        int random = UnityEngine.Random.Range(0, 3);
         if (random == 0)
             PlaySoundEffect(_unitDiedClip);
         if (random == 1)
             PlaySoundEffect(_unitMovedClip);
+        if (random == 2)
+            PlaySoundEffect(_unitPlacedClip);
     }
 
     private void PlaySoundEffect(AudioClip clip)
