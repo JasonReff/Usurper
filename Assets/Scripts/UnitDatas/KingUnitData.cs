@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class KingUnitData : UnitData
 {
-    private List<Vector2> _additionalMovementTiles = new List<Vector2>();
-    private List<Vector2> _additionalPlacementTiles = new List<Vector2>();
+    [SerializeField] private List<Vector2> _additionalMovementTiles = new List<Vector2>();
+    [SerializeField] private List<Vector2> _additionalPlacementTiles = new List<Vector2>();
     public void AddAdditionalMovement(List<Vector2> newTiles)
     {
         _additionalMovementTiles.AddRange(newTiles);

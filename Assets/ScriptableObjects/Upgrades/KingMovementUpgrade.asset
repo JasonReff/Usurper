@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fc6f228e6ff784d998e66e546a79a2, type: 3}
   m_Name: KingMovementUpgrade
   m_EditorClassIdentifier: 
-  UpgradeSprite: {fileID: 0}
+  UpgradeSprite: {fileID: 3253594500367691538, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
   AdditionalMovementSpaces:
   - {x: 0, y: -2}
   - {x: 0, y: 2}

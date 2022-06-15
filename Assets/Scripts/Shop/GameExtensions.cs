@@ -16,6 +16,15 @@ public static class GameExtensions
         return item;
     }
 
+    public static List<T> Pull<T>(this List<T> list, int numberToPull)
+    {
+        System.Random random = new System.Random();
+        if (numberToPull < list.Count)
+            numberToPull = list.Count;
+        List<T> newList = list.OrderBy(t => random.Next()).Take(numberToPull).ToList();
+        return newList;
+    }
+
     public static UnitFaction GetOpposite(this UnitFaction faction)
     {
         if (faction == UnitFaction.Player)

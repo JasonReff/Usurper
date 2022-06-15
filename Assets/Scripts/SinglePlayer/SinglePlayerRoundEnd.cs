@@ -38,10 +38,11 @@ public class SinglePlayerRoundEnd : MonoBehaviour
     private void SetRewardCards()
     {
         System.Random random = new System.Random();
+        List<UnitData> units = _cardPool.UnitPool.Pull(3);
         for (int i = 0; i < _rewards.Count; i++)
         {
             var reward = _rewards[i];
-            reward.SetUnit(_cardPool.UnitPool.Rand(random));
+            reward.SetUnit(units[i]);
         }
     }
 

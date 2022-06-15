@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SinglePlayerGameCompleteManager : GameCompleteManager
 {
-    [SerializeField] private GameObject _roundWonPanel, _roundLostPanel, _runWonPanel;
+    [SerializeField] private GameObject _roundWonPanel, _roundLostPanel, _runWonPanel, _bossDefeatedPanel;
     [SerializeField] private SinglePlayerStats _stats;
     protected override IEnumerator ResultScreenCoroutine(UnitFaction faction)
     {
@@ -12,7 +12,12 @@ public class SinglePlayerGameCompleteManager : GameCompleteManager
         if (faction == UnitFaction.Player)
         {
             if (_stats.Round < 10)
-                _roundWonPanel.SetActive(true);
+            {
+                if (_stats.Round % 3 != 0)
+                    _roundWonPanel.SetActive(true);
+                else
+                    _bossDefeatedPanel.SetActive(true);
+            }  
             else _runWonPanel.SetActive(true);
         }
         else

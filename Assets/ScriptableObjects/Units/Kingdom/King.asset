@@ -19,3 +19,5 @@ MonoBehaviour:
   Cost: 100
   UnitName: King
   IsKing: 1
+  _additionalMovementTiles: []
+  _additionalPlacementTiles: []
