@@ -2,7 +2,10 @@
 
 public abstract class SinglePlayerUpgrade : ScriptableObject
 {
-    public Sprite UpgradeSprite;
+    [SerializeField] private Sprite _upgradeSprite;
+    public Sprite UpgradeSprite { get => _upgradeSprite; }
+    [SerializeField] private string _upgradeName;
+    public string UpgradeName { get => _upgradeName; }
 
     public virtual void StartUpgrade()
     {

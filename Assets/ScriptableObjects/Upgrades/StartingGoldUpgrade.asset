@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308bc8a0d48f5464a914b4912e69b999, type: 3}
   m_Name: StartingGoldUpgrade
   m_EditorClassIdentifier: 
-  UpgradeSprite: {fileID: 7081527322082503550, guid: d89d3fb4ee928ed46898fd26f6c17654, type: 3}
+  _upgradeSprite: {fileID: -8376935284562231408, guid: cbcad79a10e5f29498be78d76c044ba7, type: 3}
+  _upgradeName: 'Shop: Starting Gold'
   _playerDeck: {fileID: 11400000, guid: 15845cc5fc3c0d946b5aac765d066dfb, type: 2}
   _goldIncrease: 2

@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgrade: {fileID: 0}
   _upgradeImage: {fileID: 3141143636863797323}
+  _nameTextbox: {fileID: 2461242650623866478}
 --- !u!1001 &528351281732910731
 PrefabInstance:
   m_ObjectHideFlags: 0

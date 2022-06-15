@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462954389c321714095547242e09bf06, type: 3}
   m_Name: KingPlacementUpgrade
   m_EditorClassIdentifier: 
-  UpgradeSprite: {fileID: 8117693140759218027, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
+  _upgradeSprite: {fileID: -1724822148711148119, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
+  _upgradeName: 'Placement: Cross'
   AdditionalPlacementSpaces:
   - {x: 2, y: 0}
   - {x: -2, y: 0}

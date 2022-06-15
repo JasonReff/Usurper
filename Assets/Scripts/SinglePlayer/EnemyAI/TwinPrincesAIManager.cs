@@ -2,6 +2,26 @@
 {
     private KingUnit _leftPrince, _rightPrince;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        KingUnit.OnKingCaptured += OnKingCaptured;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        KingUnit.OnKingCaptured -= OnKingCaptured;
+    }
+
+    private void OnKingCaptured(KingUnit unit)
+    {
+        if (unit == _leftPrince)
+            _leftPrince = null;
+        else if (unit == _rightPrince)
+            _rightPrince = null;
+    }
+
     public void SetKings(KingUnit leftPrince, KingUnit rightPrince)
     {
         _leftPrince = leftPrince;
@@ -17,6 +37,10 @@
 
     private void SetActiveKing()
     {
+        if (_leftPrince == null)
+            _kingUnit = _rightPrince;
+        else if (_rightPrince == null)
+            _kingUnit = _leftPrince;
         var random = UnityEngine.Random.Range(0, 2);
         if (random == 0)
             _kingUnit = _leftPrince;

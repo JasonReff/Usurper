@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e9f8d139b1783438caf6bd5918a56a, type: 3}
   m_Name: GoldPerTurnUpgrade
   m_EditorClassIdentifier: 
-  UpgradeSprite: {fileID: -6301429047446442448, guid: 552036aeb10c7ac449436407ebc841a1, type: 3}
+  _upgradeSprite: {fileID: -8376935284562231408, guid: cbcad79a10e5f29498be78d76c044ba7, type: 3}
+  _upgradeName: 'Shop: Income'
   _playerDeck: {fileID: 11400000, guid: 15845cc5fc3c0d946b5aac765d066dfb, type: 2}
   _goldIncrease: 1
