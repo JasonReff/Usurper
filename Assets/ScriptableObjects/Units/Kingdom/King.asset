@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: King
   m_EditorClassIdentifier: 
   Unit: {fileID: 8631497884624810421, guid: e2061baddc900184491dc1cafc1deec6, type: 3}
-  PlayerSprite: {fileID: -1724822148711148119, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
-  EnemySprite: {fileID: 1621781197010240220, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
-  Moveset: {fileID: -5730226083103279274, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  PlayerSprite: {fileID: -6924496338471276188, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  EnemySprite: {fileID: 524835150470985677, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  Moveset: {fileID: 4893017246376937731, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 1
   Cost: 100
   UnitName: King
   IsKing: 1
+  IsExplosive: 0
   _additionalMovementTiles: []
   _additionalPlacementTiles: []

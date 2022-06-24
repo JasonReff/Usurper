@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Bishop
   m_EditorClassIdentifier: 
   Unit: {fileID: -8553477322971124985, guid: cbb51c90393228140ac50693336668b5, type: 3}
-  PlayerSprite: {fileID: -2417847074671435042, guid: 1bb2eaac1b9358a4a8745812c36e9268, type: 3}
-  EnemySprite: {fileID: 2271363463249633613, guid: 1bb2eaac1b9358a4a8745812c36e9268, type: 3}
-  Moveset: {fileID: 2898255141975436794, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  PlayerSprite: {fileID: -2827246631386423696, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  EnemySprite: {fileID: -1460505765733530318, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  Moveset: {fileID: 5420169235323316887, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 1
   Cost: 2
   UnitName: Bishop
+  IsKing: 0
+  IsExplosive: 0

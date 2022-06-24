@@ -18,7 +18,7 @@ public class ClockUI : MonoBehaviour
         string timeString = time.ToString();
         if (time < 10)
         {
-            timeString.Insert(0, "0");
+            timeString = timeString.Insert(0, "0");
         }
         return timeString;
     }

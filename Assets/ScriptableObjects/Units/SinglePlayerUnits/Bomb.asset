@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5a935a89e53524f8a112289e745c3e, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 1828356813777443834, guid: 0864259cff6f5f24b9e64da40c9efdd8, type: 3}
+  PlayerSprite: {fileID: -6301429047446442448, guid: 552036aeb10c7ac449436407ebc841a1, type: 3}
+  EnemySprite: {fileID: -6116963357262179218, guid: 552036aeb10c7ac449436407ebc841a1, type: 3}
+  Moveset: {fileID: -3137768706324122278, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
+  Cost: 2
+  UnitName: Bomb
+  IsKing: 0
+  IsExplosive: 1

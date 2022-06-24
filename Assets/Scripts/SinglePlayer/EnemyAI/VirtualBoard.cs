@@ -15,7 +15,8 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
     {
         foreach (var tile in board.TileArray)
         {
-            VirtualTiles.Add(new VirtualBoardTile(tile.TilePosition()));
+            var virtualTile = new VirtualBoardTile(tile);
+            VirtualTiles.Add(virtualTile);
         }
         foreach (var unit in board.PlayerUnits)
         {
@@ -33,7 +34,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
     {
         foreach (var tile in virtualBoard.TileArray)
         {
-            VirtualTiles.Add(new VirtualBoardTile(tile.TilePosition()));
+            VirtualTiles.Add(new VirtualBoardTile(tile));
         }
         foreach (var unit in virtualBoard.VirtualUnits)
         {
@@ -67,6 +68,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
             VirtualUnits.Add(new VirtualUnit(this, virtualUnit));
         Move = placement;
         var unit = new VirtualUnit(this, placement);
+        VirtualUnits.Add(unit);
         unit.PlaceOnTile(placement.NewTile as VirtualBoardTile);
     }
 
@@ -85,7 +87,10 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
     public List<VirtualBoard> GetPossibleBoardsAfterUnitPlacement(IUnit unit, UnitFaction faction, VirtualBoard currentBoard)
     {
         List<VirtualBoard> boards = new List<VirtualBoard>();
-        var king = currentBoard.VirtualUnits.First(t => t.UnitData.GetType() == typeof(KingUnitData) && t.Faction == faction);
+        var enemyUnits = currentBoard.VirtualUnits.Where(t => t.Faction == faction).ToList();
+        var king = enemyUnits.OrderByDescending(t => t.UnitData.IsKing).FirstOrDefault();
+        if (king == null)
+            return null;
         List<UnitPlacement> placements = (king.UnitData as KingUnitData).GetVirtualKingUnitPlacements(unit, king.Tile, currentBoard);
         foreach (var placement in placements)
             boards.Add(new VirtualBoard(currentBoard, placement));
@@ -98,6 +103,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         foreach (var unit in VirtualUnits)
         {
             unit.CalculateEvaluation();
+            unit.CheckIfTileTargeted();
             if (unit.InCheck)
                 KingInCheck = true;
             if (unit.Faction == UnitFaction.Enemy)
@@ -112,6 +118,12 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
     {
         if (_previousUnitOnTile == null)
             return false;
+        if (_previousUnitOnTile.UnitData.IsExplosive)
+        {
+            if (ShouldCaptureExplodingUnit())
+                return true;
+            else return false;
+        }
         if (_previousUnitOnTile?.Faction != _unitMoved.Faction)
         {
             if (_unitMoved.CountAttackingEnemyUnits() == 0)
@@ -136,10 +148,60 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         var enemyUnits = VirtualUnits.Where(t => t.Faction == UnitFaction.Enemy).ToList();
         foreach (var unit in enemyUnits)
         {
+            if (unit.UnitData.IsExplosive)
+                return false;
             if (unit.CountAttackingEnemyUnits() > unit.CountDefendingUnits())
                 return true;
         }
         return false;
+    }
+
+    public bool IsKingNextToHangingBomb()
+    {
+        var enemyBombs = VirtualUnits.Where(t => t.Faction == UnitFaction.Enemy && t.UnitData.IsExplosive).ToList();
+        var kings = VirtualUnits.Where(t => t.UnitData.IsKing && t.Faction == UnitFaction.Enemy).ToList();
+        var adjacentBombs = new List<VirtualUnit>();
+        foreach (var king in kings)
+            adjacentBombs.AddRange(enemyBombs.Where(t => t.Tile.IsTileAdjacent(king.Tile) || t.Tile.IsTileDiagonal(king.Tile)));
+        foreach (var adjacentBomb in adjacentBombs)
+            if (adjacentBomb.CountAttackingEnemyUnits() > 0)
+                return true;
+        return false;
+    }
+
+    public bool ShouldCaptureExplodingUnit()
+    {
+        if (_unitMoved.UnitData.IsKing)
+            return false;
+        var unitsInRange = new List<VirtualUnit>();
+        foreach (var unit in VirtualUnits)
+        {
+            if (unit.Tile.IsTileAdjacent(_previousUnitOnTile.Tile) || unit.Tile.IsTileDiagonal(_previousUnitOnTile.Tile))
+            {
+                unitsInRange.Add(unit);
+            }
+        }
+        if (unitsInRange.Any(t => t.UnitData.IsKing && t.Faction == UnitFaction.Enemy))
+            return false;
+        int enemyValue = 0;
+        int playerValue = 0;
+        foreach (var enemyUnit in unitsInRange.Where(t => t.Faction == UnitFaction.Enemy).ToList())
+            enemyValue += enemyUnit.UnitData.Cost;
+        enemyValue += _unitMoved.UnitData.Cost;
+        foreach (var playerUnit in unitsInRange.Where(t => t.Faction == UnitFaction.Player).ToList())
+            playerValue += playerUnit.UnitData.Cost;
+        if (playerValue > enemyValue)
+            return true;
+        return false;
+    }
+
+    public int UnitsAttackedByPlacedPiece()
+    {
+        var placement = Move as UnitPlacement;
+        var boardWithoutSummoningSickness = new VirtualBoard(this);
+        VirtualUnit placedUnit = boardWithoutSummoningSickness.VirtualUnits.Where(t => t.Tile.TilePosition() == placement.NewTile.TilePosition()).First();
+        placedUnit.SummoningSickness = false;
+        return placedUnit.CountAttackableEnemyUnits();
     }
 
     public VirtualBoardTile[] TileArray => VirtualTiles.ToArray();

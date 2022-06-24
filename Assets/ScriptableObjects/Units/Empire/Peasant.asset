@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Peasant
   m_EditorClassIdentifier: 
   Unit: {fileID: 3598541192786427084, guid: 9c25ca7e76d65434f82564a359c61794, type: 3}
-  PlayerSprite: {fileID: 6658753761380513842, guid: 5c04a51e1279e0040a1ba0937cd91458, type: 3}
-  EnemySprite: {fileID: 8600189097163396193, guid: 5c04a51e1279e0040a1ba0937cd91458, type: 3}
-  Moveset: {fileID: 7582557735549122221, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
+  PlayerSprite: {fileID: -8253994897487085058, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  EnemySprite: {fileID: 2150134914480145236, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  Moveset: {fileID: -7752005214759481794, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 3
   Cost: 1
   UnitName: Peasant
   IsKing: 0
+  IsExplosive: 0

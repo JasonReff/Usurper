@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 00955b5d197b78644be9666b9fcbdc53
   - enabled: 1
-    path: Assets/Scenes/OnlineMultiplayerLoading.unity
-    guid: cd30d856b99305443baee988c49f8994
-  - enabled: 1
     path: Assets/Scenes/SinglePlayerGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -32,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PracticeCharacterSelect.unity
     guid: f0028ba0e6c5dea4f88a152b71ed92a9
+  - enabled: 1
+    path: Assets/Scenes/PracticeGame.unity
+    guid: 27f01270b84a53b448874dfb501c87ea
   m_configObjects: {}

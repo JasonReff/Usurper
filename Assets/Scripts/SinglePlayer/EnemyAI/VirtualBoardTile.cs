@@ -4,16 +4,21 @@ public class VirtualBoardTile : IBoardTile
 {
     public VirtualUnit _unit;
     public Vector2 _tilePosition;
-
-    public VirtualBoardTile(Vector2 position)
+    public bool IsBlocked { get; set; }
+    public bool IsTargeted { get; set; }
+    public VirtualBoardTile(BoardTile tile)
     {
-        _tilePosition = position;
+        _tilePosition = tile.TilePosition();
+        IsBlocked = tile.IsBlocked;
+        IsTargeted = tile.IsTargeted;
     }
 
     public VirtualBoardTile(VirtualBoardTile tile, VirtualUnit unit = null)
     {
         _tilePosition = tile._tilePosition;
         _unit = unit;
+        IsBlocked = tile.IsBlocked;
+        IsTargeted = tile.IsTargeted;
     }
 
     public IUnit UnitOnTile { get => _unit; set => _unit = value as VirtualUnit; }

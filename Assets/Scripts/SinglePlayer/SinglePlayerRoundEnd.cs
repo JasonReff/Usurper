@@ -29,7 +29,7 @@ public class SinglePlayerRoundEnd : MonoBehaviour
         RemovableCard.OnCardSelected -= SelectUnitToRemove;
     }
 
-    private void Awake()
+    public void SetCards()
     {
         SetRewardCards();
         SetRemovableCards();

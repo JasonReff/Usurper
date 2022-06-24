@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 3907996378840041335, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1621781197010240220, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
+      objectReference: {fileID: 524835150470985677, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
     - target: {fileID: 3920392873877338706, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: _faction
       value: 1
@@ -1138,6 +1138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DecksList
       objectReference: {fileID: 0}
+    - target: {fileID: 8738870479211561531, guid: d4bd48bcfa1dfb341899f7a2fbce18f2, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8738870479211561525, guid: d4bd48bcfa1dfb341899f7a2fbce18f2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d4bd48bcfa1dfb341899f7a2fbce18f2, type: 3}
@@ -1620,7 +1624,7 @@ PrefabInstance:
     - target: {fileID: 3907996378840041335, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1724822148711148119, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
+      objectReference: {fileID: -6924496338471276188, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
     - target: {fileID: 3920392873877338706, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: _playerDeck
       value: 

@@ -6,6 +6,7 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
 {
     public static GameStateMachine Instance;
     public static event Action<GameState> OnStateChanged;
+    private bool _gameEnded;
 
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
     }
     public virtual void ChangeState(GameState newState)
     {
+        if (_gameEnded)
+            return;
         if (_currentState != null)
             _currentState.EndState();
         _currentState = newState;
@@ -43,6 +46,11 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
     public UnitFaction CurrentFaction()
     {
         return _currentState.Faction;
+    }
+
+    public void SetGameEnded()
+    {
+        _gameEnded = true;
     }
 }
 
@@ -172,11 +180,12 @@ public class PlayerWonState : GameState
 {
     public PlayerWonState(GameStateMachine stateMachine, UnitFaction faction) : base(stateMachine, faction)
     {
-
+        
     }
 
     public override void BeginState()
     {
         base.BeginState();
+        _stateMachine.SetGameEnded();
     }
 }

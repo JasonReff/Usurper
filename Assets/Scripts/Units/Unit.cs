@@ -10,10 +10,12 @@ public class Unit : MonoBehaviour, IUnit
     [SerializeField] protected BoardTile _tile;
     [SerializeField] private UnitFaction _faction;
     [SerializeField] private SpriteRenderer _renderer;
-    private float _deathTime = 0.3f;
+    private float _deathTime = 0.3f, _tweenTime = 0.25f;
     [SerializeField] protected bool _summoningSickness = true;
     [SerializeField] private UnitData _unitData;
     [SerializeField] private UnitColors _unitColors;
+    protected bool _hasExploded;
+    private bool _hasDied;
 
     public BoardTile Tile { get => _tile; set => _tile = value; }
     public UnitFaction Faction { get => _faction; set => _faction = value; }
@@ -23,14 +25,14 @@ public class Unit : MonoBehaviour, IUnit
     public static Action OnUnitMoved;
     public static Action<Unit> OnUnitDeath;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         MoveUnitState.OnMoveStateEnded += RemoveSummoningSickness;
         CharacterManager.OnUnitSelected += SetHighlight;
         BoardVisualizer.OnBoardCreated += ClearHighlight;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         MoveUnitState.OnMoveStateEnded -= RemoveSummoningSickness;
         CharacterManager.OnUnitSelected -= SetHighlight;
@@ -83,7 +85,8 @@ public class Unit : MonoBehaviour, IUnit
 
     public void CaptureUnit(Unit unit)
     {
-        StartCoroutine(unit.UnitDeath());
+        //StartCoroutine(unit.UnitDeath());
+        unit.StartCoroutine(unit.UnitDeath());
     }
 
     public virtual bool CanMoveToTile(BoardTile tile)
@@ -97,10 +100,19 @@ public class Unit : MonoBehaviour, IUnit
 
     protected virtual IEnumerator UnitDeath()
     {
+        if (_hasDied)
+            yield break;
+        _hasDied = true;
         OnUnitDeath?.Invoke(this);
-        _renderer.DOFade(0, _deathTime);
+        Tween tween = _renderer.DOFade(0, _tweenTime);
         yield return new WaitForSeconds(_deathTime);
+        tween.Kill();
         Destroy(gameObject);
+    }
+
+    public void TriggerUnitDeath()
+    {
+        StartCoroutine(UnitDeath());
     }
 
     public void SetColor(bool summoningSickness)
@@ -122,6 +134,22 @@ public class Unit : MonoBehaviour, IUnit
     private void ClearHighlight()
     {
         SetColor(_summoningSickness);
+    }
+
+    protected void Explode()
+    {
+        if (_hasExploded == true)
+            return;
+        foreach (var tile in Board.Instance.TileArray)
+        {
+            if (tile.IsTileAdjacent(_tile) || tile.IsTileDiagonal(_tile) || tile == _tile)
+                if (tile.UnitOnTile != null)
+                {
+                    CaptureUnit(tile.UnitOnTile as Unit);
+                    tile.UnitOnTile = null;
+                }
+        }
+        _hasExploded = true;
     }
 }
 

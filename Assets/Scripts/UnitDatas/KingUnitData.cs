@@ -56,10 +56,12 @@ public class KingUnitData : UnitData
 
     public List<UnitPlacement> GetVirtualKingUnitPlacements(IUnit unit, VirtualBoardTile currentTile, VirtualBoard currentBoard)
     {
+        if (unit == null)
+            return null;
         List<UnitPlacement> placements = new List<UnitPlacement>();
         List<VirtualBoardTile> openSpaces = new List<VirtualBoardTile>();
         foreach (var tile in currentBoard.TileArray)
-            if (IsTileSurroundingKing(tile, currentTile))
+            if (IsTileSurroundingKing(tile, currentTile) && !tile.IsBlocked)
                 openSpaces.Add(tile);
         foreach (var tile in openSpaces)
         {

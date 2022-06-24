@@ -8,12 +8,15 @@ public class BoardTile : MonoBehaviourPunCallbacks, IPointerDownHandler, IBoardT
 {
     [SerializeField] protected Unit _unit;
     [SerializeField] protected SpriteRenderer _highlight;
+    private bool _isBlocked, _isTargeted;
 
     public IUnit UnitOnTile { get => _unit; set => _unit = value as Unit; }
+    public bool IsBlocked { get => _isBlocked; set => _isBlocked = value; }
+    public bool IsTargeted { get => _isTargeted; set => _isTargeted = value; }
 
     public static Action<BoardTile> OnTileSelected;
     public static Action<Unit> OnUnitPlaced;
-    public static Action<Unit> OnMouseOver;
+    public static Action<BoardTile> OnMouseOver;
     public static Action OnMouseExit;
 
     public bool IsTileAdjacent(IBoardTile otherTile)
@@ -48,9 +51,7 @@ public class BoardTile : MonoBehaviourPunCallbacks, IPointerDownHandler, IBoardT
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (_unit != null)
-            OnMouseOver?.Invoke(_unit);
-        else OnMouseExit?.Invoke();
+        OnMouseOver?.Invoke(this);
     }
 
     public virtual void PlaceUnit(UnitData unitData, UnitFaction faction)
@@ -81,4 +82,6 @@ public interface IBoardTile
     public Vector2 TilePosition();
     public bool IsTileAdjacent(IBoardTile otherTile);
     public bool IsTileDiagonal(IBoardTile otherTile);
+    public bool IsBlocked { get; set; }
+    public bool IsTargeted { get; set; }
 }

@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Ranger
   m_EditorClassIdentifier: 
   Unit: {fileID: 5892738426405066885, guid: 7b861dcf3cea65340ab28c51745917eb, type: 3}
-  PlayerSprite: {fileID: -2850707533075056667, guid: 8dce4eb2d5d84e74aaea5c6821cc9157, type: 3}
-  EnemySprite: {fileID: 2747413984754389643, guid: 8dce4eb2d5d84e74aaea5c6821cc9157, type: 3}
-  Moveset: {fileID: -9024464368698475199, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
+  PlayerSprite: {fileID: -341480777799139827, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  EnemySprite: {fileID: -9030353546763147781, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  Moveset: {fileID: -5764629792882587835, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 3
   Cost: 2
   UnitName: Ranger
   IsKing: 0
+  IsExplosive: 0

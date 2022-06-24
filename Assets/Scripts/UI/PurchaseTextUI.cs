@@ -5,7 +5,7 @@ using Photon.Pun;
 public class PurchaseTextUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _purchaseText;
-    private UnitFaction _faction;
+    [SerializeField] private UnitFaction _faction;
     private void OnEnable()
     {
         GameStateMachine.OnStateChanged += OnPurchaseState;

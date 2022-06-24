@@ -55,6 +55,12 @@ public class PlayerLeftState : GameState
     {
 
     }
+
+    public override void BeginState()
+    {
+        base.BeginState();
+        _stateMachine.SetGameEnded();
+    }
 }
 
 public class WaitingState : GameState

@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Silver
   m_EditorClassIdentifier: 
   Unit: {fileID: -5130874975897860557, guid: 487ad8e1102d5874d87ea850572db974, type: 3}
-  PlayerSprite: {fileID: 7081527322082503550, guid: 6d2d43ecca1f03a43902c88e6d063884, type: 3}
-  EnemySprite: {fileID: 4659382536284025699, guid: 6d2d43ecca1f03a43902c88e6d063884, type: 3}
-  Moveset: {fileID: 8062198104470077027, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
+  PlayerSprite: {fileID: -4575517591995886612, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  EnemySprite: {fileID: -2106926889710970185, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  Moveset: {fileID: -601489954836709543, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 2
   Cost: 2
   UnitName: Silver
+  IsKing: 0
+  IsExplosive: 0

@@ -15,13 +15,11 @@ public class MovesetPreview : MonoBehaviour
     private void OnEnable()
     {
         BoardTile.OnMouseOver += ShowPreview;
-        BoardTile.OnMouseExit += HidePreview;
     }
 
     private void OnDisable()
     {
         BoardTile.OnMouseOver -= ShowPreview;
-        BoardTile.OnMouseExit -= HidePreview;
     }
 
     private void HidePreview()
@@ -30,15 +28,20 @@ public class MovesetPreview : MonoBehaviour
         _unitName.text = "";
     }
 
-    private void ShowPreview(Unit unit)
+    private void ShowPreview(BoardTile boardTile)
     {
+        if (boardTile.UnitOnTile == null)
+        {
+            HidePreview();
+            return;
+        }
         _moveset.enabled = true;
-        _moveset.sprite = unit.UnitData.Moveset;
-        if (unit.Faction == UnitFaction.Enemy)
+        _moveset.sprite = boardTile.UnitOnTile.UnitData.Moveset;
+        if (boardTile.UnitOnTile.Faction == UnitFaction.Enemy)
         {
             _moveset.transform.localScale = new Vector3(_scale.x, _scale.y * -1, _scale.z);
         }
         else _moveset.transform.localScale = _scale;
-        _unitName.text = unit.UnitData.UnitName;
+        _unitName.text = boardTile.UnitOnTile.UnitData.UnitName;
     }
 }

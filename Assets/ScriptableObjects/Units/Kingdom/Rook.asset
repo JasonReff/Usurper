@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Rook
   m_EditorClassIdentifier: 
   Unit: {fileID: -3414439817987304145, guid: 05372fdecf8fc274c838b9161c999838, type: 3}
-  PlayerSprite: {fileID: 8473794708530005867, guid: afbd2053965c0544e86bb51a12ed3420, type: 3}
-  EnemySprite: {fileID: 4427187366911139745, guid: afbd2053965c0544e86bb51a12ed3420, type: 3}
-  Moveset: {fileID: -5195306061523751654, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  PlayerSprite: {fileID: -2665136156384360771, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  EnemySprite: {fileID: -4102301156333281294, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  Moveset: {fileID: -1955223777274220723, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 1
   Cost: 3
   UnitName: Rook
+  IsKing: 0
+  IsExplosive: 0

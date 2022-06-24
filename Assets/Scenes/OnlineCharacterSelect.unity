@@ -919,7 +919,7 @@ PrefabInstance:
     - target: {fileID: 3907996378840041335, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1724822148711148119, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
+      objectReference: {fileID: -6924496338471276188, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
     - target: {fileID: 3920392873877338706, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: _playerDeck
       value: 
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d67da2bcefb484b4db78c4c2922cf302, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b861409ccb4bb304dbfc5442d7c05397, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d67da2bcefb484b4db78c4c2922cf302, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b861409ccb4bb304dbfc5442d7c05397, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4994,7 +4994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d67da2bcefb484b4db78c4c2922cf302, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b861409ccb4bb304dbfc5442d7c05397, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

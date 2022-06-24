@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public class EnemyShopManager : ShopManager
 {
+    public static Action EnemyShopPhaseSkipped;
     public UnitData SelectedUnit;
 
     public void SetKing(KingUnit king)
@@ -59,5 +61,13 @@ public class EnemyShopManager : ShopManager
     public override void SkipShopPhase()
     {
         _deck.DiscardUnits();
+        EnemyShopPhaseSkipped?.Invoke();
+    }
+
+    protected override void OnMerchantGainedMoney(UnitFaction faction)
+    {
+        if (_faction != faction)
+            return;
+        GainMoney();
     }
 }

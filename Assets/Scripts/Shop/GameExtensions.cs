@@ -19,7 +19,7 @@ public static class GameExtensions
     public static List<T> Pull<T>(this List<T> list, int numberToPull)
     {
         System.Random random = new System.Random();
-        if (numberToPull < list.Count)
+        if (list.Count < numberToPull)
             numberToPull = list.Count;
         List<T> newList = list.OrderBy(t => random.Next()).Take(numberToPull).ToList();
         return newList;

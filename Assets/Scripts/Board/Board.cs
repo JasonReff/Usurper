@@ -17,7 +17,7 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
     }
 
     [SerializeField] private BoardTile[] tileArray;
-    public static Action OnUnitPlaced;
+    public static Action<Unit> OnUnitPlaced;
 
     public BoardTile[] TileArray { get => tileArray; set => tileArray = value; }
 
@@ -46,14 +46,20 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
 
     public void AddUnitToList(Unit unit)
     {
+        if (_demo)
+            return;
+        if (PlayerUnits.Contains(unit) || EnemyUnits.Contains(unit))
+            return;
         if (unit.Faction == UnitFaction.Player)
             PlayerUnits.Add(unit);
         else EnemyUnits.Add(unit);
-        OnUnitPlaced?.Invoke();
+        OnUnitPlaced?.Invoke(unit);
     }
 
     public void RemoveUnitFromList(Unit unit)
     {
+        if (_demo)
+            return;
         if (unit.Faction == UnitFaction.Player)
             PlayerUnits.Remove(unit);
         else EnemyUnits.Remove(unit);
@@ -64,12 +70,16 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
         for (int i = PlayerUnits.Count - 1; i >= 0; i--)
         {
             var unit = PlayerUnits[i];
+            if (unit == null)
+                continue;
             Destroy(unit.gameObject);
             PlayerUnits.Remove(unit);
         }
         for (int i = EnemyUnits.Count - 1; i >= 0; i--)
         {
             var unit = EnemyUnits[i];
+            if (unit == null)
+                continue;
             Destroy(unit.gameObject);
             PlayerUnits.Remove(unit);
         }

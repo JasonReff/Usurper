@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   Unit: {fileID: -1611390506138010239, guid: 167625f0d0c99c242a65ae4b8e841368, type: 3}
-  PlayerSprite: {fileID: 4495478712733764576, guid: bd14252539d3a1a43a0194d9b5a76168, type: 3}
-  EnemySprite: {fileID: -2735361975599426438, guid: bd14252539d3a1a43a0194d9b5a76168, type: 3}
-  Moveset: {fileID: -1045047993242581810, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  PlayerSprite: {fileID: 3437050065761145356, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  EnemySprite: {fileID: -2151026312405918564, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  Moveset: {fileID: 1072721463759228278, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 1
   Cost: 2
   UnitName: Knight
+  IsKing: 0
+  IsExplosive: 0

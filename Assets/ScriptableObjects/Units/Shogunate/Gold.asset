@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   Unit: {fileID: 636048092127284513, guid: 23b9999a6d46bfd4bb2eb16cb3249d18, type: 3}
-  PlayerSprite: {fileID: -6301429047446442448, guid: ec6714e0a0f9f8d449ebe5bb5c8a10e7, type: 3}
-  EnemySprite: {fileID: -6116963357262179218, guid: ec6714e0a0f9f8d449ebe5bb5c8a10e7, type: 3}
-  Moveset: {fileID: 7207471833570679170, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
+  PlayerSprite: {fileID: -7081671067101986950, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  EnemySprite: {fileID: -3732654744825725496, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  Moveset: {fileID: 8617829688049756788, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 2
   Cost: 2
   UnitName: Gold
+  IsKing: 0
+  IsExplosive: 0

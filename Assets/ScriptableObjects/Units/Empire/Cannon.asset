@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Cannon
   m_EditorClassIdentifier: 
   Unit: {fileID: -2768965575265741879, guid: b47da09a8220c8d4b8da6f0705aab509, type: 3}
-  PlayerSprite: {fileID: -5333349321414413341, guid: dff4970343906bf47a8106f46699496b, type: 3}
-  EnemySprite: {fileID: 4464646412449416814, guid: dff4970343906bf47a8106f46699496b, type: 3}
-  Moveset: {fileID: 6808661120150977809, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
+  PlayerSprite: {fileID: -6529550849322581981, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  EnemySprite: {fileID: 6770637833153879982, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  Moveset: {fileID: 2639111985502449605, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 3
   Cost: 4
   UnitName: Cannon
   IsKing: 0
+  IsExplosive: 0

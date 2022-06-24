@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: ShogunateBishop
   m_EditorClassIdentifier: 
   Unit: {fileID: 6508474519981319811, guid: 27f286b1570794b48a3df72ebb60dc91, type: 3}
-  PlayerSprite: {fileID: -2417847074671435042, guid: 0628c5cb1b6b92b4c80d662fc012030a, type: 3}
-  EnemySprite: {fileID: 2271363463249633613, guid: 0628c5cb1b6b92b4c80d662fc012030a, type: 3}
-  Moveset: {fileID: -6685367168095559822, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
+  PlayerSprite: {fileID: -8581771013415780316, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  EnemySprite: {fileID: -5249021215762385426, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  Moveset: {fileID: 4430386489074369267, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 2
   Cost: 2
   UnitName: Bishop
   IsKing: 0
+  IsExplosive: 0

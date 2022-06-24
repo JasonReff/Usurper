@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 3907996378840041335, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1724822148711148119, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
+      objectReference: {fileID: -6924496338471276188, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
     - target: {fileID: 3920392873877338706, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: _playerDeck
       value: 
@@ -694,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 3907996378840041335, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1621781197010240220, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
+      objectReference: {fileID: 524835150470985677, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
     - target: {fileID: 3920392873877338706, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: _faction
       value: 1
@@ -1693,7 +1693,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SinglePlayerGame
+          m_StringArgument: PracticeGame
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 823311c044d5a0d4dbc64f8d41bf20a2, type: 2}

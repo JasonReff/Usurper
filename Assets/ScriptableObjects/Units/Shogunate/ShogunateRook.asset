@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: ShogunateRook
   m_EditorClassIdentifier: 
   Unit: {fileID: 2058554484016475370, guid: 199f7ea40e052b849a086a98c95480ae, type: 3}
-  PlayerSprite: {fileID: 8473794708530005867, guid: b2f9d8319be2cec41bfa3e814a4c13f1, type: 3}
-  EnemySprite: {fileID: 4427187366911139745, guid: b2f9d8319be2cec41bfa3e814a4c13f1, type: 3}
-  Moveset: {fileID: 7213613614733505967, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
+  PlayerSprite: {fileID: 7278425969326184468, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  EnemySprite: {fileID: -7023529395678186135, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  Moveset: {fileID: 203234389457235373, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 2
   Cost: 3
   UnitName: Rook
   IsKing: 0
+  IsExplosive: 0

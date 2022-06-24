@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherUnitData : RangedUnitData
+public class ArcherUnitData : RangedUnitData, IDontCaptureOnMovement
 {
     public override bool CanMoveToTile<T>(IUnit unit, IBoardTile oldTile, IBoardTile newTile, IBoard<T> board)
     {

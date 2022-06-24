@@ -6,9 +6,10 @@ public class UnitData : ScriptableObject
 {
     public Unit Unit;
     public Sprite PlayerSprite, EnemySprite, Moveset;
+    public UnitClass UnitClass;
     public int Cost;
     public string UnitName;
-    public bool IsKing;
+    public bool IsKing, IsExplosive;
 
     public Sprite GetSprite(UnitFaction faction)
     {
@@ -22,6 +23,8 @@ public class UnitData : ScriptableObject
         if (unit.SummoningSickness)
             return false;
         if (newTile.UnitOnTile != null && newTile.UnitOnTile?.Faction == unit.Faction)
+            return false;
+        if (newTile.IsBlocked)
             return false;
         return true;
     }
@@ -56,6 +59,8 @@ public class UnitData : ScriptableObject
                 tilePositions.Add(nextTile);
                 break;
             }
+            else if (nextTile != null && nextTile.IsBlocked)
+                break;
         }
         return tilePositions;
 
@@ -77,6 +82,14 @@ public class UnitData : ScriptableObject
     {
         var vectors = new List<Vector2>() { new Vector2(0, 1), new Vector2(0, -1), new Vector2(1, 0), new Vector2(-1, 0) };
         return vectors;
+    }
+
+    protected List<Vector2> AllAdjacentVectors()
+    {
+        List<Vector2> directions = new List<Vector2>();
+        directions.AddRange(DiagonalVectors());
+        directions.AddRange(OrthogonalVectors());
+        return directions;
     }
 
     protected bool IsForwardTile(IUnit unit, IBoardTile oldTile, IBoardTile newTile)

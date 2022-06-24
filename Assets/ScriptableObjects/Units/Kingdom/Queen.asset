@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Queen
   m_EditorClassIdentifier: 
   Unit: {fileID: -3240947163316890152, guid: 0f84504d377fdd54995bbaa9fb9ae3c3, type: 3}
-  PlayerSprite: {fileID: 6851498383279292439, guid: b7525f5e9cdcb9844802373f86ba552d, type: 3}
-  EnemySprite: {fileID: -3476795582854192428, guid: b7525f5e9cdcb9844802373f86ba552d, type: 3}
-  Moveset: {fileID: 5229540874234242125, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  PlayerSprite: {fileID: 1614645323051596611, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  EnemySprite: {fileID: 4132521483611500763, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  Moveset: {fileID: 7718859491973436586, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 1
   Cost: 4
   UnitName: Queen
+  IsKing: 0
+  IsExplosive: 0

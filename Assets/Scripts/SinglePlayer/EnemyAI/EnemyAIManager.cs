@@ -18,6 +18,18 @@ public class EnemyAIManager : CharacterManager
 
     public override void AddCharacterEvents(GameState state)
     {
+        if (state.GetType() == typeof(StartGameState))
+            return;
+        if (!Board.Instance.EnemyUnits.Any(t => t.UnitData.IsKing))
+        {
+            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Player));
+            return;
+        }
+        else if (!Board.Instance.PlayerUnits.Any(t => t.UnitData.IsKing))
+        {
+            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Enemy));
+            return;
+        }
         if (IsGameStateCorrectFaction(state) && state.GetType() == typeof(MoveUnitState))
         {
             SelectBoardState();
@@ -32,6 +44,8 @@ public class EnemyAIManager : CharacterManager
 
     protected virtual IEnumerator PlaceUnitCoroutine()
     {
+        if (!Board.Instance.EnemyUnits.Any(t => t.UnitData.IsKing))
+            yield break;
         yield return new WaitForSeconds(1);
         GetBestUnitPlacement();
         PlaceUnit();
@@ -69,16 +83,17 @@ public class EnemyAIManager : CharacterManager
         List<VirtualBoard> virtualBoards = currentBoardState.GetAllPossibleBoards(_faction, currentBoardState);
         foreach (var board in virtualBoards)
             board.CalculateEvaluation();
-        virtualBoards = ReorderBoards(random, virtualBoards);
+        virtualBoards = ReorderMovementBoards(random, virtualBoards);
         var checkmateBoard = PossibleCheckmate(virtualBoards);
         if (checkmateBoard == null)
             GetFirstPossibleBoard(virtualBoards);
         else _chosenMove = checkmateBoard.Move;
     }
 
-    private List<VirtualBoard> ReorderBoards(System.Random random, List<VirtualBoard> boards)
+    private List<VirtualBoard> ReorderMovementBoards(System.Random random, List<VirtualBoard> boards)
     {
         var reorderedBoards = boards.OrderBy(t => t.KingInCheck).
+            ThenBy(t => t.IsKingNextToHangingBomb()).
             ThenByDescending(t => t.IsCaptureFree()).
             ThenByDescending(t => t.CaptureValue()).
             ThenBy(t => t.IsPieceHanging()).
@@ -87,11 +102,20 @@ public class EnemyAIManager : CharacterManager
         return reorderedBoards;
     }
 
+    private List<VirtualBoard> ReorderPlacementBoards(System.Random random, List<VirtualBoard> boards)
+    {
+        var reorderedBoards = boards.OrderBy(t => t.IsKingNextToHangingBomb()).
+            ThenByDescending(t => t.UnitsAttackedByPlacedPiece()).
+            ThenBy(t => t.IsPieceHanging()).
+            ThenByDescending(t => t.Evaluation).ToList();
+        return reorderedBoards;
+    }
+
     private void GetFirstPossibleBoard(List<VirtualBoard> virtualBoards)
     {
         var random = new System.Random();
         virtualBoards = RemoveImpossibleBoards(virtualBoards);
-        virtualBoards = ReorderBoards(random, virtualBoards);
+        virtualBoards = ReorderMovementBoards(random, virtualBoards);
         var chosenBoard = GetBoardAtIndex(virtualBoards);
         _chosenMove = chosenBoard.Move;
     }
@@ -157,6 +181,8 @@ public class EnemyAIManager : CharacterManager
         foreach (var card in cardsInHand)
         {
             List<VirtualBoard> virtualBoards = currentBoardState.GetPossibleBoardsAfterUnitPlacement(card.Unit, _faction, currentBoardState);
+            if (virtualBoards == null)
+                return;
             boards.AddRange(virtualBoards);
         }
         var firstPossibleBoard = GetFirstPossiblePlacementBoard(boards);
@@ -169,7 +195,7 @@ public class EnemyAIManager : CharacterManager
     private VirtualBoard GetFirstPossiblePlacementBoard(List<VirtualBoard> boards)
     {
         var random = new System.Random();
-        var virtualBoards = boards.OrderByDescending(t => t.Evaluation).ThenBy(t => random.Next()).ToList();
+        var virtualBoards = ReorderPlacementBoards(random, boards);
         if (virtualBoards.Count == 0)
             return null;
         var chosenBoard = virtualBoards.First();

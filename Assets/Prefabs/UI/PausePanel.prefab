@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5215499550592882317, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
+  m_Sprite: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 5128309939452942853}
-  _downSprite: {fileID: 8557929503449746835, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
-  _upSprite: {fileID: 5215499550592882317, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
+  _downSprite: {fileID: -896745992424258005, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
+  _upSprite: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5215499550592882317, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
+  m_Sprite: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -465,8 +465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 5128309940189072577}
-  _downSprite: {fileID: 8557929503449746835, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
-  _upSprite: {fileID: 5215499550592882317, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
+  _downSprite: {fileID: -896745992424258005, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
+  _upSprite: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -482,7 +482,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5128309940263334023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d67da2bcefb484b4db78c4c2922cf302, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b861409ccb4bb304dbfc5442d7c05397, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.75
 --- !u!1 &5128309940288000896
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5215499550592882317, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
+  m_Sprite: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -663,8 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 5128309940288000901}
-  _downSprite: {fileID: 8557929503449746835, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
-  _upSprite: {fileID: 5215499550592882317, guid: 0ba0055ffb593dc489ca1f7071ce8467, type: 3}
+  _downSprite: {fileID: -896745992424258005, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
+  _upSprite: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -888,8 +888,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

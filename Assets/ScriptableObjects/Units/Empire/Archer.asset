@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   Unit: {fileID: -5406986743655374646, guid: fd7dbbcc3aaf03440982615fef6f5199, type: 3}
-  PlayerSprite: {fileID: 5731584507761909605, guid: 1f46c46ff2c23764f93ea769e837a1f2, type: 3}
-  EnemySprite: {fileID: -7615759149648210162, guid: 1f46c46ff2c23764f93ea769e837a1f2, type: 3}
-  Moveset: {fileID: 8117693140759218027, guid: b5db846cb34b40547b3b904f4e8f43cd, type: 3}
+  PlayerSprite: {fileID: -7235973539486785854, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  EnemySprite: {fileID: 2878010355394950761, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
+  Moveset: {fileID: -3322997721557910665, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 3
   Cost: 2
   UnitName: Archer
   IsKing: 0
+  IsExplosive: 0

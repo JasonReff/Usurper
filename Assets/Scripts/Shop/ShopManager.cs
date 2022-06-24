@@ -24,6 +24,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
         GameStateMachine.OnStateChanged += OnStateChange;
         BuyUnitState.OnBuyUnitStateEnded += OnBuyStateEnded;
         BoardVisualizer.OnBoardCreated += ClearSelection;
+        MerchantUnit.OnMerchantGainedGold += OnMerchantGainedMoney;
         _money = _deck.StartingGold;
     }
 
@@ -35,6 +36,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
         PurchaseableUnit.OnUnitSelected -= SelectUnit;
         BoardTile.OnTileSelected -= OnTileSelected;
         BoardVisualizer.OnBoardCreated -= ClearSelection;
+        MerchantUnit.OnMerchantGainedGold -= OnMerchantGainedMoney;
     }
 
     private void SetKing(Unit unit)
@@ -68,15 +70,22 @@ public class ShopManager : MonoBehaviourPunCallbacks
         _deck.DrawUnits();
         _ui.ShowShop();
         _ui.ShowCards(_deck.Hand, _faction);
-        _ui.HideUnaffordableUnits();
+        _ui.UpdatePurchaseButtons();
         _ui.UpdatePileCounts(_deck);
         ShopUI.OnCantAffordPurchase += OnCantAffordPurchase;
     }
 
-    protected void GainMoney()
+    protected virtual void GainMoney()
     {
         _money += _deck.GoldPerTurn;
-        _ui.CoinEffect();
+    }
+
+    protected virtual void OnMerchantGainedMoney(UnitFaction faction)
+    {
+        if (faction != _faction)
+            return;
+        GainMoney();
+        _ui.UpdateMoney();
     }
 
     protected virtual void Subscribe()
@@ -121,6 +130,8 @@ public class ShopManager : MonoBehaviourPunCallbacks
     private bool IsTilePlaceable(BoardTile tile)
     {
         if (tile.UnitOnTile != null)
+            return false;
+        if (tile.IsBlocked)
             return false;
         if (_king == null)
             return false;

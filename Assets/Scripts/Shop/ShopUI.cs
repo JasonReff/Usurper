@@ -39,13 +39,20 @@ public class ShopUI : MonoBehaviour
     public void ShowShop()
     {
         _shopParent.SetActive(true);
-        _moneyText.text = $"Money: {_manager.Money}";
+        UpdateMoney();
     }
 
     public void HideShop()
     {
         HideCards();
         _shopParent.SetActive(false);
+    }
+
+    public void UpdateMoney()
+    {
+        _moneyText.text = $"Money: {_manager.Money}";
+        CoinEffect();
+        UpdatePurchaseButtons();
     }
 
     public virtual void ShowCards(List<UnitData> units, UnitFaction faction)
@@ -71,12 +78,14 @@ public class ShopUI : MonoBehaviour
         }
     }
 
-    public void HideUnaffordableUnits()
+    public void UpdatePurchaseButtons()
     {
         foreach (var card in _cardUIs)
         {
             if (_manager.Money < card.Cost)
                 card.HidePurchase();
+            else
+                card.ShowPurchase();
         }
     }
 

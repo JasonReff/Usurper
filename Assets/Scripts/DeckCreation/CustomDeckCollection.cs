@@ -15,15 +15,30 @@ public class CustomDeckCollection : ScriptableObject
     {
         DeckPage.OnDeckSaved += SaveDecks;
         SavedDeckUI.OnDeckNameSaved += SaveDecks;
+        SavedDeckUI.OnDeckCleared += SaveDecks;
     }
 
     private void OnDisable()
     {
         DeckPage.OnDeckSaved -= SaveDecks;
         SavedDeckUI.OnDeckNameSaved -= SaveDecks;
+        SavedDeckUI.OnDeckCleared -= SaveDecks;
     }
 
     public void SaveDecks()
+    {
+        var deckList = new SerializableDeckList() { Decks = new List<SerializableDeck>() };
+        for (int i = 0; i < _decks.Count; i++)
+        {
+            var deck = _decks[i];
+            var serializedDeck = deck.Serialize();
+            deckList.Decks.Add(serializedDeck);
+        }
+        var serializedDecksData = JsonUtility.ToJson(deckList);
+        WriteToFile(serializedDecksData);
+    }
+
+    public void SaveDecks(SavedDeckUI deckUI)
     {
         var deckList = new SerializableDeckList() { Decks = new List<SerializableDeck>() };
         for (int i = 0; i < _decks.Count; i++)

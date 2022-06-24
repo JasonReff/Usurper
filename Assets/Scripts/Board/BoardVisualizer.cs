@@ -11,13 +11,15 @@ public class BoardVisualizer : MonoBehaviour
     [SerializeField] private Unit _unitPrefab;
     [SerializeField] private Board _demoBoard;
     [SerializeField] private TextMeshProUGUI _turnNumberText;
+    [SerializeField] private GameObject _tileTarget, _destroyedTile;
+    private List<GameObject> _targetedTiles = new List<GameObject>(), _destroyedTiles = new List<GameObject>();
 
     public static Action OnBoardCreated;
     public static Action OnBoardHidden;
 
     public int TurnNumber { get => _turnNumber; set {
             _turnNumber = value;
-            _turnNumberText.text = $"Turn : {_turnNumber}";
+            _turnNumberText.text = GetTurnNumberText(_turnNumber); ;
         } }
 
     public Board DemoBoard { get => _demoBoard; }
@@ -31,42 +33,66 @@ public class BoardVisualizer : MonoBehaviour
     {
         Unit.OnUnitMoved += OnUnitMoved;
         Board.OnUnitPlaced += OnUnitPlaced;
+        ShopManager.OnShopPhaseSkipped += OnShopPhaseSkipped;
+        EnemyShopManager.EnemyShopPhaseSkipped += OnShopPhaseSkipped;
+        GameStateMachine.OnStateChanged += HideBoardOnStateChange;
     }
 
     private void OnDisable()
     {
         Unit.OnUnitMoved -= OnUnitMoved;
         Board.OnUnitPlaced -= OnUnitPlaced;
+        ShopManager.OnShopPhaseSkipped -= OnShopPhaseSkipped;
+        EnemyShopManager.EnemyShopPhaseSkipped -= OnShopPhaseSkipped;
+        GameStateMachine.OnStateChanged -= HideBoardOnStateChange;
+    }
+
+    private string GetTurnNumberText(int turnNumber)
+    {
+        string phaseString = ", Phase 1";
+        if (turnNumber % 2 == 0)
+        {
+            phaseString = ", Phase 2";
+        }
+        return "Turn : " + ((turnNumber - 1)/ 2 + 1).ToString() + phaseString;
     }
 
     private void OnUnitMoved()
     {
         CreateBoard();
-        TurnNumber = _virtualBoards.Count - 1;
+        TurnNumber = _virtualBoards.Count;
     }
 
-    private void OnUnitPlaced()
+    private void OnUnitPlaced(Unit unit)
+    {
+        if (unit.UnitData.IsKing)
+            return;
+        CreateBoard();
+        TurnNumber = _virtualBoards.Count;
+    }
+
+    private void OnShopPhaseSkipped()
     {
         CreateBoard();
-        TurnNumber = _virtualBoards.Count - 1;
+        TurnNumber = _virtualBoards.Count;
     }
 
     public void GetLastBoard()
     {
         Board.Instance.gameObject.SetActive(false);
-        TurnNumber = _virtualBoards.Count - 1;
+        TurnNumber = _virtualBoards.Count;
         ShowBoardOnTurn();
     }
 
     public void IncreaseTurnNumber()
     {
-        if (Board.Instance.gameObject.activeInHierarchy && TurnNumber == _virtualBoards.Count - 2)
+        if (Board.Instance.gameObject.activeInHierarchy && TurnNumber == _virtualBoards.Count - 1)
         {
             TurnNumber++;
             HideBoard();
             return;
         }
-        if (TurnNumber < _virtualBoards.Count - 1)
+        if (TurnNumber < _virtualBoards.Count)
         {
             TurnNumber++;
             ShowBoardOnTurn();
@@ -75,9 +101,9 @@ public class BoardVisualizer : MonoBehaviour
 
     public void DecreaseTurnNumber()
     {
-        if (_demoBoard.gameObject.activeInHierarchy == false)
+        if (_demoBoard.gameObject.activeInHierarchy == false && TurnNumber > 1)
         {
-            TurnNumber = _virtualBoards.Count - 1;
+            TurnNumber = _virtualBoards.Count;
         }
         if (TurnNumber > 1)
         {
@@ -88,7 +114,7 @@ public class BoardVisualizer : MonoBehaviour
 
     public void GoToLastMove()
     {
-        TurnNumber = _virtualBoards.Count - 1;
+        TurnNumber = _virtualBoards.Count;
         if (Board.Instance.gameObject.activeInHierarchy)
         {
             HideBoard();
@@ -101,8 +127,33 @@ public class BoardVisualizer : MonoBehaviour
         if (_demoBoard.gameObject.activeInHierarchy == false)
             OnBoardCreated?.Invoke();
         _demoBoard.gameObject.SetActive(true);
-        VisualizeBoard(_virtualBoards[TurnNumber]);
-        
+        VisualizeBoard(_virtualBoards[TurnNumber - 1]);
+        ShowDestroyedAndTargetedTiles();
+    }
+
+    private void ShowDestroyedAndTargetedTiles()
+    {
+        foreach (var target in _targetedTiles)
+        {
+            Destroy(target);
+        }
+        _targetedTiles.Clear();
+        foreach (var destroyedTile in _destroyedTiles)
+            Destroy(destroyedTile);
+        _destroyedTiles.Clear();
+        foreach (var tile in _virtualBoards[TurnNumber - 1].TileArray)
+        {
+            if (tile.IsBlocked)
+            {
+                var destroyedTile = Instantiate(_destroyedTile, Board.Instance.GetTileAtPosition(tile.TilePosition()).transform.position, Quaternion.identity);
+                _destroyedTiles.Add(destroyedTile);
+            }
+            else if (tile.IsTargeted)
+            {
+                var targetedTile = Instantiate(_tileTarget, Board.Instance.GetTileAtPosition(tile.TilePosition()).transform.position, Quaternion.identity);
+                _targetedTiles.Add(targetedTile);
+            }
+        }
     }
 
     private void HideBoard()
@@ -111,6 +162,13 @@ public class BoardVisualizer : MonoBehaviour
         _demoBoard.gameObject.SetActive(false);
         Board.Instance.gameObject.SetActive(true);
         OnBoardHidden?.Invoke();
+    }
+
+    private void HideBoardOnStateChange(GameState state)
+    {
+        _demoBoard.ClearBoard();
+        _demoBoard.gameObject.SetActive(false);
+        Board.Instance.gameObject.SetActive(true);
     }
 
     private void CreateBoard()

@@ -62,3 +62,8 @@ public abstract class RangedUnitData : UnitData
         return moves;
     }
 }
+
+public interface IDontCaptureOnMovement
+{
+
+}

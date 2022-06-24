@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Shogun
   m_EditorClassIdentifier: 
   Unit: {fileID: 8736496532122307407, guid: 216216e1c9fa984439bb57dfa61d2b5c, type: 3}
-  PlayerSprite: {fileID: -4949298743842785694, guid: 2b3036bb5d001754ab20e9756803fa60, type: 3}
-  EnemySprite: {fileID: -4829261879945753929, guid: 2b3036bb5d001754ab20e9756803fa60, type: 3}
-  Moveset: {fileID: -5730226083103279274, guid: 4ba62b8f8bece4542930492065be0339, type: 3}
+  PlayerSprite: {fileID: -8550941285020985894, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  EnemySprite: {fileID: 7658753223727061331, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  Moveset: {fileID: -7808265087032644363, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
+  UnitClass: 2
   Cost: 100
   UnitName: Shogun
   IsKing: 1
+  IsExplosive: 0
+  _additionalMovementTiles: []
+  _additionalPlacementTiles: []

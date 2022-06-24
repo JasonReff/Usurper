@@ -47,4 +47,11 @@ public class CustomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         _image.sprite = _upSprite;
         OnClick?.Invoke();
     }
+
+    public void SetColors(CardColorSet colorSet)
+    {
+        _image.sprite = colorSet.ButtonUp;
+        _upSprite = colorSet.ButtonUp;
+        _downSprite = colorSet.ButtonDown;
+    }
 }

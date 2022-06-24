@@ -31,10 +31,10 @@ public class Move
         if (_currentTile != null)
             _currentTile.UnitOnTile = null;
         var otherUnit = _newTile.UnitOnTile;
-        if (otherUnit != null)
-            unit.CaptureUnit(otherUnit as Unit);
         _newTile.UnitOnTile = unit;
         unit.Tile = _newTile as BoardTile;
+        if (otherUnit != null)
+            unit.CaptureUnit(otherUnit as Unit);
     }
 
     public void RangedAttack(Unit unit)

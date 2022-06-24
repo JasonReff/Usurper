@@ -9,7 +9,7 @@ public class SinglePlayerRunEnd : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _deckList;
     [SerializeField] private PlayerDeck _deck;
 
-    private void Awake()
+    public void SetString()
     {
         _deckList.text = BuildCardString();
     }
