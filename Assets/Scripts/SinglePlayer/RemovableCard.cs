@@ -6,7 +6,22 @@ public class RemovableCard : MonoBehaviour
 {
     private UnitData _unitData;
     [SerializeField] private TextMeshProUGUI _unitName;
-    public static Action<UnitData> OnCardSelected;
+    [SerializeField] private GameObject _highlight;
+    public static Action<RemovableCard> OnCardSelected;
+
+    public UnitData UnitData { get => _unitData; }
+
+    private void OnEnable()
+    {
+        OnCardSelected += SetHighlight;
+        CardReward.OnCardSelected += RemoveHighlight;
+    }
+
+    private void OnDisable()
+    {
+        OnCardSelected -= SetHighlight;
+        CardReward.OnCardSelected -= RemoveHighlight;
+    }
     public void SetUnit(UnitData unitData)
     {
         _unitData = unitData;
@@ -15,6 +30,18 @@ public class RemovableCard : MonoBehaviour
 
     public void SelectUnit()
     {
-        OnCardSelected?.Invoke(_unitData);
+        OnCardSelected?.Invoke(this);
+    }
+
+    private void SetHighlight(RemovableCard removableCard)
+    {
+        if (removableCard != this)
+            _highlight.SetActive(false);
+        else _highlight.SetActive(true);
+    }
+
+    private void RemoveHighlight(CardReward cardReward)
+    {
+        _highlight.SetActive(false);
     }
 }

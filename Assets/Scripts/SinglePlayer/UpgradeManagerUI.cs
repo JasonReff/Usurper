@@ -43,6 +43,7 @@ public class UpgradeManagerUI : MonoBehaviour
         _chosenUpgrade.StartUpgrade();
         _gameCompleteManager.ActivePanel = _roundWonPanel;
         _roundWonPanel.SetActive(true);
+        _roundWonPanel.GetComponent<SinglePlayerRoundEnd>().SetCards();
         gameObject.SetActive(false);
     }
 }

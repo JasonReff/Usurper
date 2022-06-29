@@ -8,10 +8,12 @@ public class SinglePlayerRunEnd : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _deckList;
     [SerializeField] private PlayerDeck _deck;
+    [SerializeField] private PlayerStats _stats;
 
     public void SetString()
     {
         _deckList.text = BuildCardString();
+        _stats.SinglePlayerRunsWon++;
     }
 
     private string BuildCardString()

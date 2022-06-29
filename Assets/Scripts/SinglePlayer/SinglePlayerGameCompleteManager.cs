@@ -6,6 +6,7 @@ public class SinglePlayerGameCompleteManager : GameCompleteManager
     [SerializeField] private GameObject _roundWonPanel, _roundLostPanel, _runWonPanel, _bossDefeatedPanel;
     public GameObject ActivePanel;
     [SerializeField] private SinglePlayerStats _stats;
+    [SerializeField] private PlayerStats _playerStats;
     protected override IEnumerator ResultScreenCoroutine(UnitFaction faction)
     {
         yield return new WaitForSeconds(2);
@@ -38,6 +39,7 @@ public class SinglePlayerGameCompleteManager : GameCompleteManager
         {
             ActivePanel = _roundLostPanel;
             _roundLostPanel.SetActive(true);
+            _playerStats.SinglePlayerRunsLost++;
         }
     }
 

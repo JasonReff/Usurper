@@ -9,7 +9,18 @@ public class SinglePlayerUpgradeUI : MonoBehaviour
     [SerializeField] private SinglePlayerUpgrade _upgrade;
     [SerializeField] private Image _upgradeImage;
     [SerializeField] private TextMeshProUGUI _nameTextbox;
+    [SerializeField] private GameObject _highlight;
     public static Action<SinglePlayerUpgrade> OnUpgradeChosen;
+
+    private void OnEnable()
+    {
+        OnUpgradeChosen += SetHighlight;
+    }
+
+    private void OnDisable()
+    {
+        OnUpgradeChosen -= SetHighlight;
+    }
 
     public void SetUpgrade(SinglePlayerUpgrade upgrade)
     {
@@ -21,5 +32,12 @@ public class SinglePlayerUpgradeUI : MonoBehaviour
     public void UpgradeSelected()
     {
         OnUpgradeChosen?.Invoke(_upgrade);
+    }
+
+    private void SetHighlight(SinglePlayerUpgrade upgrade)
+    {
+        if (upgrade != this)
+            _highlight.SetActive(false);
+        else _highlight.SetActive(true);
     }
 }

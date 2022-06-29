@@ -55,17 +55,17 @@ public class SinglePlayerRoundEnd : MonoBehaviour
         }
     }
 
-    private void SelectUnit(UnitData unitData)
+    private void SelectUnit(CardReward reward)
     {
-        _selectedCard = unitData;
+        _selectedCard = reward.UnitData;
         _confirmButton.SetActive(true);
         _cardAdded = true;
         _cardRemoved = false;
     }
 
-    private void SelectUnitToRemove(UnitData unitData)
+    private void SelectUnitToRemove(RemovableCard card)
     {
-        _selectedCard = unitData;
+        _selectedCard = card.UnitData;
         _confirmButton.SetActive(true);
         _cardAdded = false;
         _cardRemoved = true;
