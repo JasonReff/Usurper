@@ -903,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6912650694038128554, guid: 4fb3171e25020a34e994aaaa74b23abb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5025.266
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6912650694038128554, guid: 4fb3171e25020a34e994aaaa74b23abb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2096,6 +2096,9 @@ MonoBehaviour:
   _money: 3
   _unit: {fileID: 0}
   SelectedUnit: {fileID: 0}
+  SelectedCard:
+    UnitData: {fileID: 0}
+    NumberOfUses: 0
 --- !u!114 &1054236210
 MonoBehaviour:
   m_ObjectHideFlags: 0
