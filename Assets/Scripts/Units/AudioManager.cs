@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
         BoardTile.OnUnitPlaced -= PlayPlacementSound;
         AudioSettings.OnAudioSettingsChanged -= AdjustVolume;
     }
+
     private void PlayMoveSound()
     {
         PlaySoundEffect(_unitMovedClip);
