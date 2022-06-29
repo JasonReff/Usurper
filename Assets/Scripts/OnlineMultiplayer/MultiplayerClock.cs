@@ -6,7 +6,7 @@ public class MultiplayerClock : MonoBehaviour
     [SerializeField] private int _startingTime = 600;
     [SerializeField] private UnitFaction _faction;
     private int _currentTime;
-    private bool _isClockOn;
+    private bool _isClockOn, _isClockStarted;
     private Coroutine _clock;
 
     public int CurrentTime { get => _currentTime; }
@@ -31,12 +31,11 @@ public class MultiplayerClock : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        StartClock();
     }
 
     private void OnStateChange(GameState state)
     {
-        if (state.GetType() != typeof(PlayerWonState) && state.GetType() != typeof(PlayerLeftState) && state.Faction == _faction)
+        if (state.GetType() != typeof(StartGameState) && state.GetType() != typeof(PlayerWonState) && state.GetType() != typeof(PlayerLeftState) && state.Faction == _faction)
         {
             ResumeClock();
         }
@@ -51,16 +50,18 @@ public class MultiplayerClock : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        StartClock();
     }
 
     private void StartClock()
     {
         _currentTime = _startingTime;
+        _isClockStarted = true;
     }
 
     private void ResumeClock()
     {
+        if (_isClockStarted == false)
+            StartClock();
         if (_isClockOn)
             return;
         _isClockOn = true;

@@ -92,7 +92,6 @@ MonoBehaviour:
   _image: {fileID: 4877407122587857725}
   _downSprite: {fileID: -896745992424258005, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   _upSprite: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
-  _colors: {fileID: 11400000, guid: bfe651f20ecc6a94b93061c36cb1b4fa, type: 2}
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -155,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

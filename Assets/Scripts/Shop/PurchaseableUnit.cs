@@ -79,7 +79,6 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks
         _cost.sprite = cardColorSet.Cost;
         _purchase.SetColors(cardColorSet);
         _card.sprite = _cardSprite;
-
     }
 
     public virtual void SelectUnit()

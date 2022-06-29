@@ -47,6 +47,11 @@ MonoBehaviour:
   - OnUnitPlacedRPC
   - OnUnitPlacedCallback
   - OnSettingsReadCallback
+  - OvertimeChosenRPC
+  - OnOvertimeEffectRPC
+  - OnTextDisplayedRPC
+  - OnTilesChosenRPC
+  - OnTileTextUpdatedRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

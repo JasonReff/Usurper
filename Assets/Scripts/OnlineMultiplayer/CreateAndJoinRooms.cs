@@ -83,4 +83,14 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.Disconnect();
     }
+
+    public override void OnLeftRoom()
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+    }
 }

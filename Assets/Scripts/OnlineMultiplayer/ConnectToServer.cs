@@ -10,6 +10,11 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void Connect()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            _loader.LoadScene(_lobbyName);
+            return;
+        }
         PhotonNetwork.ConnectUsingSettings();
     }
 

@@ -1,19 +1,20 @@
-﻿using System.Linq;
+﻿using Photon.Pun;
+using System.Linq;
 using UnityEngine;
 
-public class KingCapturedManager : MonoBehaviour
+public class KingCapturedManager : MonoBehaviourPunCallbacks
 {
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        KingUnit.OnKingCaptured += CheckForLivingKings;
+        Board.OnUnitRemoved += CheckForLivingKings;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        KingUnit.OnKingCaptured -= CheckForLivingKings;
+        Board.OnUnitRemoved -= CheckForLivingKings;
     }
 
-    private void CheckForLivingKings(KingUnit king)
+    protected virtual void CheckForLivingKings(Unit unit)
     {
         if (!Board.Instance.PlayerUnits.Any(t => t.UnitData.IsKing))
         {

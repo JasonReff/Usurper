@@ -18,6 +18,7 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
 
     [SerializeField] private BoardTile[] tileArray;
     public static Action<Unit> OnUnitPlaced;
+    public static Action<Unit> OnUnitRemoved;
 
     public BoardTile[] TileArray { get => tileArray; set => tileArray = value; }
 
@@ -63,6 +64,7 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
         if (unit.Faction == UnitFaction.Player)
             PlayerUnits.Remove(unit);
         else EnemyUnits.Remove(unit);
+        OnUnitRemoved?.Invoke(unit);
     }
 
     public void ClearBoard()
