@@ -2,7 +2,7 @@
 
 public class DrawPileUI : CardPileUI
 {
-    protected override List<UnitData> GetCards()
+    protected override List<UnitCard> GetCards()
     {
         return _deck.DrawPile;
     }

@@ -33,6 +33,6 @@ public class SinglePlayerRunEnd : MonoBehaviour
     private List<UnitData> GetCards()
     {
         _deck.ShuffleHandAndDiscardIntoDrawPile();
-        return _deck.DrawPile;
+        return _deck.DeckData;
     }
 }

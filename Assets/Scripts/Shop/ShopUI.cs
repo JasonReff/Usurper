@@ -55,10 +55,12 @@ public class ShopUI : MonoBehaviour
         UpdatePurchaseButtons();
     }
 
-    public virtual void ShowCards(List<UnitData> units, UnitFaction faction)
+    public virtual void ShowCards(List<UnitCard> units, UnitFaction faction)
     {
         for (int i = 0; i < 3; i++)
         {
+            if (i >= units.Count)
+                return;
             var unit = units[i];
             var card = Instantiate(_cardPrefab, _cardParent);
             card.transform.localPosition = _cardPositions[i];

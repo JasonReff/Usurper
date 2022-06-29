@@ -170,7 +170,7 @@ public class EnemyAIManager : CharacterManager
         var cardsInHand = _shop.GetPurchaseableCardsInHand();
         var numberOfPawns = Board.Instance.EnemyUnits.Where(t => _pool.PawnPool.Contains(t.UnitData)).Count();
         if (numberOfPawns >= _maximumPawns && _maximumPawns != 0)
-            cardsInHand.RemoveAll(t => _pool.PawnPool.Contains(t));
+            cardsInHand.RemoveAll(t => _pool.PawnPool.Contains(t.UnitData));
         var boards = new List<VirtualBoard>();
         if (cardsInHand.Count < 1)
         {
@@ -180,7 +180,9 @@ public class EnemyAIManager : CharacterManager
         }
         foreach (var card in cardsInHand)
         {
-            List<VirtualBoard> virtualBoards = currentBoardState.GetPossibleBoardsAfterUnitPlacement(card.Unit, _faction, currentBoardState);
+            List<VirtualBoard> virtualBoards = currentBoardState.GetPossibleBoardsAfterUnitPlacement(card.UnitData.Unit, _faction, currentBoardState);
+            foreach (var board in virtualBoards)
+                (board.Move as UnitPlacement).Card = card;
             if (virtualBoards == null)
                 return;
             boards.AddRange(virtualBoards);
@@ -222,6 +224,7 @@ public class EnemyAIManager : CharacterManager
         else
         {
             _shop.SelectedUnit = (_chosenMove as UnitPlacement).Unit.UnitData;
+            _shop.SelectedCard = (_chosenMove as UnitPlacement).Card;
         }
         var tile = Board.Instance.GetTileAtPosition(_chosenMove.NewTile.TilePosition());
         _shop.PurchaseAndPlaceUnit(tile);

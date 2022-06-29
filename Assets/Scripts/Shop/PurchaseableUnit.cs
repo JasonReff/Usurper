@@ -7,15 +7,16 @@ using UnityEngine.UI;
 public class PurchaseableUnit : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject _purchaseButton, _highlight;
-    [SerializeField] private Image _card, _icon, _moveset, _cost;
+    [SerializeField] private Image _card, _icon, _moveset, _cost, _usesImage;
     [SerializeField] private CustomButton _purchase;
     private Sprite _cardSprite;
-    [SerializeField] private TextMeshProUGUI _costTextbox, _nameTextbox;
+    [SerializeField] private TextMeshProUGUI _costTextbox, _nameTextbox, _usesTextbox;
     [SerializeField] private CardColors _cardColors;
     [SerializeField] private Color _whiteTextColor, _blackTextColor;
     public UnitData Data;
+    public UnitCard Card;
     public Unit Unit;
-    public int Cost;
+    public int Cost, Uses;
 
     public Sprite GetUnitSprite { get => _icon.sprite; }
     
@@ -34,19 +35,22 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks
         BoardVisualizer.OnBoardCreated -= ClearHighlight;
     }
 
-    public void LoadUnitData(UnitData data, UnitFaction faction)
+    public void LoadUnitData(UnitCard card, UnitFaction faction)
     {
-        Data = data;
+        Data = card.UnitData;
+        Card = card;
         if (faction == UnitFaction.Player)
-            _icon.sprite = data.PlayerSprite;
+            _icon.sprite = card.UnitData.PlayerSprite;
         else
-            _icon.sprite = data.EnemySprite;
-        LoadCardSprite(faction, data.UnitClass);
-        _moveset.sprite = data.Moveset;
-        Cost = data.Cost;
+            _icon.sprite = card.UnitData.EnemySprite;
+        LoadCardSprite(faction, card.UnitData.UnitClass);
+        _moveset.sprite = card.UnitData.Moveset;
+        Cost = card.UnitData.Cost;
+        Uses = card.NumberOfUses;
         _costTextbox.text = Cost.ToString();
-        _nameTextbox.text = data.UnitName;
-        Unit = data.Unit;
+        _nameTextbox.text = card.UnitData.UnitName;
+        _usesTextbox.text = Uses.ToString();
+        Unit = card.UnitData.Unit;
     }
 
     public void LoadCardSprite(UnitFaction faction, UnitClass unitClass)
@@ -77,6 +81,7 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks
             _nameTextbox.color = _blackTextColor;
         }
         _cost.sprite = cardColorSet.Cost;
+        _usesImage.sprite = cardColorSet.Cost;
         _purchase.SetColors(cardColorSet);
         _card.sprite = _cardSprite;
     }

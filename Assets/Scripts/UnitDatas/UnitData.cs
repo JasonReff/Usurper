@@ -7,7 +7,7 @@ public class UnitData : ScriptableObject
     public Unit Unit;
     public Sprite PlayerSprite, EnemySprite, Moveset;
     public UnitClass UnitClass;
-    public int Cost;
+    public int Cost, StartingUses;
     public string UnitName;
     public bool IsKing, IsExplosive;
 
@@ -129,5 +129,18 @@ public class UnitData : ScriptableObject
                 moves.Add(move);
         }
         return moves;
+    }
+}
+
+[System.Serializable]
+public class UnitCard
+{
+    public UnitData UnitData;
+    public int NumberOfUses;
+
+    public UnitCard(UnitData data)
+    {
+        UnitData = data;
+        NumberOfUses = data.StartingUses;
     }
 }

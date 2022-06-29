@@ -18,6 +18,7 @@ MonoBehaviour:
   Moveset: {fileID: -4255078373158922533, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
   UnitClass: 2
   Cost: 1
+  StartingUses: 3
   UnitName: Copper
   IsKing: 0
   IsExplosive: 0

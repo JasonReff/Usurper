@@ -18,6 +18,7 @@ MonoBehaviour:
   Moveset: {fileID: -7752005214759481794, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
   UnitClass: 3
   Cost: 1
+  StartingUses: 3
   UnitName: Peasant
   IsKing: 0
   IsExplosive: 0

@@ -18,6 +18,7 @@ MonoBehaviour:
   Moveset: {fileID: -5764629792882587835, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
   UnitClass: 3
   Cost: 2
+  StartingUses: 2
   UnitName: Ranger
   IsKing: 0
   IsExplosive: 0

@@ -6,6 +6,7 @@ public class EnemyShopManager : ShopManager
 {
     public static Action EnemyShopPhaseSkipped;
     public UnitData SelectedUnit;
+    public UnitCard SelectedCard;
 
     public void SetKing(KingUnit king)
     {
@@ -27,25 +28,27 @@ public class EnemyShopManager : ShopManager
 
     private void SelectRandomCard()
     {
-        var cards = _deck.Hand.Where(t => t.Cost <= _money).ToList();
+        var cards = _deck.Hand.Where(t => t.UnitData.Cost <= _money).ToList();
         if (cards.Count > 0)
         {
             var unitPurchased = cards.Rand();
-            SelectedUnit = unitPurchased;
+            SelectedCard = unitPurchased;
+            SelectedUnit = unitPurchased.UnitData;
         }
         else
             SkipShopPhase();
     }
 
-    public List<UnitData> GetPurchaseableCardsInHand()
+    public List<UnitCard> GetPurchaseableCardsInHand()
     {
-        var cards = _deck.Hand.Where(t => t.Cost <= _money).ToList();
+        var cards = _deck.Hand.Where(t => t.UnitData.Cost <= _money).ToList();
         return cards;
     }
 
     protected override void PurchaseUnit()
     {
         _money -= SelectedUnit.Cost;
+        SelectedCard.NumberOfUses--;
     }
 
     public override void PurchaseAndPlaceUnit(BoardTile tile)

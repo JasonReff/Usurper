@@ -18,6 +18,7 @@ MonoBehaviour:
   Moveset: {fileID: 1072721463759228278, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
   UnitClass: 1
   Cost: 2
+  StartingUses: 2
   UnitName: Knight
   IsKing: 0
   IsExplosive: 0

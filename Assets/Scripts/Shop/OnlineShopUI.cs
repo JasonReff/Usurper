@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnlineShopUI : ShopUI
 {
-    public override void ShowCards(List<UnitData> units, UnitFaction faction)
+    public override void ShowCards(List<UnitCard> units, UnitFaction faction)
     {
         for (int i = 0; i < 3; i++)
         {

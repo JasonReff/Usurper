@@ -144,6 +144,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
     protected virtual void PurchaseUnit()
     {
         _money -= _unit.Cost;
+        _unit.Card.NumberOfUses--;
     }
 
     public virtual void SkipShopPhase()

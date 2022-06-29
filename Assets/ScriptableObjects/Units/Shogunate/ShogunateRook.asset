@@ -18,6 +18,7 @@ MonoBehaviour:
   Moveset: {fileID: 203234389457235373, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
   UnitClass: 2
   Cost: 3
+  StartingUses: 2
   UnitName: Rook
   IsKing: 0
   IsExplosive: 0

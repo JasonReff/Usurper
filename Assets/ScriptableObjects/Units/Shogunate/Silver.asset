@@ -18,6 +18,7 @@ MonoBehaviour:
   Moveset: {fileID: -601489954836709543, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
   UnitClass: 2
   Cost: 2
+  StartingUses: 2
   UnitName: Silver
   IsKing: 0
   IsExplosive: 0

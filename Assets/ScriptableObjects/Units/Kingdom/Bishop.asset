@@ -18,6 +18,7 @@ MonoBehaviour:
   Moveset: {fileID: 5420169235323316887, guid: ebf93a6b94d788a40b89fb960319245a, type: 3}
   UnitClass: 1
   Cost: 2
+  StartingUses: 2
   UnitName: Bishop
   IsKing: 0
   IsExplosive: 0
