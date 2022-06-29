@@ -11,6 +11,7 @@ public abstract class OvertimeTileDestroyer : MonoBehaviour
 
     public string OvertimeName { get => _overtimeName; }
     public int ChooseDelay { get => _chooseDelay; }
+    public List<BoardTile> TilesToBeDestroyed { get => _tilesToBeDestroyed; }
 
     public virtual void ChooseTiles()
     {
@@ -22,6 +23,26 @@ public abstract class OvertimeTileDestroyer : MonoBehaviour
         }
     }
 
+    public void SetTiles(List<Vector2> tilePositions)
+    {
+        foreach (var position in tilePositions)
+        {
+            var tile = Board.Instance.GetTileAtPosition(position);
+            _tilesToBeDestroyed.Add(tile);
+            tile.IsTargeted = true;
+            var target = Instantiate(_tileTargetPrefab, tile.transform.position, Quaternion.identity, tile.transform);
+            _tileTargets.Add(target);
+        }
+    }
+
+    public List<Vector2> GetTilePositions()
+    {
+        var tilePositions = new List<Vector2>();
+        foreach (var tile in _tilesToBeDestroyed)
+            tilePositions.Add(tile.TilePosition());
+        return tilePositions;
+    }
+
     public void DestroyTiles()
     {
         foreach (var tile in _tilesToBeDestroyed)
@@ -31,6 +52,7 @@ public abstract class OvertimeTileDestroyer : MonoBehaviour
                 unit.TriggerUnitDeath();
             Instantiate(_destroyedTilePrefab, tile.transform.position, Quaternion.identity, tile.transform);
             tile.IsBlocked = true;
+            tile.IsTargeted = false;
         }
         foreach (var target in _tileTargets)
             Destroy(target);

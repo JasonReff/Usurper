@@ -7,11 +7,13 @@ public class OvertimeTextUI : MonoBehaviour
     private void OnEnable()
     {
         BoardTile.OnMouseOver += ShowOvertimeText;
+        BackgroundHover.OnBackgroundHover += HideText;
     }
 
     private void OnDisable()
     {
         BoardTile.OnMouseOver -= ShowOvertimeText;
+        BackgroundHover.OnBackgroundHover -= HideText;
     }
 
     private void ShowOvertimeText(BoardTile tile)
@@ -21,5 +23,10 @@ public class OvertimeTextUI : MonoBehaviour
             _textbox.enabled = true;
         }
         else _textbox.enabled = false;
+    }
+
+    private void HideText()
+    {
+        _textbox.enabled = false;
     }
 }

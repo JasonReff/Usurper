@@ -5,11 +5,19 @@ public class OvertimeShift : OvertimeTileDestroyer
 {
     private Wall _selectedWall;
     private bool _wallChosen;
+
+    public int SelectedWall { get => (int)_selectedWall; }
     public override void ChooseTiles()
     {
         SelectWall();
         GetClosestEdge();
         base.ChooseTiles();
+    }
+
+    public void SelectWall(int wall)
+    {
+        _selectedWall = (Wall)wall;
+        _wallChosen = true;
     }
 
     private void SelectWall()
