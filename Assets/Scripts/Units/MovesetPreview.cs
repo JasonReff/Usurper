@@ -15,11 +15,13 @@ public class MovesetPreview : MonoBehaviour
     private void OnEnable()
     {
         BoardTile.OnMouseOver += ShowPreview;
+        BackgroundHover.OnBackgroundHover += HidePreview;
     }
 
     private void OnDisable()
     {
         BoardTile.OnMouseOver -= ShowPreview;
+        BackgroundHover.OnBackgroundHover -= HidePreview;
     }
 
     private void HidePreview()

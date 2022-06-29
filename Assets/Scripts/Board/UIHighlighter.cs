@@ -11,6 +11,7 @@ public class UIHighlighter : MonoBehaviour
         ShopManager.OnShopPhaseSkipped += RemoveAllHighlights;
         Unit.OnUnitMoved += RemoveAllHighlights;
         BoardTile.OnUnitPlaced += RemoveAllHighlights;
+        BoardTile.OnTileSelected += RemoveHighlightsOnEmptyTileSelected;
         BoardVisualizer.OnBoardCreated += RemoveAllHighlights;
     }
 
@@ -21,6 +22,7 @@ public class UIHighlighter : MonoBehaviour
         ShopManager.OnShopPhaseSkipped -= RemoveAllHighlights;
         Unit.OnUnitMoved -= RemoveAllHighlights;
         BoardTile.OnUnitPlaced -= RemoveAllHighlights;
+        BoardTile.OnTileSelected -= RemoveHighlightsOnEmptyTileSelected;
         BoardVisualizer.OnBoardCreated -= RemoveAllHighlights;
     }
 
@@ -65,6 +67,14 @@ public class UIHighlighter : MonoBehaviour
         foreach (var tile in Board.Instance.TileArray)
         {
             tile.ShowHighlight(false, _moveColor);
+        }
+    }
+
+    private void RemoveHighlightsOnEmptyTileSelected(BoardTile boardTile)
+    {
+        if (boardTile.UnitOnTile == null)
+        {
+            RemoveAllHighlights();
         }
     }
 }

@@ -991,7 +991,7 @@ Canvas:
   m_GameObject: {fileID: 684112028}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1706856305}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -1628,8 +1628,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -459, y: -70.604996}
-  m_SizeDelta: {x: 90.14, y: 31.21}
+  m_AnchoredPosition: {x: -468.03174, y: -73.73213}
+  m_SizeDelta: {x: 120.3869, y: 41.6827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181593122
 MonoBehaviour:
@@ -1678,7 +1678,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.35
+  m_fontSize: 35.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2660,7 +2660,7 @@ Canvas:
   m_GameObject: {fileID: 1357386475}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1706856305}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2900,6 +2900,7 @@ GameObject:
   - component: {fileID: 1494060555}
   - component: {fileID: 1494060557}
   - component: {fileID: 1494060556}
+  - component: {fileID: 1494060558}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2964,6 +2965,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494060554}
   m_CullTransparentMesh: 1
+--- !u!114 &1494060558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494060554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a6d3b1a73472a45a714ea9dcba52cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1496679372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3259,7 +3272,6 @@ GameObject:
   - component: {fileID: 1706856305}
   - component: {fileID: 1706856307}
   - component: {fileID: 1706856306}
-  - component: {fileID: 1706856309}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3294,7 +3306,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 6.34
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3348,26 +3360,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1706856309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706856304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 64
-  m_RefResolutionX: 1280
-  m_RefResolutionY: 720
-  m_UpscaleRT: 0
-  m_PixelSnapping: 1
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!1 &1788753911
 GameObject:
   m_ObjectHideFlags: 0
@@ -4378,6 +4370,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1706856305}
+    - target: {fileID: 8083817637501587048, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8083817637501587051, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
@@ -4502,7 +4498,7 @@ PrefabInstance:
       objectReference: {fileID: 1340212314}
     - target: {fileID: 1569889966487724168, guid: 4fb3171e25020a34e994aaaa74b23abb, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1569889966487724168, guid: 4fb3171e25020a34e994aaaa74b23abb, type: 3}
       propertyPath: m_UseSpriteMesh

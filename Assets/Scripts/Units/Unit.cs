@@ -85,7 +85,6 @@ public class Unit : MonoBehaviour, IUnit
 
     public void CaptureUnit(Unit unit)
     {
-        //StartCoroutine(unit.UnitDeath());
         unit.StartCoroutine(unit.UnitDeath());
     }
 

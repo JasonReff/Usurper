@@ -1270,6 +1270,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 571246939}
+    - target: {fileID: 8083817637501587048, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8083817637501587051, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
@@ -1397,7 +1401,6 @@ GameObject:
   - component: {fileID: 571246939}
   - component: {fileID: 571246942}
   - component: {fileID: 571246941}
-  - component: {fileID: 571246940}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1432,7 +1435,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.33
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1448,26 +1451,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &571246940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571246938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 64
-  m_RefResolutionX: 1280
-  m_RefResolutionY: 720
-  m_UpscaleRT: 0
-  m_PixelSnapping: 1
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!114 &571246941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,7 +1487,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &673167406
 PrefabInstance:
@@ -2771,7 +2754,7 @@ Canvas:
   m_GameObject: {fileID: 1370303111}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 571246939}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -3689,6 +3672,7 @@ GameObject:
   - component: {fileID: 1674548022}
   - component: {fileID: 1674548024}
   - component: {fileID: 1674548023}
+  - component: {fileID: 1674548025}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -3753,6 +3737,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674548021}
   m_CullTransparentMesh: 1
+--- !u!114 &1674548025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674548021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a6d3b1a73472a45a714ea9dcba52cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729920069
 GameObject:
   m_ObjectHideFlags: 0
@@ -4516,7 +4512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6402124025699049745, guid: dd0309c0670c523428c630422c8e35c9, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6402124025699049745, guid: dd0309c0670c523428c630422c8e35c9, type: 3}
       propertyPath: m_LocalPosition.x
