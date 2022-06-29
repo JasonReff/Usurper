@@ -9120,6 +9120,10 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8083817637501587048, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8083817637501587051, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
