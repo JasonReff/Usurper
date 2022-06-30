@@ -138,7 +138,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         }
         if (_previousUnitOnTile?.Faction != _unitMoved.Faction)
         {
-            if (_unitMoved.CountAttackingEnemyUnits() < _previousUnitOnTile.CountDefendingUnits())
+            if (_unitMoved.CountAttackingEnemyUnits() < _unitMoved.CountDefendingUnits())
                 return true;
         }
         return false;
