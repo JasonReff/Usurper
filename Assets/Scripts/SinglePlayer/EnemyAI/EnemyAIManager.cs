@@ -135,7 +135,6 @@ public class EnemyAIManager : CharacterManager
         var index = UnityEngine.Random.Range(0, boards.Count);
         if (index > _worstBoard)
             index = _worstBoard;
-        Debug.Log($"Blunder: {index}");
         return boards[index];
     }
 

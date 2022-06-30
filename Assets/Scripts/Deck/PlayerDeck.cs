@@ -35,12 +35,9 @@ public class PlayerDeck : ScriptableObject
 
     public void ShuffleHandAndDiscardIntoDrawPile()
     {
-        List<UnitCard> handAndDiscard = new List<UnitCard>();
-        handAndDiscard.AddRange(_hand);
         _hand.Clear();
-        handAndDiscard.AddRange(_discardPile);
         _discardPile.Clear();
-        _drawPile.AddRange(handAndDiscard);
+        _drawPile = GetDeckCards();
         var random = new System.Random();
         _drawPile = _drawPile.OrderBy(t => random.Next()).ToList();
     }
@@ -55,7 +52,7 @@ public class PlayerDeck : ScriptableObject
         {
             ReshuffleDeck();
             amount = 3 - amount;
-            if (amount < _drawPile.Count)
+            if (amount > _drawPile.Count)
             {
                 DrawXCards(_drawPile.Count);
                 return;
@@ -102,7 +99,7 @@ public class PlayerDeck : ScriptableObject
         _drawPile.Clear();
         _hand.Clear();
         _discardPile.Clear();
-        _deckData = deck.Deck;
+        _deckData = new List<UnitData>(deck.Deck);
         _drawPile.AddRange(GetDeckCards());
         _king = deck.King;
         SetGold(deck.StartingGold, deck.GoldPerTurn);

@@ -16,7 +16,13 @@ public class EnemyShopManager : ShopManager
     public override void SetupShop()
     {
         Subscribe();
+        GainMoney();
         _deck.DrawUnits();
+    }
+
+    protected override void OnStateChange(GameState state)
+    {
+        
     }
 
     public void SelectRandomShopCard()

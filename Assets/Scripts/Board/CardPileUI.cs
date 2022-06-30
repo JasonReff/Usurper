@@ -43,10 +43,10 @@ public abstract class CardPileUI : MonoBehaviour, IPointerEnterHandler, IPointer
         if (cards.Count == 0)
             return "(Empty)";
         StringBuilder cardString = new StringBuilder();
-        cardString.Append(cards[0].UnitData.UnitName);
+        cardString.Append(cards[0].UnitData.UnitName + " (" + cards[0].NumberOfUses + ")");
         for (int i = 1; i < cards.Count; i++)
         {
-            cardString.Append("\n" + cards[i].UnitData.UnitName);
+            cardString.Append("\n" + cards[i].UnitData.UnitName + " (" + cards[i].NumberOfUses + ")");
         }
         return cardString.ToString();
     }
