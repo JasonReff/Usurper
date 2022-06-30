@@ -20,13 +20,15 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         }
         foreach (var unit in board.PlayerUnits)
         {
-            VirtualUnits.Add(new VirtualUnit(this, unit));
-            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = unit;
+            var newVirtualUnit = new VirtualUnit(this, unit);
+            VirtualUnits.Add(newVirtualUnit);
+            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = newVirtualUnit;
         }
         foreach (var unit in board.EnemyUnits)
         {
-            VirtualUnits.Add(new VirtualUnit(this, unit));
-            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = unit;
+            VirtualUnit newVirtualUnit = new VirtualUnit(this, unit);
+            VirtualUnits.Add(newVirtualUnit);
+            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = newVirtualUnit;
         }
     }
 
@@ -38,8 +40,9 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         }
         foreach (var unit in virtualBoard.VirtualUnits)
         {
-            VirtualUnits.Add(new VirtualUnit(this, unit));
-            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = unit;
+            var newVirtualUnit = new VirtualUnit(this, unit);
+            VirtualUnits.Add(newVirtualUnit);
+            VirtualTiles.First(t => t._tilePosition == unit.Tile.TilePosition()).UnitOnTile = newVirtualUnit;
         }
     }
 
@@ -48,7 +51,11 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         foreach (var tile in board.VirtualTiles)
             VirtualTiles.Add(new VirtualBoardTile(tile, tile.UnitOnTile as VirtualUnit));
         foreach (var virtualUnit in board.VirtualUnits)
-            VirtualUnits.Add(new VirtualUnit(this, virtualUnit));
+        {
+            var newVirtualUnit = new VirtualUnit(this, virtualUnit);
+            VirtualUnits.Add(newVirtualUnit);
+            VirtualTiles.First(t => t._tilePosition == virtualUnit.Tile.TilePosition()).UnitOnTile = newVirtualUnit;
+        }
         _previousUnitOnTile = null;
         if (board.VirtualUnits.Where(t => t.Tile.TilePosition() == move.NewTile.TilePosition()).Count() > 0)
             _previousUnitOnTile = board.VirtualUnits.First(t => t.Tile.TilePosition() == move.NewTile.TilePosition());
@@ -65,7 +72,11 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         foreach (var tile in board.VirtualTiles)
             VirtualTiles.Add(new VirtualBoardTile(tile));
         foreach (var virtualUnit in board.VirtualUnits)
-            VirtualUnits.Add(new VirtualUnit(this, virtualUnit));
+        {
+            var newVirtualUnit = new VirtualUnit(this, virtualUnit);
+            VirtualUnits.Add(newVirtualUnit);
+            VirtualTiles.First(t => t._tilePosition == virtualUnit.Tile.TilePosition()).UnitOnTile = newVirtualUnit;
+        }
         Move = placement;
         var unit = new VirtualUnit(this, placement);
         VirtualUnits.Add(unit);
@@ -111,6 +122,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
             else
                 eval -= unit.Evaluation;
         }
+
         Evaluation = eval;
     }
 

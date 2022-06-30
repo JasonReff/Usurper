@@ -7,6 +7,7 @@ public class SettingsManager : MonoBehaviour
 {
     [SerializeField] private AudioSettings _audioSettings;
     [SerializeField] private Slider _musicSlider, _effectSlider;
+    [SerializeField] private bool _kingCanMoveIntoCheck;
     void Start()
     {
         _musicSlider.value = _audioSettings._musicVolume;
