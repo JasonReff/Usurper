@@ -23,6 +23,7 @@ MonoBehaviour:
   _pool: {fileID: 11400000, guid: dac2eec513f39fd4398264549b0be9ea, type: 2}
   _stats: {fileID: 11400000, guid: 823311c044d5a0d4dbc64f8d41bf20a2, type: 2}
   _specialDeck: {fileID: 11400000, guid: 254be131d7177d140910f3c7f6d710ee, type: 2}
+  _bossName: Monarch
 --- !u!1001 &2050626106340061676
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@ MonoBehaviour:
   _pool: {fileID: 11400000, guid: dac2eec513f39fd4398264549b0be9ea, type: 2}
   _stats: {fileID: 11400000, guid: 823311c044d5a0d4dbc64f8d41bf20a2, type: 2}
   _specialDeck: {fileID: 11400000, guid: 633bb0f5a77d076409ac39966af0a564, type: 2}
+  _bossName: Legion
 --- !u!1001 &3605613836701360377
 PrefabInstance:
   m_ObjectHideFlags: 0

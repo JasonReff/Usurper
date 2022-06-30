@@ -120,7 +120,7 @@ public class VirtualUnit : IUnit
         foreach (var move in allEnemyMoves)
             if (move.NewTile.TilePosition() == Tile.TilePosition())
             {
-                if (UnitData.GetType() == typeof(KingUnitData))
+                if (UnitData.IsKing)
                     _inCheck = true;
                 attackingEnemies++;
             }

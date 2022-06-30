@@ -138,7 +138,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         }
         if (_previousUnitOnTile?.Faction != _unitMoved.Faction)
         {
-            if (_unitMoved.CountAttackingEnemyUnits() == 0)
+            if (_unitMoved.CountAttackingEnemyUnits() < _previousUnitOnTile.CountDefendingUnits())
                 return true;
         }
         return false;
@@ -214,6 +214,15 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
         VirtualUnit placedUnit = boardWithoutSummoningSickness.VirtualUnits.Where(t => t.Tile.TilePosition() == placement.NewTile.TilePosition()).First();
         placedUnit.SummoningSickness = false;
         return placedUnit.CountAttackableEnemyUnits();
+    }
+
+    public int CountEnemyPiecesAttacked()
+    {
+        int enemyPieces = 0;
+        foreach (var unit in VirtualUnits.Where(t => t.Faction == UnitFaction.Player).ToList())
+            if (unit.CountAttackingEnemyUnits() > 0)
+                enemyPieces++;
+        return enemyPieces;
     }
 
     public VirtualBoardTile[] TileArray => VirtualTiles.ToArray();

@@ -67,7 +67,8 @@ public class EnemyAIManager : CharacterManager
 
     protected virtual void Awake()
     {
-        _blunderChance = 0.1f - (0.01f * _stats.Round);
+        _blunderChance = 0.2f - (0.02f * _stats.Round);
+        _worstBoard = 10 - _stats.Round;
     }
 
     private void SetKing(Unit unit)
@@ -97,6 +98,7 @@ public class EnemyAIManager : CharacterManager
             ThenByDescending(t => t.IsCaptureFree()).
             ThenByDescending(t => t.CaptureValue()).
             ThenBy(t => t.IsPieceHanging()).
+            ThenByDescending(t => t.CountEnemyPiecesAttacked()).
             ThenByDescending(t => t.Evaluation).
             ThenBy(t => random.Next()).ToList();
         return reorderedBoards;
