@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0378e10bf25411f4f82cf6ae51236743, type: 3}
+  m_Name: Legion
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 9187025285123999736, guid: e46db2e790f61a9409f3426912c1b478, type: 3}
+  PlayerSprite: {fileID: -8050505381868735831, guid: bdd210043c8ba7041929d75b85de3ff0, type: 3}
+  EnemySprite: {fileID: -8050505381868735831, guid: bdd210043c8ba7041929d75b85de3ff0, type: 3}
+  Moveset: {fileID: 15160405916216954, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
+  UnitClass: 0
+  Cost: 100
+  StartingUses: 0
+  UnitName: Legion
+  IsKing: 1
+  IsExplosive: 0
+  _additionalMovementTiles: []
+  _additionalPlacementTiles: []

@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Unit: {fileID: 8862585788469348290, guid: 016895a8048a7e64ba8007c5a2104cc8, type: 3}
   PlayerSprite: {fileID: 6851498383279292439, guid: b7525f5e9cdcb9844802373f86ba552d, type: 3}
-  EnemySprite: {fileID: -3476795582854192428, guid: b7525f5e9cdcb9844802373f86ba552d, type: 3}
+  EnemySprite: {fileID: -7593777287308456034, guid: bdd210043c8ba7041929d75b85de3ff0, type: 3}
   Moveset: {fileID: 361631259395999599, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
+  UnitClass: 0
   Cost: 100
+  StartingUses: 0
   UnitName: Monarch
   IsKing: 1
+  IsExplosive: 0
   _additionalMovementTiles: []
   _additionalPlacementTiles: []
