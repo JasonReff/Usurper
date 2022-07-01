@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PlayerDeck")]
 public class PlayerDeck : ScriptableObject
 {
-    private List<UnitData> _deckData;
+    private List<UnitData> _deckData = new List<UnitData>();
     [SerializeField] private List<UnitCard> _drawPile = new List<UnitCard>(), _discardPile = new List<UnitCard>(), _hand = new List<UnitCard>();
     [SerializeField] private UnitData _king;
     [SerializeField] private int _startingGold;

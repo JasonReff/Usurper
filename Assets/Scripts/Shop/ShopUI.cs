@@ -17,6 +17,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] protected PurchaseableUnit _cardPrefab;
     protected readonly List<PurchaseableUnit> _cardUIs = new List<PurchaseableUnit>();
     private bool _isShopTurn;
+    private bool _isDisabled;
 
     public static Action OnCantAffordPurchase;
     public static Action OnCoinGained;
@@ -34,6 +35,7 @@ public class ShopUI : MonoBehaviour
     {
         BoardVisualizer.OnBoardCreated -= HideShopDuringReview;
         BoardVisualizer.OnBoardHidden -= ShowShopAfterReview;
+        _isDisabled = true;
     }
 
     public void ShowShop()
@@ -71,10 +73,10 @@ public class ShopUI : MonoBehaviour
 
     public void HideCards()
     {
-        if (!gameObject.activeInHierarchy)
-            return;
         for (int i = _cardUIs.Count - 1; i >= 0; i--)
         {
+            if (!_cardUIs[i].gameObject.activeInHierarchy)
+                continue;
             Destroy(_cardUIs[i].gameObject);
             _cardUIs.RemoveAt(i);
         }

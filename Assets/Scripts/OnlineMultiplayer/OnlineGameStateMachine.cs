@@ -1,8 +1,10 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using System;
 
 public class OnlineGameStateMachine : GameStateMachine
 {
+    public static Action OnOnlineStateChanged;
 
     protected override void Start()
     {
@@ -41,11 +43,12 @@ public class OnlineGameStateMachine : GameStateMachine
                 base.ChangeState(new PlayerWonState(Instance, faction));
                 break;
         }
+        OnOnlineStateChanged?.Invoke();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        ChangeState(new PlayerLeftState(Instance, UnitFaction.Player));
+        base.ChangeState(new PlayerLeftState(Instance, UnitFaction.Player));
     }
 }
 

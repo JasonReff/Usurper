@@ -9,14 +9,27 @@ public class CheckUIManager : MonoBehaviour
     private void OnEnable()
     {
         GameStateMachine.OnStateChanged += LookForChecks;
+        OnlineGameStateMachine.OnOnlineStateChanged += LookForChecks;
     }
 
     private void OnDisable()
     {
         GameStateMachine.OnStateChanged -= LookForChecks;
+        OnlineGameStateMachine.OnOnlineStateChanged -= LookForChecks;
     }
 
     private void LookForChecks(GameState state)
+    {
+        if (!_settings.DisplayChecks)
+            return;
+        var currentBoard = new VirtualBoard(Board.Instance);
+        foreach (var unit in currentBoard.VirtualUnits)
+            unit.SummoningSickness = false;
+        currentBoard.CalculateEvaluation();
+        DisplayChecks(currentBoard.KingInCheck);
+    }
+
+    private void LookForChecks()
     {
         if (!_settings.DisplayChecks)
             return;

@@ -65,7 +65,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     public void CancelSearch()
     {
         StopCoroutine(BeginSearchCoroutine());
-        PhotonNetwork.LeaveRoom();
+        if (PhotonNetwork.CurrentRoom != null)
+            PhotonNetwork.LeaveRoom();
     }
 
     private IEnumerator BeginSearchCoroutine()
@@ -84,13 +85,9 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         PhotonNetwork.Disconnect();
     }
 
-    public override void OnLeftRoom()
-    {
-        PhotonNetwork.CurrentRoom.IsOpen = false;
-    }
-
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
     }
 }

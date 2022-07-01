@@ -16,7 +16,7 @@ public class OnlineMultiplayerSettingsReader : MonoBehaviourPunCallbacks
         {
             if (_matchSettings.IsPrivateMatch)
             {
-                this.photonView.RPC("OnSettingsReadCallback", RpcTarget.All, new object[] { _matchSettings.TimePerPlayer});
+                this.photonView.RPC("OnSettingsReadCallback", RpcTarget.All, new object[] { _matchSettings.TimePerPlayer, _matchSettings.IsFactionPreferred, _matchSettings.PreferredFaction});
             }
         }
     }
