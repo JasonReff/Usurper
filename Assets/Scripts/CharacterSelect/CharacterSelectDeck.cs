@@ -33,8 +33,8 @@ public class CharacterSelectDeck : MonoBehaviour, IDragHandler, IBeginDragHandle
     public void OnDrag(PointerEventData eventData)
     {
         var screenPosition = eventData.position;
-        var worldPosition = _main.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 0));
-        transform.position = (Vector2)worldPosition;
+        //var worldPosition = _main.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 0));
+        transform.position = (Vector2)screenPosition;
     }
 
     public virtual void OnEndDrag(PointerEventData eventData)

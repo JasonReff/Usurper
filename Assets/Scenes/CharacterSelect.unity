@@ -654,7 +654,7 @@ PrefabInstance:
     - target: {fileID: 2622675647124239674, guid: a90fc0f578374434684850290a208a43, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8508199058896457970, guid: f1278befa2132774c848293a06c0e3d6, type: 3}
+      objectReference: {fileID: 2236237750552710943, guid: 5561c8ba051346744b8485b4a1f2472a, type: 3}
     - target: {fileID: 2697635433405421343, guid: a90fc0f578374434684850290a208a43, type: 3}
       propertyPath: _deck
       value: 
@@ -1308,7 +1308,7 @@ PrefabInstance:
     - target: {fileID: 2622675647124239674, guid: a90fc0f578374434684850290a208a43, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4949298743842785694, guid: 32495b659a040ed4ab459173a861c053, type: 3}
+      objectReference: {fileID: -8550941285020985894, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
     - target: {fileID: 2697635433405421343, guid: a90fc0f578374434684850290a208a43, type: 3}
       propertyPath: _deck
       value: 
@@ -1805,6 +1805,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148635948}
     m_Modifications:
+    - target: {fileID: 2622675647124239674, guid: a90fc0f578374434684850290a208a43, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6924496338471276188, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
     - target: {fileID: 4354149527709775337, guid: a90fc0f578374434684850290a208a43, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
