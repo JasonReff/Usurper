@@ -4617,8 +4617,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2138838027}
+    - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 387556281}
+    - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Unpause
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083817637631967568, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PauseGame, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8083817637706235161, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
       propertyPath: m_IsActive
@@ -4627,6 +4655,10 @@ PrefabInstance:
     - target: {fileID: 8083817638580894405, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 387556281}
+    - target: {fileID: 8083817638580894405, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Unpause
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: becd80946c9ba9b4aab8705d18ac46bc, type: 3}
