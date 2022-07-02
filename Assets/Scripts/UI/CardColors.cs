@@ -9,5 +9,5 @@ public class CardColors : ScriptableObject
 [System.Serializable]
 public class CardColorSet
 {
-    public Sprite WhiteCard, BlackCard, Cost, ButtonUp, ButtonDown;
+    public Sprite WhiteCard, BlackCard, Cost, Uses, ButtonUp, ButtonDown;
 }

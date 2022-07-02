@@ -81,7 +81,7 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks
             _nameTextbox.color = _blackTextColor;
         }
         _cost.sprite = cardColorSet.Cost;
-        _usesImage.sprite = cardColorSet.Cost;
+        _usesImage.sprite = cardColorSet.Uses;
         _purchase.SetColors(cardColorSet);
         _card.sprite = _cardSprite;
     }

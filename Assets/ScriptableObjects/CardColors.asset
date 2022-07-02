@@ -16,23 +16,27 @@ MonoBehaviour:
     WhiteCard: {fileID: 1980110172230669698, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     BlackCard: {fileID: -4448188138108213494, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     Cost: {fileID: -8742090356104117105, guid: d1373f5f52251114d904385c2f15a9f2, type: 3}
+    Uses: {fileID: 8341373315473051893, guid: a09757ad512ad674180b34cfe4114d1f, type: 3}
     ButtonUp: {fileID: -2306148863814198951, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
     ButtonDown: {fileID: -2671880383022096744, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   Shogunate:
     WhiteCard: {fileID: 1075308833416347035, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     BlackCard: {fileID: -5447856553110883482, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     Cost: {fileID: 369598706316936112, guid: d1373f5f52251114d904385c2f15a9f2, type: 3}
+    Uses: {fileID: 309500215350070710, guid: a09757ad512ad674180b34cfe4114d1f, type: 3}
     ButtonUp: {fileID: -8430227474356105421, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
     ButtonDown: {fileID: 4631825429220268734, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   Empire:
     WhiteCard: {fileID: 58758638153696015, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     BlackCard: {fileID: 2796266947111341171, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     Cost: {fileID: 6141020841426135547, guid: d1373f5f52251114d904385c2f15a9f2, type: 3}
+    Uses: {fileID: 1964389825182154288, guid: a09757ad512ad674180b34cfe4114d1f, type: 3}
     ButtonUp: {fileID: 7449582517347676203, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
     ButtonDown: {fileID: -7680774446145073112, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
   Neutral:
     WhiteCard: {fileID: -2874738818616369984, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     BlackCard: {fileID: -6643084734033276236, guid: 481de95e26c3fcd41a05ebbda0f832de, type: 3}
     Cost: {fileID: 6714674062551948187, guid: d1373f5f52251114d904385c2f15a9f2, type: 3}
+    Uses: {fileID: -2220607293857121534, guid: a09757ad512ad674180b34cfe4114d1f, type: 3}
     ButtonUp: {fileID: 8985423979969613173, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}
     ButtonDown: {fileID: -896745992424258005, guid: 317901a49d5a97e48a1d790926bc1452, type: 3}

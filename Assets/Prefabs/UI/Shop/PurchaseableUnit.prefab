@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 52.7, y: 65.693}
-  m_SizeDelta: {x: 67.9282, y: 83.7255}
+  m_AnchoredPosition: {x: -0.000011444, y: 0.0000076294}
+  m_SizeDelta: {x: 90, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &535229166412922885
 CanvasRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8742090356104117105, guid: d1373f5f52251114d904385c2f15a9f2, type: 3}
+  m_Sprite: {fileID: 8341373315473051893, guid: a09757ad512ad674180b34cfe4114d1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -186,8 +186,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000029802, y: 31.1}
-  m_SizeDelta: {x: 59.539, y: 14.54}
+  m_AnchoredPosition: {x: -11.3905, y: 31.1}
+  m_SizeDelta: {x: 36.7581, y: 14.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1097264437603510306
 CanvasRenderer:
@@ -851,6 +851,9 @@ MonoBehaviour:
   _whiteTextColor: {r: 1, g: 1, b: 1, a: 1}
   _blackTextColor: {r: 0, g: 0, b: 0, a: 1}
   Data: {fileID: 0}
+  Card:
+    UnitData: {fileID: 0}
+    NumberOfUses: 0
   Unit: {fileID: -4325786768911329514, guid: 53f6c2fa59bb3d24f9410ed6c97725f9, type: 3}
   Cost: 1
   Uses: 0
@@ -1033,8 +1036,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.8, y: -27.7}
-  m_SizeDelta: {x: 25.082, y: 25.082}
+  m_AnchoredPosition: {x: 25.4245, y: 35.8}
+  m_SizeDelta: {x: 27.7309, y: 27.9958}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5510414240636229130
 CanvasRenderer:
@@ -1091,7 +1094,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.45
+  m_fontSize: 25.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
