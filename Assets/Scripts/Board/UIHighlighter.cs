@@ -12,7 +12,7 @@ public class UIHighlighter : MonoBehaviour
         Unit.OnUnitMoved += RemoveAllHighlights;
         BoardTile.OnUnitPlaced += RemoveAllHighlights;
         BoardTile.OnTileSelected += RemoveHighlightsOnEmptyTileSelected;
-        BoardVisualizer.OnBoardCreated += RemoveAllHighlights;
+        BoardVisualizer.OnVirtualBoardCreated += RemoveAllHighlights;
     }
 
     private void OnDisable()
@@ -23,7 +23,7 @@ public class UIHighlighter : MonoBehaviour
         Unit.OnUnitMoved -= RemoveAllHighlights;
         BoardTile.OnUnitPlaced -= RemoveAllHighlights;
         BoardTile.OnTileSelected -= RemoveHighlightsOnEmptyTileSelected;
-        BoardVisualizer.OnBoardCreated -= RemoveAllHighlights;
+        BoardVisualizer.OnVirtualBoardCreated -= RemoveAllHighlights;
     }
 
     private void HighlightMovableTiles(Unit unit)

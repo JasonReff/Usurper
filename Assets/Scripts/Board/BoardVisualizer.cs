@@ -14,7 +14,7 @@ public class BoardVisualizer : MonoBehaviour
     [SerializeField] private GameObject _tileTarget, _destroyedTile;
     private List<GameObject> _targetedTiles = new List<GameObject>(), _destroyedTiles = new List<GameObject>();
 
-    public static Action OnBoardCreated;
+    public static Action OnVirtualBoardCreated;
     public static Action OnBoardHidden;
 
     public int TurnNumber { get => _turnNumber; set {
@@ -125,7 +125,7 @@ public class BoardVisualizer : MonoBehaviour
     private void ShowBoardOnTurn()
     {
         if (_demoBoard.gameObject.activeInHierarchy == false)
-            OnBoardCreated?.Invoke();
+            OnVirtualBoardCreated?.Invoke();
         _demoBoard.gameObject.SetActive(true);
         VisualizeBoard(_virtualBoards[TurnNumber - 1]);
         ShowDestroyedAndTargetedTiles();

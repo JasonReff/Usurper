@@ -6,6 +6,7 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
 {
     public static GameStateMachine Instance;
     public static event Action<GameState> OnStateChanged;
+    public static event Action AfterStateChanged;
     private bool _gameEnded;
 
     private void Awake()
@@ -41,6 +42,7 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
         _currentState = newState;
         _currentState.BeginState();
         OnStateChanged?.Invoke(_currentState);
+        AfterStateChanged?.Invoke();
     }
 
     public UnitFaction CurrentFaction()
@@ -58,6 +60,7 @@ public abstract class GameState
 {
     protected GameStateMachine _stateMachine;
     public UnitFaction Faction;
+    public static Action OnStateStarted;
     public GameState(GameStateMachine stateMachine, UnitFaction faction)
     {
         _stateMachine = stateMachine;
@@ -66,7 +69,7 @@ public abstract class GameState
 
     public virtual void BeginState()
     {
-        
+        OnStateStarted?.Invoke();
     }
 
     public virtual void UpdateState()

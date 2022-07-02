@@ -43,7 +43,6 @@ public class OnlineGameStateMachine : GameStateMachine
                 base.ChangeState(new PlayerWonState(Instance, faction));
                 break;
         }
-        OnOnlineStateChanged?.Invoke();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

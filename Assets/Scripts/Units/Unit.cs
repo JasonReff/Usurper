@@ -29,14 +29,14 @@ public class Unit : MonoBehaviour, IUnit
     {
         MoveUnitState.OnMoveStateEnded += RemoveSummoningSickness;
         CharacterManager.OnUnitSelected += SetHighlight;
-        BoardVisualizer.OnBoardCreated += ClearHighlight;
+        BoardVisualizer.OnVirtualBoardCreated += ClearHighlight;
     }
 
     protected virtual void OnDisable()
     {
         MoveUnitState.OnMoveStateEnded -= RemoveSummoningSickness;
         CharacterManager.OnUnitSelected -= SetHighlight;
-        BoardVisualizer.OnBoardCreated -= ClearHighlight;
+        BoardVisualizer.OnVirtualBoardCreated -= ClearHighlight;
     }
 
     private void Awake()

@@ -12,7 +12,7 @@ public class MovementStateTextUI : MonoBehaviour
     {
         MoveUnitState.OnMoveStateBegan += OnMoveStateStarted;
         MoveUnitState.OnMoveStateEnded += OnMoveStateEnded;
-        BoardVisualizer.OnBoardCreated += HideUI;
+        BoardVisualizer.OnVirtualBoardCreated += HideUI;
         BoardVisualizer.OnBoardHidden += ShowUI;
     }
 
@@ -20,7 +20,7 @@ public class MovementStateTextUI : MonoBehaviour
     {
         MoveUnitState.OnMoveStateBegan -= OnMoveStateStarted;
         MoveUnitState.OnMoveStateEnded -= OnMoveStateEnded;
-        BoardVisualizer.OnBoardCreated -= HideUI;
+        BoardVisualizer.OnVirtualBoardCreated -= HideUI;
         BoardVisualizer.OnBoardHidden -= ShowUI;
     }
 

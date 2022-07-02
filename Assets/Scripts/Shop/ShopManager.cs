@@ -23,7 +23,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
         BoardTile.OnUnitPlaced += SetKing;
         GameStateMachine.OnStateChanged += OnStateChange;
         BuyUnitState.OnBuyUnitStateEnded += OnBuyStateEnded;
-        BoardVisualizer.OnBoardCreated += ClearSelection;
+        BoardVisualizer.OnVirtualBoardCreated += ClearSelection;
         MerchantUnit.OnMerchantGainedGold += OnMerchantGainedMoney;
         _money = _deck.StartingGold;
     }
@@ -35,7 +35,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
         BuyUnitState.OnBuyUnitStateEnded -= OnBuyStateEnded;
         PurchaseableUnit.OnUnitSelected -= SelectUnit;
         BoardTile.OnTileSelected -= OnTileSelected;
-        BoardVisualizer.OnBoardCreated -= ClearSelection;
+        BoardVisualizer.OnVirtualBoardCreated -= ClearSelection;
         MerchantUnit.OnMerchantGainedGold -= OnMerchantGainedMoney;
     }
 

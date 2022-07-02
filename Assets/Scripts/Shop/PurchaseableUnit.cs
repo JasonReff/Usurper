@@ -26,13 +26,13 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks
     private void OnEnable()
     {
         OnUnitSelected += HighlightCard;
-        BoardVisualizer.OnBoardCreated += ClearHighlight;
+        BoardVisualizer.OnVirtualBoardCreated += ClearHighlight;
     }
 
     private void OnDisable()
     {
         OnUnitSelected -= HighlightCard;
-        BoardVisualizer.OnBoardCreated -= ClearHighlight;
+        BoardVisualizer.OnVirtualBoardCreated -= ClearHighlight;
     }
 
     public void LoadUnitData(UnitCard card, UnitFaction faction)

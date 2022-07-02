@@ -27,13 +27,13 @@ public class ShopUI : MonoBehaviour
 
     private void OnEnable()
     {
-        BoardVisualizer.OnBoardCreated += HideShopDuringReview;
+        BoardVisualizer.OnVirtualBoardCreated += HideShopDuringReview;
         BoardVisualizer.OnBoardHidden += ShowShopAfterReview;
     }
 
     private void OnDisable()
     {
-        BoardVisualizer.OnBoardCreated -= HideShopDuringReview;
+        BoardVisualizer.OnVirtualBoardCreated -= HideShopDuringReview;
         BoardVisualizer.OnBoardHidden -= ShowShopAfterReview;
         _isDisabled = true;
     }

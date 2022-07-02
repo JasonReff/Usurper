@@ -64,6 +64,7 @@ public class OnlinePlayerManager : PlayerManager, IPunInstantiateMagicCallback
     protected override void OnDisable()
     {
         base.OnDisable();
+        OnlineBoard.OnTileSelected -= SelectTile;
         OnlineMultiplayerSettingsReader.OnFactionPreferenceSet -= SetPreferredFaction;
         OnPlayerOneFactionAssigned -= SetPlayerTwoFaction;
     }

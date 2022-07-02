@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnlineUnitCallbacks : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
 {
     public static Action<Unit> OnlineUnitPlaced;
+    public static Action OnlineUnitMoved;
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         UnitFaction faction = (UnitFaction)info.photonView.InstantiationData[0];
@@ -29,6 +30,7 @@ public class OnlineUnitCallbacks : MonoBehaviourPunCallbacks, IPunInstantiateMag
         if (unit == null)
             return;
         unit.ForceMoveToTile(Board.Instance.GetTileAtPosition(newPosition));
+        OnlineUnitMoved?.Invoke();
     }
 
     [PunRPC]

@@ -15,13 +15,13 @@
     protected override void OnEnable()
     {
         base.OnEnable();
-        BoardVisualizer.OnBoardCreated += ClearSelection;
+        BoardVisualizer.OnVirtualBoardCreated += ClearSelection;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        BoardVisualizer.OnBoardCreated -= ClearSelection;
+        BoardVisualizer.OnVirtualBoardCreated -= ClearSelection;
     }
 
     private void ClearSelection()

@@ -1,24 +1,23 @@
-﻿using TMPro;
+﻿using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
-public class CheckUIManager : MonoBehaviour
+public class CheckUIManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameplaySettings _settings;
     [SerializeField] private TextMeshProUGUI _checkTextbox;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        GameStateMachine.OnStateChanged += LookForChecks;
-        OnlineGameStateMachine.OnOnlineStateChanged += LookForChecks;
+        GameStateMachine.AfterStateChanged += LookForChecks;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        GameStateMachine.OnStateChanged -= LookForChecks;
-        OnlineGameStateMachine.OnOnlineStateChanged -= LookForChecks;
+        GameStateMachine.AfterStateChanged -= LookForChecks;
     }
 
-    private void LookForChecks(GameState state)
+    protected virtual void LookForChecks()
     {
         if (!_settings.DisplayChecks)
             return;
@@ -29,18 +28,7 @@ public class CheckUIManager : MonoBehaviour
         DisplayChecks(currentBoard.KingInCheck);
     }
 
-    private void LookForChecks()
-    {
-        if (!_settings.DisplayChecks)
-            return;
-        var currentBoard = new VirtualBoard(Board.Instance);
-        foreach (var unit in currentBoard.VirtualUnits)
-            unit.SummoningSickness = false;
-        currentBoard.CalculateEvaluation();
-        DisplayChecks(currentBoard.KingInCheck);
-    }
-
-    private void DisplayChecks(bool isKingInCheck)
+    protected virtual void DisplayChecks(bool isKingInCheck)
     {
         if (isKingInCheck)
         {
