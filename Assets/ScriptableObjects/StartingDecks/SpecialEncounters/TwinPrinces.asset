@@ -22,8 +22,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95b1231305b77eb499235c236a76171e, type: 2}
   - {fileID: 11400000, guid: a155e21dd664e7b498894dbc5e6b0245, type: 2}
   - {fileID: 11400000, guid: c108da0b2b2f9bc409f2badabad9ab89, type: 2}
-  _king: {fileID: 11400000, guid: ed2562536f9f93745853c7e98a7a78b0, type: 2}
+  _king: {fileID: 11400000, guid: 8af20b885eac87947a12c09902711327, type: 2}
   _deckName: Twin Princes
   _startingGold: 2
   _goldPerTurn: 1
-  King2: {fileID: 11400000, guid: a52a4ad1d5d3e2f4b95428ad7aa7c256, type: 2}
+  King2: {fileID: 11400000, guid: fced037dcca4db345ab2aff2c0f7ae32, type: 2}

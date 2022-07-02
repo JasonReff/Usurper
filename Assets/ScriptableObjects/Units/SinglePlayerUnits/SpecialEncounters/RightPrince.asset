@@ -15,7 +15,7 @@ MonoBehaviour:
   Unit: {fileID: 2762439206263491786, guid: 998a014267d8ea843ab95d95423e59d9, type: 3}
   PlayerSprite: {fileID: 4246582678940652525, guid: bdd210043c8ba7041929d75b85de3ff0, type: 3}
   EnemySprite: {fileID: 4246582678940652525, guid: bdd210043c8ba7041929d75b85de3ff0, type: 3}
-  Moveset: {fileID: 15160405916216954, guid: 0084017c7462eaf4488428abd62f6d02, type: 3}
+  Moveset: {fileID: -1736145104494135893, guid: b3737270f777053478c1812fabd3beb1, type: 3}
   UnitClass: 0
   Cost: 100
   StartingUses: 0
