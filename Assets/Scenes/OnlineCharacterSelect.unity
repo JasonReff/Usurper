@@ -5241,7 +5241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1720723441}
   xSpeed: 0.03
-  ySpeed: 0.02
+  ySpeed: 0
 --- !u!114 &1720723441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5262,7 +5262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 341d4e24c3240e94b882bd53773b9923, type: 3}
+  m_Texture: {fileID: 2800000, guid: 7c1cd32e04f4d6a44a13c9a723faac44, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

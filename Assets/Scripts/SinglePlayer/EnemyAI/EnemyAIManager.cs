@@ -73,7 +73,7 @@ public class EnemyAIManager : CharacterManager
 
     private void SetKing(Unit unit)
     {
-        if (unit.GetType() == typeof(KingUnit) && unit.Faction == _faction)
+        if (unit.UnitData.IsKing && unit.Faction == _faction)
             _kingUnit = (KingUnit)unit;
     }
 

@@ -6,20 +6,20 @@ using UnityEngine;
 public class SinglePlayerStats : ScriptableObject
 {
     public int Round = 1;
-    public List<SpecialEnemyManager> BossList = new List<SpecialEnemyManager>();
+    public List<SpecialEnemyManager> MinibossList = new List<SpecialEnemyManager>();
     public List<SinglePlayerUpgrade> Upgrades = new List<SinglePlayerUpgrade>();
 
     public void ResetStats()
     {
         Round = 1;
-        BossList.Clear();
+        MinibossList.Clear();
         Upgrades.Clear();
     }
 
     public void PracticeMode()
     {
         Round = 0;
-        BossList.Clear();
+        MinibossList.Clear();
         Upgrades.Clear();
     }
 

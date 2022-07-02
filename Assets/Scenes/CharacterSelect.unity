@@ -408,6 +408,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2Portrait
       objectReference: {fileID: 0}
+    - target: {fileID: 8957386630161879475, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957386630161879475, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b861409ccb4bb304dbfc5442d7c05397, type: 3}
+    - target: {fileID: 8957386630161879475, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
 --- !u!224 &678878325 stripped
@@ -977,8 +989,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1268,7 +1280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 341d4e24c3240e94b882bd53773b9923, type: 3}
+  m_Texture: {fileID: 2800000, guid: f87660b7d83d9264eb0d2f1c22352fe5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1290,7 +1302,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273811920}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f27549797843250418ff277b141d81b9, type: 3}
   m_Name: 
@@ -1790,6 +1802,18 @@ PrefabInstance:
     - target: {fileID: 5892372944729326845, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
       propertyPath: m_Name
       value: Player1Portrait
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957386630161879475, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957386630161879475, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b861409ccb4bb304dbfc5442d7c05397, type: 3}
+    - target: {fileID: 8957386630161879475, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70afe8d9d30d5c548b96192a4e2cb591, type: 3}

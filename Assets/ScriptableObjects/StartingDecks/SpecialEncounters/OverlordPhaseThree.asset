@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f432028efe4418949b0fc8fd2653aa7d, type: 3}
+  m_Name: OverlordPhaseThree
+  m_EditorClassIdentifier: 
+  _deck:
+  - {fileID: 11400000, guid: 60637681a462bde43be150840ac43ed0, type: 2}
+  - {fileID: 11400000, guid: 60637681a462bde43be150840ac43ed0, type: 2}
+  - {fileID: 11400000, guid: 95b1231305b77eb499235c236a76171e, type: 2}
+  - {fileID: 11400000, guid: 95b1231305b77eb499235c236a76171e, type: 2}
+  - {fileID: 11400000, guid: a155e21dd664e7b498894dbc5e6b0245, type: 2}
+  - {fileID: 11400000, guid: a155e21dd664e7b498894dbc5e6b0245, type: 2}
+  - {fileID: 11400000, guid: a155e21dd664e7b498894dbc5e6b0245, type: 2}
+  - {fileID: 11400000, guid: c108da0b2b2f9bc409f2badabad9ab89, type: 2}
+  - {fileID: 11400000, guid: c108da0b2b2f9bc409f2badabad9ab89, type: 2}
+  _king: {fileID: 11400000, guid: b1950321bdc04fb40bd3e9cac691ddae, type: 2}
+  _deckName: Overlord Phase Three
+  _startingGold: 5
+  _goldPerTurn: 3

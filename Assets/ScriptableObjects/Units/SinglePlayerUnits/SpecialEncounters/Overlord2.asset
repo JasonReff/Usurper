@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0378e10bf25411f4f82cf6ae51236743, type: 3}
+  m_Name: Overlord2
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 732014552140367714, guid: 39081c1311a307942955907a979727b3, type: 3}
+  PlayerSprite: {fileID: 7658753223727061331, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  EnemySprite: {fileID: 7658753223727061331, guid: 56b6c5bf18848fe4d84c8f93b90b0bcf, type: 3}
+  Moveset: {fileID: -1736145104494135893, guid: b3737270f777053478c1812fabd3beb1, type: 3}
+  UnitClass: 0
+  Cost: 100
+  StartingUses: 0
+  UnitName: Overlord
+  IsKing: 1
+  IsExplosive: 0
+  _additionalMovementTiles: []
+  _additionalPlacementTiles: []

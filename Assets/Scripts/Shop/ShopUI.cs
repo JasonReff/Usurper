@@ -75,9 +75,7 @@ public class ShopUI : MonoBehaviour
     {
         for (int i = _cardUIs.Count - 1; i >= 0; i--)
         {
-            if (!gameObject.activeInHierarchy)
-                continue;
-            if (!_cardUIs[i].gameObject.activeInHierarchy)
+            if (_cardUIs[i] == null)
                 continue;
             Destroy(_cardUIs[i].gameObject);
             _cardUIs.RemoveAt(i);

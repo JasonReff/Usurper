@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f432028efe4418949b0fc8fd2653aa7d, type: 3}
+  m_Name: OverlordPhaseTwo
+  m_EditorClassIdentifier: 
+  _deck:
+  - {fileID: 11400000, guid: 6500819c0b5b01045809cab881867c87, type: 2}
+  - {fileID: 11400000, guid: 6500819c0b5b01045809cab881867c87, type: 2}
+  - {fileID: 11400000, guid: 9277fe344a385fc4d947711e293fa551, type: 2}
+  - {fileID: 11400000, guid: 9277fe344a385fc4d947711e293fa551, type: 2}
+  - {fileID: 11400000, guid: 9277fe344a385fc4d947711e293fa551, type: 2}
+  - {fileID: 11400000, guid: 57973eccfc7623c4183a472cd66883b8, type: 2}
+  - {fileID: 11400000, guid: 57973eccfc7623c4183a472cd66883b8, type: 2}
+  - {fileID: 11400000, guid: 0e44f0155872422428c0c774dae846c7, type: 2}
+  - {fileID: 11400000, guid: 0e44f0155872422428c0c774dae846c7, type: 2}
+  _king: {fileID: 11400000, guid: db6408260a024ed48ae3ef23f9f26c82, type: 2}
+  _deckName: Overlord Phase Two
+  _startingGold: 5
+  _goldPerTurn: 5

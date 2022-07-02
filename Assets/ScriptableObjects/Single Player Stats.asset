@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649a67881397861419873ebbeccf7e42, type: 3}
   m_Name: Single Player Stats
   m_EditorClassIdentifier: 
-  Round: 1
-  BossList: []
-  Upgrades: []
+  Round: 10
+  MinibossList: []
+  Upgrades:
+  - {fileID: 11400000, guid: 0d512fff37b31aa4884b43e7fc5a0488, type: 2}

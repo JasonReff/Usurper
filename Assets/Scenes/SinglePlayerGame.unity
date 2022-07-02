@@ -7193,10 +7193,12 @@ MonoBehaviour:
   _bossDisplayUI: {fileID: 1352536159}
   _shop: {fileID: 539397576}
   _stats: {fileID: 11400000, guid: 823311c044d5a0d4dbc64f8d41bf20a2, type: 2}
-  _specialAIManagers:
+  _minibossManagers:
   - {fileID: 6192580662606720235, guid: 37db46bd071fd514680967e8c229096f, type: 3}
   - {fileID: -5058834830844206123, guid: e49c395efbdf70840b83e11b6f3b5e57, type: 3}
   - {fileID: 8192506630205220544, guid: 1b7d7a8bb7e4c694cb30b38076b2d964, type: 3}
+  _bossManagers:
+  - {fileID: 1010944054055688177, guid: 111bfbfdaf2dac842b5f62de4c7b80cd, type: 3}
   _bossNameTextbox: {fileID: 1297399517}
 --- !u!4 &1839844622
 Transform:

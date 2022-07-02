@@ -84,7 +84,7 @@ public class UnitData : ScriptableObject
         return vectors;
     }
 
-    protected List<Vector2> AllAdjacentVectors()
+    public List<Vector2> AllAdjacentVectors()
     {
         List<Vector2> directions = new List<Vector2>();
         directions.AddRange(DiagonalVectors());
@@ -107,7 +107,7 @@ public class UnitData : ScriptableObject
         return new List<IBoardTile> { board.GetTileAtPosition(leftDiagonal), board.GetTileAtPosition(rightDiagonal) };
     }
 
-    protected List<IBoardTile> GetNeighboringTiles<T>(IBoardTile oldTile, IBoard<T> board, List<Vector2> directions) where T : IBoardTile
+    public List<IBoardTile> GetNeighboringTiles<T>(IBoardTile oldTile, IBoard<T> board, List<Vector2> directions) where T : IBoardTile
     {
         var tiles = new List<IBoardTile>();
         foreach (var direction in directions)

@@ -6,6 +6,8 @@ public class KingPlacer : MonoBehaviour
     [SerializeField] protected Vector2 _startingTile;
     protected KingUnit _king;
 
+    public PlayerDeck Deck { get => _deck; set => _deck = value; }
+
     public virtual void PlaceKing()
     {
         AdjustTilePosition();
