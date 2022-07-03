@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462954389c321714095547242e09bf06, type: 3}
   m_Name: Placement Cross
   m_EditorClassIdentifier: 
-  _upgradeSprite: {fileID: -1724822148711148119, guid: b3fea9d88884f2e4a8486f280774d0b9, type: 3}
+  _upgradeSprite: {fileID: -6924496338471276188, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
   _upgradeName: 'Placement: Cross'
   AdditionalPlacementSpaces:
   - {x: 2, y: 0}
