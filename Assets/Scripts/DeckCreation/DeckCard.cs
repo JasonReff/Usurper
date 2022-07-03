@@ -13,7 +13,7 @@ public class DeckCard : CollectionCard
 
     public override void OnEndDrag(PointerEventData eventData)
     {
-        transform.parent.SetSiblingIndex(_transformHeirarchyPosition);
+        transform.parent.SetSiblingIndex(_parentHeirarchyPosition);
         OnDeckCardDropped?.Invoke(this);
         transform.position = _startingPosition;
         _card.raycastTarget = true;
