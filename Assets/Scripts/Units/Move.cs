@@ -11,6 +11,7 @@ public class Move
     public IBoardTile NewTile { get => _newTile; }
     public IBoardTile CurrentTile { get => _currentTile; }
     public IUnit Unit { get => _unit; }
+    public UnitData UnitData { get => _unitData; }
 
     public Move(UnitData unit, IBoardTile currentTile, IBoardTile nextTile)
     {

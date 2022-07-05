@@ -131,6 +131,9 @@ public class EnemyAIManager : CharacterManager
 
     private VirtualBoard GetBoardAtIndex(List<VirtualBoard> boards)
     {
+        var boardsWithoutSelfCheck = boards.Where(t => !t.KingInCheck).ToList();
+        if (boardsWithoutSelfCheck.Count > 0)
+            boards = boardsWithoutSelfCheck;
         var randomBlunderChance = UnityEngine.Random.Range(0, 1f);
         if (randomBlunderChance > _blunderChance || boards.Count == 1)
             return boards[0];
