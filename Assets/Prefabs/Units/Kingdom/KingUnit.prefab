@@ -18,7 +18,6 @@ MonoBehaviour:
   _summoningSickness: 0
   _unitData: {fileID: 11400000, guid: 01c14f38edb205845869517e8eea11d8, type: 2}
   _unitColors: {fileID: 11400000, guid: 513bcd44921943f4e9d3a8445aa18484, type: 2}
-  _settings: {fileID: 11400000, guid: 3cfe7b322e6453e4a99b775be36e02e7, type: 2}
 --- !u!1001 &4549102168250893580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29,7 +28,7 @@ PrefabInstance:
     - target: {fileID: 3136818635562366159, guid: 7599bd0cb11f7134a9ae3c1beaf29507, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1724822148711148119, guid: 720d7e92b3663924b878b6a83ce866d7, type: 3}
+      objectReference: {fileID: -6924496338471276188, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
     - target: {fileID: 3136818635562366159, guid: 7599bd0cb11f7134a9ae3c1beaf29507, type: 3}
       propertyPath: m_Color.b
       value: 1

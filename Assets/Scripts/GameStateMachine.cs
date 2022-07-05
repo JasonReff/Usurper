@@ -19,6 +19,8 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
 
     private void OnDisable()
     {
+        if (_currentState == null)
+            return;
         _currentState.EndState();
     }
 
