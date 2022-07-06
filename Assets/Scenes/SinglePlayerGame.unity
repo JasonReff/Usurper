@@ -7189,6 +7189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f6b8bad1757ca4aa81cc5def1b2caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _board: {fileID: 5578527965729194446}
   _enemyAIManager: {fileID: 463058767}
   _bossDisplayUI: {fileID: 1352536159}
   _shop: {fileID: 539397576}
@@ -9408,6 +9409,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd0309c0670c523428c630422c8e35c9, type: 3}
+--- !u!114 &5578527965729194446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1978981478, guid: dd0309c0670c523428c630422c8e35c9, type: 3}
+  m_PrefabInstance: {fileID: 5578527965729194445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6772c9f2cdf94bf439d5a1e8c2759e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6708769190628742182
 PrefabInstance:
   m_ObjectHideFlags: 0

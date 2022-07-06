@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SinglePlayerBossManager : MonoBehaviour
 {
+    [SerializeField] private Board _board;
     [SerializeField] private GameObject _enemyAIManager, _bossDisplayUI;
     [SerializeField] private EnemyShopManager _shop;
     [SerializeField] private SinglePlayerStats _stats;
@@ -17,11 +18,21 @@ public class SinglePlayerBossManager : MonoBehaviour
     {
         if (_stats.Round % 3 == 0)
         {
+            EnsureBoardExists();
             ReplaceAIWithMiniboss();
         }
         else if (_stats.Round == 10)
         {
+            EnsureBoardExists();
             ReplaceAIWithBoss();
+        }
+    }
+
+    private void EnsureBoardExists()
+    {
+        if (Board.Instance == null)
+        {
+            Board.Instance = _board;
         }
     }
 

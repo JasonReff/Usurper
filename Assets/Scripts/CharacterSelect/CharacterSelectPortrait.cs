@@ -1,6 +1,5 @@
+using DG.Tweening;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +12,8 @@ public class CharacterSelectPortrait : MonoBehaviour, IPointerEnterHandler, IPoi
     [SerializeField] private PlayerDeck _playerDeck;
     [SerializeField] private TextMeshProUGUI _deckName;
     [SerializeField] private StartingDeck _equippedDeck;
+    [SerializeField] private Vector2 _easePosition;
+    private Vector2 _startingPosition;
 
     public StartingDeck EquippedDeck { get => _equippedDeck; }
 
@@ -30,8 +31,7 @@ public class CharacterSelectPortrait : MonoBehaviour, IPointerEnterHandler, IPoi
 
     private void Start()
     {
-        _playerDeck.ResetDeck(_equippedDeck);
-        _deckName.text = _equippedDeck.DeckName;
+        _startingPosition = _kingIcon.transform.localPosition;
     }
 
     public void UpdateDeckAndKing(StartingDeck deck)
@@ -41,7 +41,17 @@ public class CharacterSelectPortrait : MonoBehaviour, IPointerEnterHandler, IPoi
             _kingIcon.sprite = deck.King.PlayerSprite;
         else
             _kingIcon.sprite = deck.King.EnemySprite;
+        KingAnimation();
         _playerDeck.ResetDeck(deck);
         _deckName.text = deck.DeckName;
+        OnDeckEquipped?.Invoke();
+
+        void KingAnimation()
+        {
+            _kingIcon.transform.localPosition = _startingPosition;
+            _kingIcon.DOFade(0f, 0f);
+            _kingIcon.DOFade(1f, 0.5f);
+            _kingIcon.transform.DOLocalMoveX(_easePosition.x, 0.5f).SetEase(Ease.OutSine);
+        }
     }
 }
