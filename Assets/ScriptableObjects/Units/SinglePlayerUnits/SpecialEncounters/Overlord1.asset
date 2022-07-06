@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Overlord1
   m_EditorClassIdentifier: 
   Unit: {fileID: 2331605517002404478, guid: fda8a3e0e71c5324da3aa32bb2898056, type: 3}
-  PlayerSprite: {fileID: 524835150470985677, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
-  EnemySprite: {fileID: 524835150470985677, guid: 1c90d97f81d493546bd070f38e4b3257, type: 3}
+  PlayerSprite: {fileID: 7237450857771537706, guid: 6261ce26440670445928c70de85ce5c6, type: 3}
+  EnemySprite: {fileID: 7237450857771537706, guid: 6261ce26440670445928c70de85ce5c6, type: 3}
   Moveset: {fileID: -1736145104494135893, guid: b3737270f777053478c1812fabd3beb1, type: 3}
   UnitClass: 0
   Cost: 100
