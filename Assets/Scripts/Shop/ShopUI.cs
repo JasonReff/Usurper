@@ -87,9 +87,16 @@ public class ShopUI : MonoBehaviour
         foreach (var card in _cardUIs)
         {
             if (_manager.Money < card.Cost)
-                card.HidePurchase();
+            {
+                //card.HidePurchase();
+                card.Purchaseable = false;
+            }
             else
-                card.ShowPurchase();
+            {
+                //card.ShowPurchase();
+                card.Purchaseable = true;
+            }
+                
         }
     }
 

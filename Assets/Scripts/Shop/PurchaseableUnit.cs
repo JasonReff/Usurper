@@ -2,9 +2,10 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PurchaseableUnit : MonoBehaviourPunCallbacks
+public class PurchaseableUnit : MonoBehaviourPunCallbacks, IPointerClickHandler
 {
     [SerializeField] private GameObject _purchaseButton, _highlight;
     [SerializeField] private Image _card, _icon, _moveset, _cost, _usesImage;
@@ -17,6 +18,7 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks
     public UnitCard Card;
     public Unit Unit;
     public int Cost, Uses;
+    public bool Purchaseable;
 
     public Sprite GetUnitSprite { get => _icon.sprite; }
     
@@ -113,5 +115,11 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks
     public void ShowPurchase()
     {
         _purchaseButton.SetActive(true);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (Purchaseable)
+            SelectUnit();
     }
 }

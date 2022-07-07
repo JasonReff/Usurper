@@ -130,7 +130,7 @@ public class Unit : MonoBehaviour, IUnit
         else SetColor(_summoningSickness);
     }
 
-    private void ClearHighlight()
+    public void ClearHighlight()
     {
         SetColor(_summoningSickness);
     }
