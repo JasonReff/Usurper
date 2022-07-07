@@ -52,6 +52,7 @@ public class UIHighlighter : MonoBehaviour
                 tile.ShowHighlight(true, _moveColor);
             else tile.ShowHighlight(false, _moveColor);
         }
+        RemoveUnitHighlights();
     }
 
     private void RemoveAllHighlights()
@@ -60,6 +61,7 @@ public class UIHighlighter : MonoBehaviour
         {
             tile.ShowHighlight(false, _moveColor);
         }
+        RemoveUnitHighlights();
     }
 
     private void RemoveAllHighlights(Unit unit)
@@ -75,6 +77,18 @@ public class UIHighlighter : MonoBehaviour
         if (boardTile.UnitOnTile == null)
         {
             RemoveAllHighlights();
+        }
+    }
+
+    private void RemoveUnitHighlights()
+    {
+        foreach (var unit in Board.Instance.PlayerUnits)
+        {
+            unit.ClearHighlight();
+        }
+        foreach (var unit in Board.Instance.EnemyUnits)
+        {
+            unit.ClearHighlight();
         }
     }
 }

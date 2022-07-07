@@ -9,12 +9,16 @@ public class CharacterSelectManager : MonoBehaviour
 
     private void OnEnable()
     {
+        CharacterSelectDeck.OnDeckClicked += EquipDeck;
         CharacterSelectPortrait.OnDeckEquipped += SetStartButton;
+        CharacterSelectPortrait.OnDeckUnequipped += SetStartButton;
     }
 
     private void OnDisable()
     {
+        CharacterSelectDeck.OnDeckClicked -= EquipDeck;
         CharacterSelectPortrait.OnDeckEquipped -= SetStartButton;
+        CharacterSelectPortrait.OnDeckUnequipped -= SetStartButton;
     }
 
     private bool CheckPortraits()
@@ -38,5 +42,22 @@ public class CharacterSelectManager : MonoBehaviour
     {
         foreach (var button in _startButtons)
             button.SetActive(isActive);
+    }
+
+    private void EquipDeck(StartingDeck startingDeck)
+    {
+        var portrait = GetFirstUnselectedPortrait();
+        if (portrait != null)
+            portrait.UpdateDeckAndKing(startingDeck);
+    }
+
+    private CharacterSelectPortrait GetFirstUnselectedPortrait()
+    {
+        for (int i = 0; i < _portraits.Count; i++)
+        {
+            if (_portraits[i].EquippedDeck == null)
+                return _portraits[i];
+        }
+        return null;
     }
 }

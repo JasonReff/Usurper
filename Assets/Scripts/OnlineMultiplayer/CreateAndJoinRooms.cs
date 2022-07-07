@@ -12,6 +12,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField _roomID;
     [SerializeField] private PrivateMatchSettings _privateMatchSettings;
     private string _roomName;
+    private Coroutine _searchCoroutine;
 
     public void UpdateRoomName()
     {
@@ -58,13 +59,14 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public void BeginSearch()
     {
-        StartCoroutine(BeginSearchCoroutine());
+        _searchCoroutine = StartCoroutine(BeginSearchCoroutine());
         JoinRoom();
     }
 
     public void CancelSearch()
     {
-        StopCoroutine(BeginSearchCoroutine());
+        if (_searchCoroutine != null)
+            StopCoroutine(_searchCoroutine);
         if (PhotonNetwork.CurrentRoom != null)
             PhotonNetwork.LeaveRoom();
     }
@@ -77,7 +79,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1);
         _searchingText.text = "Searching...";
         yield return new WaitForSeconds(1);
-        StartCoroutine(BeginSearchCoroutine());
+        _searchCoroutine = StartCoroutine(BeginSearchCoroutine());
     }
 
     public void LeaveServer()

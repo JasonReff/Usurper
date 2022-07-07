@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deckPage: {fileID: 0}
   _collection: {fileID: 11400000, guid: 4e0d226cfa8d5b04b963bc56c2db623e, type: 2}
-  _deckList: {fileID: 8738870479211561528}
+  _deckList: {fileID: 0}
   _deckPrefab: {fileID: 9182354596292003464, guid: f014b0eb00b25b040b46a9594be9dc6f, type: 3}
 --- !u!114 &8738870479211561524
 MonoBehaviour:
