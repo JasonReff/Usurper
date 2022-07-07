@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CollectionCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class CollectionCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] protected Image _card, _unit, _moveset, _costImage, _usesImage;
     [SerializeField] private TextMeshProUGUI _cost, _nameTextbox, _usesTextbox;
@@ -71,30 +71,30 @@ public class CollectionCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         _card.sprite = cardSprite;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        _cardHeirarchyPosition = transform.GetSiblingIndex();
-        _parentHeirarchyPosition = transform.parent.GetSiblingIndex();
-        transform.parent.SetSiblingIndex(4);
-        transform.SetAsLastSibling();
-        _startingPosition = transform.position;
-        _card.raycastTarget = false;
-    }
+    //public void OnBeginDrag(PointerEventData eventData)
+    //{
+    //    _cardHeirarchyPosition = transform.GetSiblingIndex();
+    //    _parentHeirarchyPosition = transform.parent.GetSiblingIndex();
+    //    transform.parent.SetSiblingIndex(4);
+    //    transform.SetAsLastSibling();
+    //    _startingPosition = transform.position;
+    //    _card.raycastTarget = false;
+    //}
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        var screenPosition = eventData.position;
-        transform.position = (Vector2)screenPosition;
-    }
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //    var screenPosition = eventData.position;
+    //    transform.position = (Vector2)screenPosition;
+    //}
 
-    public virtual void OnEndDrag(PointerEventData eventData)
-    {
-        transform.SetSiblingIndex(_cardHeirarchyPosition);
-        transform.parent.SetSiblingIndex(_parentHeirarchyPosition);
-        OnCardDropped?.Invoke(this);
-        transform.position = _startingPosition;
-        _card.raycastTarget = true;
-    }
+    //public virtual void OnEndDrag(PointerEventData eventData)
+    //{
+    //    transform.SetSiblingIndex(_cardHeirarchyPosition);
+    //    transform.parent.SetSiblingIndex(_parentHeirarchyPosition);
+    //    OnCardDropped?.Invoke(this);
+    //    transform.position = _startingPosition;
+    //    _card.raycastTarget = true;
+    //}
 
     public void OnPointerEnter(PointerEventData eventData)
     {

@@ -11,13 +11,13 @@ public class DeckCard : CollectionCard
         SetCard(card.Data);
     }
 
-    public override void OnEndDrag(PointerEventData eventData)
-    {
-        transform.parent.SetSiblingIndex(_parentHeirarchyPosition);
-        OnDeckCardDropped?.Invoke(this);
-        transform.position = _startingPosition;
-        _card.raycastTarget = true;
-    }
+    //public override void OnEndDrag(PointerEventData eventData)
+    //{
+    //    transform.parent.SetSiblingIndex(_parentHeirarchyPosition);
+    //    OnDeckCardDropped?.Invoke(this);
+    //    transform.position = _startingPosition;
+    //    _card.raycastTarget = true;
+    //}
 
     public override void OnPointerClick(PointerEventData eventData)
     {
