@@ -50,7 +50,7 @@
 
     public override void AddCharacterEvents(GameState state)
     {
-        if (state.Faction == UnitFaction.Enemy && state.GetType() == typeof(BuyUnitState))
+        if (state.Faction == UnitFaction.Black && state.GetType() == typeof(BuyUnitState))
             SetActiveKing();
         base.AddCharacterEvents(state);
     }

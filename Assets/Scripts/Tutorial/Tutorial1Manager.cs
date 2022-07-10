@@ -13,6 +13,6 @@
 
     public override void StartTutorial()
     {
-        GameStateMachine.Instance.ChangeState(new MoveUnitState(GameStateMachine.Instance, UnitFaction.Player));
+        GameStateMachine.Instance.ChangeState(new MoveUnitState(GameStateMachine.Instance, UnitFaction.White));
     }
 }

@@ -39,11 +39,11 @@ public class MovesetPreview : MonoBehaviour
         }
         _moveset.enabled = true;
         _moveset.sprite = boardTile.UnitOnTile.UnitData.Moveset;
-        if (boardTile.UnitOnTile.Faction == UnitFaction.Enemy)
+        if (boardTile.UnitOnTile.Faction == UnitFaction.Black)
         {
             _moveset.transform.localScale = new Vector3(_scale.x, _scale.y * -1, _scale.z);
         }
         else _moveset.transform.localScale = _scale;
-        _unitName.text = boardTile.UnitOnTile.UnitData.UnitName;
+        _unitName.text = boardTile.UnitOnTile.Faction.ToString() + " " + boardTile.UnitOnTile.UnitData.UnitName;
     }
 }

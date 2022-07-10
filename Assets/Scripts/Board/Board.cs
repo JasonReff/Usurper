@@ -51,7 +51,7 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
             return;
         if (PlayerUnits.Contains(unit) || EnemyUnits.Contains(unit))
             return;
-        if (unit.Faction == UnitFaction.Player)
+        if (unit.Faction == UnitFaction.White)
             PlayerUnits.Add(unit);
         else EnemyUnits.Add(unit);
         OnUnitPlaced?.Invoke(unit);
@@ -61,7 +61,7 @@ public class Board : MonoBehaviourPunCallbacks, IBoard<BoardTile>
     {
         if (_demo)
             return;
-        if (unit.Faction == UnitFaction.Player)
+        if (unit.Faction == UnitFaction.White)
             PlayerUnits.Remove(unit);
         else EnemyUnits.Remove(unit);
         OnUnitRemoved?.Invoke(unit);

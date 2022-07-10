@@ -156,7 +156,7 @@ public class VirtualUnit : IUnit
             var friendlyUnits = simulatedBoard.VirtualUnits.Where(t => t.Faction == _faction && t.UnitData is RangedUnitData).ToList();
             var allFriendlyMoves = new List<Move>();
             var tile = simulatedBoard.GetTileAtPosition(Tile.TilePosition());
-            var simulatedEnemy = new VirtualUnit(simulatedBoard, UnitFaction.Player);
+            var simulatedEnemy = new VirtualUnit(simulatedBoard, UnitFaction.White);
             simulatedEnemy.Tile = tile;
             tile.UnitOnTile = simulatedEnemy;
             foreach (var unit in friendlyUnits)

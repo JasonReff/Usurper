@@ -7,12 +7,13 @@ public class RulesManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _pages = new List<GameObject>();
     [SerializeField] private TextMeshProUGUI _pageNumberTextbox;
-    [SerializeField] private GameObject _currentPage;
+    [SerializeField] private GameObject _currentPage, _backButton, _nextButton;
+    [SerializeField] private RulesChapterManager _chapterManager;
     [SerializeField] private int _pageNumber = 1;
 
     private void Awake()
     {
-        SetPageNumberText();
+        SetUI();
     }
     public void GoToPage(int pageNumber)
     {
@@ -22,13 +23,26 @@ public class RulesManager : MonoBehaviour
             _currentPage = _pages[pageNumber - 1];
             _currentPage.SetActive(true);
             _pageNumber = pageNumber;
-            SetPageNumberText();
+            SetUI();
         }
+    }
+
+    private void SetUI()
+    {
+        SetPageNumberText();
+        SetButtons();
+        _chapterManager.SetChapterHighlight(_pageNumber);
     }
 
     private void SetPageNumberText()
     {
         _pageNumberTextbox.text = $"{_pageNumber} / {_pages.Count}";
+    }
+
+    private void SetButtons()
+    {
+        _backButton.SetActive(_pageNumber != 1);
+        _nextButton.SetActive(_pageNumber != _pages.Count);
     }
 
     public void NextPage()

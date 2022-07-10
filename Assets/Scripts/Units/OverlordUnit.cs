@@ -8,6 +8,7 @@ public class OverlordUnit : KingUnit
     protected override IEnumerator UnitDeath()
     {
         DestroyAdjacentUnits();
+        DestroyCurrentUnit();
         OnOverlordKilled?.Invoke(this);
         return base.UnitDeath();
     }
@@ -19,6 +20,13 @@ public class OverlordUnit : KingUnit
             if (adjacentTile.UnitOnTile != null)
                 units.Add(adjacentTile.UnitOnTile as Unit);
         foreach (var unit in units)
+            CaptureUnit(unit);
+    }
+
+    private void DestroyCurrentUnit()
+    {
+        var unit = Board.Instance.GetTileAtPosition(Tile.TilePosition()).UnitOnTile as Unit;
+        if (unit != null)
             CaptureUnit(unit);
     }
 }

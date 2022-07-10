@@ -204,8 +204,8 @@ public abstract class RangedUnit : Unit
 [Serializable]
 public enum UnitFaction
 {
-    Player = 0,
-    Enemy = 1,
+    White = 0,
+    Black = 1,
 }
 
 public interface IUnit

@@ -26,7 +26,7 @@ public class GameStateMachine : MonoBehaviourPunCallbacks
 
     protected virtual void Start()
     {
-        ChangeState(new StartGameState(this, UnitFaction.Player));
+        ChangeState(new StartGameState(this, UnitFaction.White));
     }
 
     protected GameState _currentState;
@@ -86,9 +86,9 @@ public abstract class GameState
 
     protected UnitFaction GetOpposingFaction()
     {
-        if (Faction == UnitFaction.Player)
-            return UnitFaction.Enemy;
-        else return UnitFaction.Player;
+        if (Faction == UnitFaction.White)
+            return UnitFaction.Black;
+        else return UnitFaction.White;
     }
 }
 

@@ -10,11 +10,11 @@ public class OnlineGameStateMachine : GameStateMachine
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            ChangeState(new StartGameState(this, UnitFaction.Player));
+            ChangeState(new StartGameState(this, UnitFaction.White));
         }
         else
         {
-            base.ChangeState(new WaitingState(this, UnitFaction.Player));
+            base.ChangeState(new WaitingState(this, UnitFaction.White));
         }
     }
     public override void ChangeState(GameState newState)
@@ -47,7 +47,7 @@ public class OnlineGameStateMachine : GameStateMachine
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        base.ChangeState(new PlayerLeftState(Instance, UnitFaction.Player));
+        base.ChangeState(new PlayerLeftState(Instance, UnitFaction.White));
     }
 }
 

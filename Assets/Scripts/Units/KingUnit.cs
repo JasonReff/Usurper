@@ -10,9 +10,9 @@ public class KingUnit : Unit
 
     protected override IEnumerator UnitDeath()
     {
-        UnitFaction oppositeFaction = UnitFaction.Player;
-        if (Faction == UnitFaction.Player)
-            oppositeFaction = UnitFaction.Enemy;
+        UnitFaction oppositeFaction = UnitFaction.White;
+        if (Faction == UnitFaction.White)
+            oppositeFaction = UnitFaction.Black;
         OnKingCaptured?.Invoke(this);
         return base.UnitDeath();
     }

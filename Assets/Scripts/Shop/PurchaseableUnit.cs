@@ -41,7 +41,7 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks, IPointerClickHandler
     {
         Data = card.UnitData;
         Card = card;
-        if (faction == UnitFaction.Player)
+        if (faction == UnitFaction.White)
             _icon.sprite = card.UnitData.PlayerSprite;
         else
             _icon.sprite = card.UnitData.EnemySprite;
@@ -72,7 +72,7 @@ public class PurchaseableUnit : MonoBehaviourPunCallbacks, IPointerClickHandler
                 cardColorSet = _cardColors.Empire;
                 break;
         }
-        if (faction == UnitFaction.Player)
+        if (faction == UnitFaction.White)
         {
             _cardSprite = cardColorSet.WhiteCard;
             _nameTextbox.color = _whiteTextColor;

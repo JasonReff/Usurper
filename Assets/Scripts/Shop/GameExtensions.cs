@@ -27,8 +27,8 @@ public static class GameExtensions
 
     public static UnitFaction GetOpposite(this UnitFaction faction)
     {
-        if (faction == UnitFaction.Player)
-            return UnitFaction.Enemy;
-        else return UnitFaction.Player;
+        if (faction == UnitFaction.White)
+            return UnitFaction.Black;
+        else return UnitFaction.White;
     }
 }

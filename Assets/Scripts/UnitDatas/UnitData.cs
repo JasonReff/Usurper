@@ -13,7 +13,7 @@ public class UnitData : ScriptableObject
 
     public Sprite GetSprite(UnitFaction faction)
     {
-        if (faction == UnitFaction.Player)
+        if (faction == UnitFaction.White)
             return PlayerSprite;
         return EnemySprite;
     }
@@ -31,7 +31,7 @@ public class UnitData : ScriptableObject
 
     protected Vector2 GetForwardVector(IUnit unit)
     {
-        if (unit.Faction == UnitFaction.Player)
+        if (unit.Faction == UnitFaction.White)
             return new Vector2(0, 1);
         else return new Vector2(0, -1);
     }

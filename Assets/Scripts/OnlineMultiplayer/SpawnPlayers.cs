@@ -34,7 +34,7 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
     {
         var shop = PhotonNetwork.Instantiate(_shopPrefab.name, Vector3.zero, Quaternion.identity);
         _shop = shop.GetComponent<OnlineShopManager>();
-        if (_shop.GetFaction() == UnitFaction.Player)
+        if (_shop.GetFaction() == UnitFaction.White)
         {
             _shop.SetUI(_playerUI);
             _playerUI.Manager = _shop;

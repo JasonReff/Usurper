@@ -52,7 +52,7 @@ public class ShopUI : MonoBehaviour
 
     public void UpdateMoney()
     {
-        _moneyText.text = $"Money: {_manager.Money}";
+        _moneyText.text = $"Power: {_manager.Money}";
         CoinEffect();
         UpdatePurchaseButtons();
     }

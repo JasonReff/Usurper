@@ -10,6 +10,10 @@ public class TwinPrincesKingPlacer : KingPlacer
         _startingTile = new Vector2(0, 3);
         var rightTile = Board.Instance.GetTileAtPosition(_startingTile);
         rightTile.PlaceUnit(rightPrince, _deck.Faction);
+        if (!Board.Instance.EnemyUnits.Contains(rightTile.UnitOnTile as Unit))
+            Board.Instance.EnemyUnits.Add(rightTile.UnitOnTile as Unit);
+        if (!Board.Instance.EnemyUnits.Contains(leftTile.UnitOnTile as Unit))
+            Board.Instance.EnemyUnits.Add(leftTile.UnitOnTile as Unit);
         GetComponent<TwinPrincesAIManager>().SetKings(leftTile.UnitOnTile as KingUnit, rightTile.UnitOnTile as KingUnit);
     }
 

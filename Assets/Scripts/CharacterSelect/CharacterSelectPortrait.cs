@@ -39,7 +39,7 @@ public class CharacterSelectPortrait : MonoBehaviour
     public void UpdateDeckAndKing(StartingDeck deck)
     {
         _equippedDeck = deck;
-        if (_faction == UnitFaction.Player)
+        if (_faction == UnitFaction.White)
             _kingIcon.sprite = deck.King.PlayerSprite;
         else
             _kingIcon.sprite = deck.King.EnemySprite;

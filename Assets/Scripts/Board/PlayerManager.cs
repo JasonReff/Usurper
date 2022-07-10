@@ -21,6 +21,7 @@
     protected override void OnDisable()
     {
         base.OnDisable();
+        BoardTile.OnTileSelected -= SelectTile;
         BoardVisualizer.OnVirtualBoardCreated -= ClearSelection;
     }
 

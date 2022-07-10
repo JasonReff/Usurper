@@ -22,12 +22,12 @@ public class EnemyAIManager : CharacterManager
             return;
         if (!Board.Instance.EnemyUnits.Any(t => t.UnitData.IsKing))
         {
-            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Player));
+            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.White));
             return;
         }
         else if (!Board.Instance.PlayerUnits.Any(t => t.UnitData.IsKing))
         {
-            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Enemy));
+            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Black));
             return;
         }
         if (IsGameStateCorrectFaction(state) && state.GetType() == typeof(MoveUnitState))
@@ -145,7 +145,7 @@ public class EnemyAIManager : CharacterManager
 
     private VirtualBoard? PossibleCheckmate(List<VirtualBoard> boards)
     {
-        var checkmatingBoards = boards.Where(t => !t.VirtualUnits.Any(u => u.UnitData.GetType() == typeof(KingUnitData) && u.Faction == UnitFaction.Player)).ToList();
+        var checkmatingBoards = boards.Where(t => !t.VirtualUnits.Any(u => u.UnitData.GetType() == typeof(KingUnitData) && u.Faction == UnitFaction.White)).ToList();
         if (checkmatingBoards.Count == 0)
             return null;
         var board = checkmatingBoards.First();

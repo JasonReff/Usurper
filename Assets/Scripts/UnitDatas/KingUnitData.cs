@@ -31,7 +31,7 @@ public class KingUnitData : UnitData
             return false;
         if (IsTileSurroundingKing(oldTile, newTile))
             return true;
-        if (unit.Faction == UnitFaction.Player && GetNeighboringTiles(oldTile, board, _additionalMovementTiles).Contains(newTile))
+        if (unit.Faction == UnitFaction.White && GetNeighboringTiles(oldTile, board, _additionalMovementTiles).Contains(newTile))
             return true;
         return false;
     }
@@ -49,7 +49,7 @@ public class KingUnitData : UnitData
     {
         if (IsTileSurroundingKing(oldTile, newTile))
             return true;
-        else if (unit.Faction == UnitFaction.Player && GetNeighboringTiles(oldTile, board, _additionalPlacementTiles).Contains(newTile))
+        else if (unit.Faction == UnitFaction.White && GetNeighboringTiles(oldTile, board, _additionalPlacementTiles).Contains(newTile))
             return true;
         return false;
     }

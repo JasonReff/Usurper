@@ -38,7 +38,7 @@ public class CardReward : MonoBehaviour
     {
         _unitData = data;
         _unitImage.sprite = data.PlayerSprite;
-        LoadCardSprite(UnitFaction.Player, data.UnitClass);
+        LoadCardSprite(UnitFaction.White, data.UnitClass);
         _moveset.sprite = data.Moveset;
         _costText.text = data.Cost.ToString();
         _nameTextbox.text = data.UnitName;
@@ -61,7 +61,7 @@ public class CardReward : MonoBehaviour
                 cardColorSet = _cardColors.Empire;
                 break;
         }
-        if (faction == UnitFaction.Player)
+        if (faction == UnitFaction.White)
         {
             _cardSprite = cardColorSet.WhiteCard;
             _nameTextbox.color = _whiteTextColor;

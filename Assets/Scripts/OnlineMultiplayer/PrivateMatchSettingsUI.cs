@@ -24,12 +24,12 @@ public class PrivateMatchSettingsUI : MonoBehaviour
     public void SetPreferredWhite()
     {
         _settings.IsFactionPreferred = false;
-        _settings.PreferredFaction = UnitFaction.Player;
+        _settings.PreferredFaction = UnitFaction.White;
     }
 
     public void SetPreferredBlack()
     {
         _settings.IsFactionPreferred = true;
-        _settings.PreferredFaction = UnitFaction.Enemy;
+        _settings.PreferredFaction = UnitFaction.Black;
     }
 }

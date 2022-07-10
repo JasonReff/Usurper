@@ -23,13 +23,13 @@ public class OnlineKingCapturedManager : KingCapturedManager
     {
         if (!Board.Instance.PlayerUnits.Any(t => t.UnitData.IsKing))
         {
-            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Enemy));
+            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Black));
             AdjustStats(unit.Faction);
 
         }
         else if (!Board.Instance.EnemyUnits.Any(t => t.UnitData.IsKing))
         {
-            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.Player));
+            GameStateMachine.Instance.ChangeState(new PlayerWonState(GameStateMachine.Instance, UnitFaction.White));
             AdjustStats(unit.Faction);
         }
     }

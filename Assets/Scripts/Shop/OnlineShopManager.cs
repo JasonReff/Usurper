@@ -12,7 +12,7 @@ public class OnlineShopManager : ShopManager
     public void SetFaction(UnitFaction faction, string name)
     {
         _faction = faction;
-        if (_faction == UnitFaction.Enemy)
+        if (_faction == UnitFaction.Black)
         {
             _ui.ShopParent.gameObject.SetActive(false);
             _king = Board.Instance.GetTileAtPosition(new UnityEngine.Vector2(0, 3)).UnitOnTile as KingUnit;

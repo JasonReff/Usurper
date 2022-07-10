@@ -117,7 +117,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
             unit.CheckIfTileTargeted();
             if (unit.InCheck)
                 KingInCheck = true;
-            if (unit.Faction == UnitFaction.Enemy)
+            if (unit.Faction == UnitFaction.Black)
                 eval += unit.Evaluation;
             else
                 eval -= unit.Evaluation;
@@ -157,7 +157,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
 
     public bool IsPieceHanging()
     {
-        var enemyUnits = VirtualUnits.Where(t => t.Faction == UnitFaction.Enemy).ToList();
+        var enemyUnits = VirtualUnits.Where(t => t.Faction == UnitFaction.Black).ToList();
         foreach (var unit in enemyUnits)
         {
             if (unit.UnitData.IsExplosive)
@@ -170,8 +170,8 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
 
     public bool IsKingNextToHangingBomb()
     {
-        var enemyBombs = VirtualUnits.Where(t => t.Faction == UnitFaction.Enemy && t.UnitData.IsExplosive).ToList();
-        var kings = VirtualUnits.Where(t => t.UnitData.IsKing && t.Faction == UnitFaction.Enemy).ToList();
+        var enemyBombs = VirtualUnits.Where(t => t.Faction == UnitFaction.Black && t.UnitData.IsExplosive).ToList();
+        var kings = VirtualUnits.Where(t => t.UnitData.IsKing && t.Faction == UnitFaction.Black).ToList();
         var adjacentBombs = new List<VirtualUnit>();
         foreach (var king in kings)
             adjacentBombs.AddRange(enemyBombs.Where(t => t.Tile.IsTileAdjacent(king.Tile) || t.Tile.IsTileDiagonal(king.Tile)));
@@ -193,14 +193,14 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
                 unitsInRange.Add(unit);
             }
         }
-        if (unitsInRange.Any(t => t.UnitData.IsKing && t.Faction == UnitFaction.Enemy))
+        if (unitsInRange.Any(t => t.UnitData.IsKing && t.Faction == UnitFaction.Black))
             return false;
         int enemyValue = 0;
         int playerValue = 0;
-        foreach (var enemyUnit in unitsInRange.Where(t => t.Faction == UnitFaction.Enemy).ToList())
+        foreach (var enemyUnit in unitsInRange.Where(t => t.Faction == UnitFaction.Black).ToList())
             enemyValue += enemyUnit.UnitData.Cost;
         enemyValue += _unitMoved.UnitData.Cost;
-        foreach (var playerUnit in unitsInRange.Where(t => t.Faction == UnitFaction.Player).ToList())
+        foreach (var playerUnit in unitsInRange.Where(t => t.Faction == UnitFaction.White).ToList())
             playerValue += playerUnit.UnitData.Cost;
         if (playerValue > enemyValue)
             return true;
@@ -219,7 +219,7 @@ public class VirtualBoard : IBoard<VirtualBoardTile>
     public int CountEnemyPiecesAttacked()
     {
         int enemyPieces = 0;
-        foreach (var unit in VirtualUnits.Where(t => t.Faction == UnitFaction.Player).ToList())
+        foreach (var unit in VirtualUnits.Where(t => t.Faction == UnitFaction.White).ToList())
             if (unit.CountAttackingEnemyUnits() > 0)
                 enemyPieces++;
         return enemyPieces;

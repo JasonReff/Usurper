@@ -67,6 +67,15 @@ public class OvertimeManager : MonoBehaviourPunCallbacks
         UpdateText();
     }
 
+    public void ForceSinkhole()
+    {
+        _currentTurn = _startingTurn;
+        _chosenOvertime = GetComponent<OvertimeSinkhole>();
+        ChooseTiles();
+        UpdateText();
+        DisplayText();
+    }
+
     protected virtual IEnumerator DisplayText()
     {
         _screenCover.gameObject.SetActive(true);

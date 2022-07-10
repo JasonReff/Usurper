@@ -11,7 +11,7 @@ public class SinglePlayerGameCompleteManager : GameCompleteManager
     {
         yield return new WaitForSeconds(2);
         _resultsCanvas.gameObject.SetActive(true);
-        if (faction == UnitFaction.Player)
+        if (faction == UnitFaction.White)
         {
             if (_stats.Round < 10)
             {

@@ -17,6 +17,7 @@ public class ShopManager : MonoBehaviourPunCallbacks
 
     public int Money { get => _money; }
     public PlayerDeck Deck { get => _deck; }
+    public PurchaseableUnit Unit { get => _unit; }
 
     protected virtual void OnEnable()
     {

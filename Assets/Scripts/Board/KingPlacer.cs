@@ -18,7 +18,7 @@ public class KingPlacer : MonoBehaviour
     protected void AdjustTilePosition()
     {
         CharacterManager manager = GetComponent<CharacterManager>();
-        if (manager.Faction == UnitFaction.Player)
+        if (manager.Faction == UnitFaction.White)
         {
             _startingTile = new Vector2(0, -4);
         }

@@ -40,7 +40,7 @@ public abstract class CardPileUI : MonoBehaviour, IPointerEnterHandler, IPointer
     private string BuildCardString()
     {
         var cards = GetCards();
-        if (cards.Count == 0)
+        if (cards == null || cards.Count == 0)
             return "(Empty)";
         StringBuilder cardString = new StringBuilder();
         cardString.Append(cards[0].UnitData.UnitName + " (" + cards[0].NumberOfUses + ")");
