@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 9048881182610601452}
   - component: {fileID: 7808204392989402326}
   - component: {fileID: 4946620852938455000}
+  - component: {fileID: 8672180367583069477}
   m_Layer: 5
   m_Name: CardName
   m_TagString: Untagged
@@ -142,8 +143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Pawn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2febb1e37c8d23469c9cb99173aa891, type: 2}
+  m_sharedMaterial: {fileID: -6817536591790876035, guid: b2febb1e37c8d23469c9cb99173aa891, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.35
+  m_fontSize: 20.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -209,6 +210,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8672180367583069477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153094236143122380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0542b2d73811e66458bb1a9731d819f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7315528702932433983
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4877407123442128736, guid: 93c9696d4ffc0ad4fa4f1ed72f8b49de, type: 3}
       propertyPath: m_fontSize
-      value: 7
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 4877407123442128737, guid: 93c9696d4ffc0ad4fa4f1ed72f8b49de, type: 3}
       propertyPath: m_SizeDelta.x
