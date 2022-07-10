@@ -14,4 +14,9 @@ public class SettingsManager : MonoBehaviour
         _effectSlider.value = _audioSettings._effectsVolume;
     }
 
+    public void ChangeFont()
+    {
+        TextSettings.Instance.ChangeFont();
+    }
+
 }
